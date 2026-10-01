@@ -60,10 +60,18 @@
       <nav class="nav-menu" id="navMenu" aria-label="Principal">
         <ul class="nav-links">
           <li><a href="#inicio" data-nav="inicio">Inicio</a></li>
-          <li><a href="#soluciones" data-nav="soluciones">Soluciones</a></li>
-          <li><a href="#demo-citas" data-nav="demo-citas">Demo citas</a></li>
-          <li><a href="#demo-whatsapp" data-nav="demo-whatsapp">Asistente 24h</a></li>
-          <li><a href="#planes" data-nav="planes">Planes</a></li>
+          <li class="nav-drop">
+            <button type="button" class="nav-drop-btn" id="solToggle" aria-expanded="false" aria-controls="solMenu" data-nav-group="soluciones demo-citas demo-whatsapp">
+              Soluciones
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <ul class="nav-drop-menu" id="solMenu">
+              <li><a href="#soluciones" data-nav="soluciones"><strong>Por sector</strong><span>Problemas habituales y cómo los resolvemos</span></a></li>
+              <li><a href="#demo-citas" data-nav="demo-citas"><strong>Demo: reserva de cita</strong><span>Reserva como lo haría tu cliente</span></a></li>
+              <li><a href="#demo-whatsapp" data-nav="demo-whatsapp"><strong>Demo: asistente WhatsApp</strong><span>Pregúntale lo que preguntaría un cliente</span></a></li>
+            </ul>
+          </li>
+          <li><a href="#planes" data-nav="planes">Precios</a></li>
           <li><a href="#contacto" data-nav="contacto">Contacto</a></li>
         </ul>
       </nav>
@@ -94,7 +102,7 @@
             </div>
             <ul class="hero-stats">
               <li><strong>24/7</strong><span>reservas y respuestas</span></li>
-              <li><strong>~2 sem.</strong><span>para tenerlo funcionando</span></li>
+              <li><strong>Pago único</strong><span>sin cuotas mensuales</span></li>
               <li><strong>0 €</strong><span>primera llamada y diagnóstico</span></li>
             </ul>
           </div>
@@ -154,8 +162,8 @@
           </a>
           <a href="#planes" class="tile">
             <span class="tile-icon">💶</span>
-            <span class="tile-title">Planes y precios</span>
-            <span class="tile-desc">Cómo trabajamos y cuánto cuesta.</span>
+            <span class="tile-title">Precios</span>
+            <span class="tile-desc">Pago único por proyecto, desde 1.000 €.</span>
             <span class="tile-go" aria-hidden="true">→</span>
           </a>
         </div>
@@ -441,79 +449,66 @@
         </div>
 
         <div class="next-step">
-          <a href="#planes" class="btn btn-ghost">Ver planes y precios →</a>
+          <a href="#planes" class="btn btn-ghost">Ver precios →</a>
           <a href="#contacto" class="btn btn-primary">Quiero esto en mi negocio</a>
         </div>
       </div>
     </section>
 
     <!-- ══════════ VISTA: PLANES ══════════ -->
-    <section class="view" id="view-planes" data-view data-title="Planes y precios — Aether">
+    <section class="view" id="view-planes" data-view data-title="Precios — Aether">
       <div class="container">
         <div class="view-head">
-          <p class="eyebrow">Planes</p>
-          <h2 class="view-title" tabindex="-1">Simple, sin sorpresas</h2>
+          <p class="eyebrow">Precios</p>
+          <h2 class="view-title" tabindex="-1">Soluciones a tu medida</h2>
+          <p class="view-desc">Pagas una vez por tu proyecto y el sistema es tuyo. Sin cuotas mensuales.</p>
         </div>
 
         <ol class="how">
           <li><span class="how-num">1</span><div><strong>Llamada de 30 min</strong><span>Vemos tu negocio y qué te hace perder tiempo.</span></div></li>
-          <li><span class="how-num">2</span><div><strong>Lo montamos</strong><span>En unas 2 semanas, conectado a lo que ya usas.</span></div></li>
-          <li><span class="how-num">3</span><div><strong>Funciona y lo cuidamos</strong><span>Soporte y ajustes incluidos.</span></div></li>
+          <li><span class="how-num">2</span><div><strong>Lo construimos a medida</strong><span>Conectado a lo que ya usas.</span></div></li>
+          <li><span class="how-num">3</span><div><strong>Te lo entregamos funcionando</strong><span>Te enseñamos a usarlo. Es tuyo.</span></div></li>
         </ol>
 
-        <!-- Precios orientativos: edítalos aquí -->
-        <div class="plans">
-          <article class="plan">
-            <h3 class="plan-name">Esencial</h3>
-            <p class="plan-price">desde <strong>49 €</strong>/mes</p>
-            <ul class="plan-list">
-              <li>Reserva de citas online</li>
-              <li>Recordatorios por WhatsApp</li>
-              <li>Petición de reseñas en Google</li>
-            </ul>
-            <a href="#contacto" class="btn btn-ghost btn-block">Empezar</a>
-          </article>
+        <!-- Precios: edítalos aquí -->
+        <div class="plans plans--two">
           <article class="plan plan--featured">
-            <p class="plan-badge">Más elegido</p>
-            <h3 class="plan-name">Clínica</h3>
-            <p class="plan-price">desde <strong>99 €</strong>/mes</p>
+            <h3 class="plan-name">Automatización completa</h3>
+            <p class="plan-price">desde <strong>1.000 €</strong> · pago único</p>
             <ul class="plan-list">
-              <li>Todo lo de Esencial</li>
-              <li>Asistente de WhatsApp 24h</li>
-              <li>Lista de espera y seguimiento de clientes</li>
+              <li>Reserva de citas online y recordatorios por WhatsApp</li>
+              <li>Asistente 24h que responde y reserva por ti</li>
+              <li>Reseñas, lista de espera y seguimiento de clientes</li>
+              <li>Integración con tu agenda o software actual</li>
             </ul>
-            <a href="#contacto" class="btn btn-primary btn-block">Empezar</a>
+            <a href="#contacto" class="btn btn-primary btn-block">Pedir presupuesto</a>
           </article>
           <article class="plan">
-            <h3 class="plan-name">A medida</h3>
-            <p class="plan-price"><strong>Consultar</strong></p>
+            <h3 class="plan-name">Mantenimiento</h3>
+            <p class="plan-price"><strong>Opcional</strong> · a consultar</p>
             <ul class="plan-list">
-              <li>Integración con tu software</li>
-              <li>Varias sedes o profesionales</li>
-              <li>Automatizaciones específicas</li>
+              <li>Ajustes y mejoras cuando los necesites</li>
+              <li>Resolución de incidencias</li>
+              <li>Cambios de horarios, servicios o precios</li>
             </ul>
-            <a href="#contacto" class="btn btn-ghost btn-block">Hablemos</a>
+            <a href="#contacto" class="btn btn-ghost btn-block">Consultar</a>
           </article>
         </div>
-        <p class="note note--center">Precios orientativos sin IVA. Te damos el precio cerrado tras la primera llamada.</p>
+        <p class="note note--center">Precio cerrado tras la primera llamada. Los servicios externos que pueda necesitar el sistema (por ejemplo, WhatsApp Business o el alojamiento) se pagan aparte y te los explicamos antes de empezar.</p>
 
         <div class="faq">
           <h3 class="faq-title">Preguntas frecuentes</h3>
+          <details>
+            <summary>¿Tengo que pagar una cuota mensual?</summary>
+            <p>No. Pagas una vez por el proyecto. El mantenimiento es opcional, y solo los servicios externos que use el sistema tienen su propio coste.</p>
+          </details>
           <details>
             <summary>¿Tengo que cambiar mi programa de gestión?</summary>
             <p>No. Nos conectamos a lo que ya usas (Google Calendar, tu software de clínica o gimnasio, hojas de cálculo). Si no tienes nada, te lo dejamos montado.</p>
           </details>
           <details>
-            <summary>¿Cumple con la protección de datos (RGPD)?</summary>
-            <p>Sí. Los datos se guardan en servidores europeos, solo se usan para tu negocio y firmamos contigo el contrato de encargado de tratamiento.</p>
-          </details>
-          <details>
-            <summary>¿Cuánto se tarda en tenerlo funcionando?</summary>
-            <p>Lo habitual son unas 2 semanas desde la primera llamada. Las cosas sencillas, como los recordatorios, pueden estar en pocos días.</p>
-          </details>
-          <details>
             <summary>¿Necesito saber de tecnología?</summary>
-            <p>No. Lo configuramos todo nosotros y te enseñamos lo justo para usarlo. Si algo falla, nos escribes y lo arreglamos.</p>
+            <p>No. Lo configuramos todo nosotros y te enseñamos lo justo para usarlo.</p>
           </details>
         </div>
 
@@ -635,6 +630,37 @@
     <a href="#" class="btn btn-wa btn-sm btn-icon" data-wa-link hidden target="_blank" rel="noopener" aria-label="WhatsApp">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>
     </a>
+  </div>
+
+  <!-- Asistente de la web (IA) -->
+  <div class="assist" id="assist">
+    <button class="assist-fab" id="assistOpen" aria-expanded="false" aria-controls="assistPanel">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span class="assist-fab-label">¿Dudas? Pregunta</span>
+    </button>
+    <section class="assist-panel" id="assistPanel" role="dialog" aria-label="Asistente de Aether" hidden>
+      <header class="assist-head">
+        <div>
+          <p class="assist-title">Asistente de Aether</p>
+          <p class="assist-sub">Responde al momento · con IA</p>
+        </div>
+        <button class="assist-close" id="assistClose" aria-label="Cerrar asistente">×</button>
+      </header>
+      <div class="assist-log" id="assistLog" aria-live="polite"></div>
+      <div class="assist-chips" id="assistChips">
+        <button type="button" class="quick">¿Qué podéis automatizar en mi negocio?</button>
+        <button type="button" class="quick">¿Cuánto cuesta?</button>
+        <button type="button" class="quick">¿Cómo se trabaja con vosotros?</button>
+      </div>
+      <form class="assist-form" id="assistForm">
+        <label for="assistInput" class="sr-only">Escribe tu pregunta</label>
+        <input id="assistInput" type="text" maxlength="1000" placeholder="Escribe tu pregunta…" autocomplete="off">
+        <button type="submit" aria-label="Enviar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </form>
+      <p class="assist-legal">Respuestas generadas con IA; pueden contener errores. No compartas datos personales. <a href="privacidad.html" target="_blank">Privacidad</a></p>
+    </section>
   </div>
 
   <!-- Aviso de cookies (informativo) -->

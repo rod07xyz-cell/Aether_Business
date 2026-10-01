@@ -1,0 +1,6 @@
+# Configuración con datos privados (se sube a mano al hosting)
+Aether/scripts/config.js
+Aether/api/config.php
+
+# Dependencias PHP (se instalan con composer en el hosting)
+Aether/api/vendor/

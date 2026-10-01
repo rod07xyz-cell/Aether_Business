@@ -14,22 +14,35 @@ python3 -m http.server 8000
 # abrir http://localhost:8000
 ```
 
-## Configuración (antes de publicar)
+## Configuración privada (no se sube a GitHub)
 
-Todo está en **`Aether/scripts/config.js`**:
+Hay dos archivos con datos privados que están en `.gitignore`. Se crean a partir de su plantilla y se suben a mano al hosting:
 
-| Campo | Qué poner | Si se deja vacío |
+| Archivo | Plantilla | Qué lleva |
 |---|---|---|
-| `formspreeId` | ID del formulario de [Formspree](https://formspree.io) (lo que va tras `/f/`) | El formulario abre el email del visitante con el mensaje preparado |
-| `whatsapp` | Número internacional sin `+` ni espacios, p. ej. `34612345678` | Se ocultan los botones de WhatsApp |
-| `phone` | Teléfono visible, p. ej. `+34 612 345 678` | Se oculta |
-| `email` | Email de contacto | — |
-| `calLink` | Enlace de Cal.eu para reservar llamadas | — |
+| `Aether/scripts/config.js` | `config.example.js` | ID de Formspree, WhatsApp, teléfono, email, enlace de Cal.eu |
+| `Aether/api/config.php` | `config.example.php` | Clave de API de Anthropic, modelo y límite de mensajes por hora del asistente |
 
-Pendiente de revisar además:
-- **Precios** de la vista Planes (`index.html`, busca `Precios orientativos`).
+Si `config.js` no existe, la web funciona igual: se ocultan WhatsApp y teléfono, y el formulario abre el email del visitante.
+
+Pendiente de revisar:
 - **Datos fiscales** en `privacidad.html` y `aviso-legal.html` (busca `[COMPLETAR]`).
-- Textos de ejemplo de las demos (horarios, precios de cada sector) en `scripts/main.js` → `SECTORS`.
+- Textos de ejemplo de las demos (horarios y precios de cada sector) en `scripts/main.js` → `SECTORS`.
+- Lo que sabe el asistente: `api/prompt.php`.
+
+## Asistente con IA
+
+Burbuja de chat en todas las vistas. El navegador habla con `api/chat.php`, que llama a Claude con el SDK oficial de PHP. La clave de API nunca llega al navegador.
+
+- Necesita PHP 8.2 o superior. Los planes de Hostinger con PHP valen.
+- Dependencias: `cd Aether/api && composer install --no-dev` (por SSH en Hostinger, o en local y luego subes la carpeta `vendor/`).
+- Si el servidor del asistente no responde (por ejemplo, en local sin PHP), la burbuja da respuestas preparadas para no dejar al visitante sin respuesta.
+
+## Subir a Hostinger
+
+1. Sube el contenido de `Aether/` a `public_html/`, incluidos `scripts/config.js`, `api/config.php` y `api/vendor/`.
+2. Pon la clave de API en `api/config.php`.
+3. Comprueba que `https://tudominio/api/config.php` devuelve un error 403 (lo protege `api/.htaccess`).
 
 ## Estructura
 
@@ -38,12 +51,9 @@ Aether/
 ├── index.html            # Todas las vistas
 ├── privacidad.html, aviso-legal.html, cookies.html
 ├── favicon.svg
-├── scripts/config.js     # Configuración editable
+├── scripts/config.js     # Configuración privada (gitignored; plantilla: config.example.js)
+├── api/chat.php          # Asistente con IA (PHP)
+├── api/prompt.php        # Instrucciones y conocimiento del asistente
 ├── scripts/main.js       # Router de vistas, demos, formulario
 └── styles/               # reset, variables (colores), main
 ```
-
-## Publicar gratis
-
-- **GitHub Pages**: Settings → Pages → rama `Página_Web_Aether`, carpeta raíz; la web queda en `/Aether/`.
-- **Netlify / Cloudflare Pages**: arrastra la carpeta `Aether` o conecta el repo con directorio de publicación `Aether`.

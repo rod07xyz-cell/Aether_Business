@@ -4,7 +4,11 @@
 (function () {
   'use strict';
 
-  var CONFIG = window.AETHER_CONFIG || {};
+  var CONFIG = Object.assign({
+    email: 'aetherlabs@aetherlabsai.tech',
+    calLink: 'https://cal.eu/aetherlabs/30min',
+    assistantEndpoint: 'api/chat.php'
+  }, window.AETHER_CONFIG || {});
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function $(sel, ctx) { return (ctx || document).querySelector(sel); }
@@ -125,6 +129,9 @@
       if (a.getAttribute('data-nav') === id) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
+    $$('[data-nav-group]').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-nav-group').split(' ').indexOf(id) !== -1);
+    });
 
     var view = document.getElementById('view-' + id);
     if (view.dataset.title) document.title = view.dataset.title;
@@ -156,7 +163,22 @@
   /* ══════════ Menú móvil ══════════ */
   var navToggle = $('#navToggle');
   var navMenu = $('#navMenu');
+  var solToggle = $('#solToggle');
+  function closeDrop() {
+    if (solToggle) solToggle.setAttribute('aria-expanded', 'false');
+  }
+  if (solToggle) {
+    solToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      solToggle.setAttribute('aria-expanded', String(solToggle.getAttribute('aria-expanded') !== 'true'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.nav-drop')) closeDrop();
+    });
+  }
+
   function closeMenu() {
+    closeDrop();
     if (!navToggle) return;
     navToggle.setAttribute('aria-expanded', 'false');
     navToggle.setAttribute('aria-label', 'Abrir menú');
@@ -634,6 +656,124 @@
     });
   }
 
+  /* ══════════ Asistente de la web (IA) ══════════ */
+  var SAFE_LINK = /^(#[a-z-]+|https:\/\/cal\.eu\/|https:\/\/wa\.me\/|mailto:)/;
+
+  // Texto con enlaces Markdown [texto](url) → nodos DOM seguros
+  function richText(container, text) {
+    text = text.replace(/\*\*(.+?)\*\*/g, '$1');
+    var re = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+    var last = 0, m;
+    while ((m = re.exec(text))) {
+      container.appendChild(document.createTextNode(text.slice(last, m.index)));
+      if (SAFE_LINK.test(m[2])) {
+        var a = el('a', 'msg-link', m[1]);
+        a.href = m[2];
+        if (m[2].charAt(0) !== '#') { a.target = '_blank'; a.rel = 'noopener'; }
+        container.appendChild(a);
+      } else {
+        container.appendChild(document.createTextNode(m[1]));
+      }
+      last = re.lastIndex;
+    }
+    container.appendChild(document.createTextNode(text.slice(last)));
+  }
+
+  // Respuestas preparadas si el servidor del asistente no está disponible
+  function localAnswer(q) {
+    var t = q.toLowerCase();
+    if (/cuest|precio|cuánto|cuanto|tarifa|pagar|cuota|presupuesto/.test(t))
+      return 'Cada solución se hace a medida. Una automatización completa cuesta desde 1.000 €, en un único pago, y el mantenimiento es opcional. Tienes el detalle en [Precios](#planes).';
+    if (/cómo|como|trabaj|proceso|pasos|empez/.test(t))
+      return 'Empezamos con una llamada gratuita de 30 minutos, construimos la solución a medida conectada a lo que ya usas y te la entregamos funcionando. Puedes [reservar la llamada aquí](#contacto).';
+    if (/automati|qué hac|que hac|servici|negocio|clínica|clinica|dent|gimnas|fisio/.test(t))
+      return 'Citas online, recordatorios por WhatsApp, un asistente 24h que responde y reserva, reseñas en Google y seguimiento de clientes, entre otras cosas. Mira lo que hacemos en tu sector en [Soluciones](#soluciones) o prueba la [demo de reservas](#demo-citas).';
+    if (/contact|llam|hablar|whatsapp|email|correo/.test(t))
+      return 'Puedes reservar una llamada gratuita, escribirnos o hablarnos por WhatsApp desde [Contacto](#contacto).';
+    return 'Ahora mismo no puedo responder a eso con detalle. Escríbenos o [reserva una llamada](#contacto) y te contestamos en menos de 24 horas.';
+  }
+
+  function initAssistant() {
+    var panel = $('#assistPanel');
+    if (!panel) return;
+    var openBtn = $('#assistOpen'), log = $('#assistLog'), form = $('#assistForm'), input = $('#assistInput');
+    var history = [];
+    var busy = false;
+    var greeted = false;
+
+    function add(role, text) {
+      var m = el('div', 'msg ' + (role === 'user' ? 'msg--out' : 'msg--in'));
+      richText(m, text);
+      log.appendChild(m);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    function open(state) {
+      panel.hidden = !state;
+      openBtn.setAttribute('aria-expanded', String(state));
+      document.body.classList.toggle('assist-open', state);
+      if (state) {
+        if (!greeted) {
+          greeted = true;
+          add('assistant', '¡Hola! Soy el asistente de Aether. Pregúntame qué podemos automatizar en tu negocio, cuánto cuesta o cómo trabajamos.');
+        }
+        input.focus();
+      } else {
+        openBtn.focus();
+      }
+    }
+
+    function ask(q) {
+      q = q.trim();
+      if (!q || busy) return;
+      busy = true;
+      $('#assistChips').hidden = true;
+      add('user', q);
+      history.push({ role: 'user', content: q });
+      var typing = el('div', 'msg msg--in msg--typing');
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      log.appendChild(typing);
+      log.scrollTop = log.scrollHeight;
+
+      fetch(CONFIG.assistantEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history.slice(-12) })
+      }).then(function (res) {
+        return res.json().then(function (data) {
+          if (res.status === 429) return 'Has hecho muchas preguntas seguidas. Si quieres, [reserva una llamada](#contacto) y lo vemos juntos.';
+          if (!res.ok || !data.reply) throw new Error(data.error || 'HTTP ' + res.status);
+          return data.reply;
+        });
+      }).catch(function () {
+        return localAnswer(q);
+      }).then(function (reply) {
+        typing.remove();
+        add('assistant', reply);
+        history.push({ role: 'assistant', content: reply });
+        busy = false;
+      });
+    }
+
+    openBtn.addEventListener('click', function () { open(panel.hidden); });
+    $('#assistClose').addEventListener('click', function () { open(false); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      ask(input.value);
+      input.value = '';
+    });
+    $$('#assistChips .quick').forEach(function (b) {
+      b.addEventListener('click', function () { ask(b.textContent); });
+    });
+    // En móvil el panel ocupa la pantalla: se cierra al ir a otra vista
+    log.addEventListener('click', function (e) {
+      if (e.target.closest('a[href^="#"]') && window.matchMedia('(max-width: 640px)').matches) open(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !panel.hidden) open(false);
+    });
+  }
+
   /* ══════════ Cookies + año ══════════ */
   function initMisc() {
     var banner = $('#cookieBanner');
@@ -654,6 +794,7 @@
   initBooking();
   initChat();
   initContact();
+  initAssistant();
   initMisc();
   route(false);
 })();

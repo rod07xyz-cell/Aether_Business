@@ -1,5 +1,6 @@
 /* ═══════════════════════════════════════════
-   CONFIGURACIÓN DE LA WEB — edita solo este archivo
+   PLANTILLA DE CONFIGURACIÓN
+   Copia este archivo como config.js y rellénalo. config.js no se sube a GitHub.
    Los campos vacíos ('') ocultan el botón correspondiente.
 ═══════════════════════════════════════════ */
 window.AETHER_CONFIG = {
@@ -17,5 +18,8 @@ window.AETHER_CONFIG = {
   email: 'aetherlabs@aetherlabsai.tech',
 
   // Enlace de reserva de Cal.eu (se muestra embebido en Contacto).
-  calLink: 'https://cal.eu/aetherlabs/30min'
+  calLink: 'https://cal.eu/aetherlabs/30min',
+
+  // Dirección del asistente con IA (archivo PHP en el hosting).
+  assistantEndpoint: 'api/chat.php'
 };
