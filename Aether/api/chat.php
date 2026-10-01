@@ -45,7 +45,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['diagnostico'])) {
         if ($code === 200 && isset($json['data'])) {
             $ids = array_column($json['data'], 'id');
             $report['modelo_disponible'] = in_array($model, $ids, true);
-            $report['modelos_llama'] = array_values(array_filter($ids, fn ($id) => stripos($id, 'llama') !== false));
+            // Modelos de chat (se excluyen los de audio, voz y filtros de seguridad)
+            $report['modelos_chat'] = array_values(array_filter(
+                $ids,
+                fn ($id) => !preg_match('/whisper|tts|playai|orpheus|guard|safeguard/i', $id)
+            ));
+            sort($report['modelos_chat']);
         } elseif (is_array($json)) {
             $report['groq_error'] = $json['error']['message'] ?? 'desconocido';
         }
