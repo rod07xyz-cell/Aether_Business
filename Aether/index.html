@@ -80,7 +80,7 @@
   <main id="main" tabindex="-1">
 
     <!-- ══════════ VISTA: INICIO ══════════ -->
-    <section class="view" id="inicio" data-view data-title="Aether — Automatización para clínicas, dentistas y gimnasios">
+    <section class="view" id="view-inicio" data-view data-title="Aether — Automatización para clínicas, dentistas y gimnasios">
       <div class="container">
 
         <div class="hero">
@@ -164,7 +164,7 @@
     </section>
 
     <!-- ══════════ VISTA: SOLUCIONES ══════════ -->
-    <section class="view" id="soluciones" data-view data-title="Soluciones por sector — Aether">
+    <section class="view" id="view-soluciones" data-view data-title="Soluciones por sector — Aether">
       <div class="container">
         <div class="view-head">
           <p class="eyebrow">Soluciones</p>
@@ -268,7 +268,7 @@
     </section>
 
     <!-- ══════════ VISTA: DEMO CITAS ══════════ -->
-    <section class="view" id="demo-citas" data-view data-title="Demo: reserva de cita — Aether">
+    <section class="view" id="view-demo-citas" data-view data-title="Demo: reserva de cita — Aether">
       <div class="container">
         <div class="view-head">
           <p class="eyebrow">Demo interactiva</p>
@@ -395,7 +395,7 @@
     </section>
 
     <!-- ══════════ VISTA: DEMO WHATSAPP ══════════ -->
-    <section class="view" id="demo-whatsapp" data-view data-title="Demo: asistente de WhatsApp — Aether">
+    <section class="view" id="view-demo-whatsapp" data-view data-title="Demo: asistente de WhatsApp — Aether">
       <div class="container">
         <div class="view-head">
           <p class="eyebrow">Demo interactiva</p>
@@ -448,7 +448,7 @@
     </section>
 
     <!-- ══════════ VISTA: PLANES ══════════ -->
-    <section class="view" id="planes" data-view data-title="Planes y precios — Aether">
+    <section class="view" id="view-planes" data-view data-title="Planes y precios — Aether">
       <div class="container">
         <div class="view-head">
           <p class="eyebrow">Planes</p>
@@ -524,7 +524,7 @@
     </section>
 
     <!-- ══════════ VISTA: CONTACTO ══════════ -->
-    <section class="view" id="contacto" data-view data-title="Contacto — Aether">
+    <section class="view" id="view-contacto" data-view data-title="Contacto — Aether">
       <div class="container">
         <div class="view-head">
           <p class="eyebrow">Contacto</p>
@@ -536,7 +536,14 @@
           <div class="card cal-card">
             <h3 class="card-title">Reserva tu llamada</h3>
             <div class="cal-frame" id="calFrame">
-              <p class="cal-loading">Cargando calendario…</p>
+              <div class="cal-embed" id="calEmbed"></div>
+              <p class="cal-loading" id="calLoading">Cargando calendario…</p>
+              <div class="cal-off" id="calOff" hidden>
+                <span class="cal-off-icon" aria-hidden="true">📅</span>
+                <p class="cal-off-title">Reserva tu llamada de 30 min</p>
+                <p class="cal-off-desc">Elige día y hora en nuestro calendario. Se abre en una pestaña nueva.</p>
+                <a href="https://cal.eu/aetherlabs/30min" class="btn btn-primary" data-cal-link target="_blank" rel="noopener">Abrir calendario</a>
+              </div>
             </div>
             <a href="https://cal.eu/aetherlabs/30min" class="cal-fallback" data-cal-link target="_blank" rel="noopener">¿No se ve el calendario? Ábrelo aquí →</a>
             <div class="quick-contact">

@@ -413,12 +413,21 @@ html:not(.js) .view[hidden] { display: block; }
 .card-title { font-size: var(--size-lg); font-weight: 600; margin-bottom: var(--s4); }
 
 .cal-frame {
-  position: relative; height: 560px; border-radius: var(--r-lg); overflow: hidden;
+  position: relative; min-height: 520px; border-radius: var(--r-lg);
   background: var(--bg); border: 1px solid var(--border);
 }
-.cal-frame iframe { width: 100%; height: 100%; border: 0; position: relative; }
-.cal-loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--text-3); font-size: var(--size-sm); }
-.cal-frame.is-loaded .cal-loading { display: none; }
+.cal-embed { width: 100%; min-height: 520px; overflow: auto; }
+.cal-embed[hidden] { display: none; }
+.cal-loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--text-3); font-size: var(--size-sm); pointer-events: none; }
+.cal-loading[hidden] { display: none; }
+.cal-off {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--s3); padding: var(--s6); text-align: center;
+}
+.cal-off[hidden] { display: none; }
+.cal-off-icon { font-size: 2rem; }
+.cal-off-title { font-size: var(--size-lg); font-weight: 600; }
+.cal-off-desc { font-size: var(--size-sm); color: var(--text-2); max-width: 320px; margin-bottom: var(--s2); }
 .cal-fallback { display: inline-block; margin-top: var(--s3); font-size: var(--size-sm); color: var(--accent); }
 .quick-contact { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s5); padding-top: var(--s5); border-top: 1px solid var(--border); }
 
@@ -517,7 +526,6 @@ textarea.input { resize: vertical; min-height: 90px; }
   .booking-body { padding: var(--s4); }
   .steps { padding-inline: var(--s4); }
   .field-row { grid-template-columns: 1fr; }
-  .cal-frame { height: 620px; }
   .phone .wa-chat { height: 340px; }
   .next-step .btn { width: 100%; }
 

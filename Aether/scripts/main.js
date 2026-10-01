@@ -105,7 +105,8 @@
 
   /* ══════════ Router de vistas ══════════ */
   var views = $$('[data-view]');
-  var viewIds = views.map(function (v) { return v.id; });
+  // Las vistas usan id="view-xxx" y el hash es #xxx: así el navegador no salta al ancla
+  var viewIds = views.map(function (v) { return v.id.replace(/^view-/, ''); });
   var current = null;
   var calLoaded = false;
 
@@ -113,7 +114,7 @@
     if (viewIds.indexOf(id) === -1) id = 'inicio';
     if (id === current) { window.scrollTo(0, 0); return; }
     views.forEach(function (v) {
-      var active = v.id === id;
+      var active = v.id === 'view-' + id;
       v.hidden = !active;
       v.classList.toggle('is-entering', active && current !== null && !reduceMotion);
     });
@@ -125,7 +126,7 @@
       else a.removeAttribute('aria-current');
     });
 
-    var view = document.getElementById(id);
+    var view = document.getElementById('view-' + id);
     if (view.dataset.title) document.title = view.dataset.title;
     if (focus) {
       var heading = $('h1, h2', view);
@@ -200,17 +201,70 @@
     document.body.classList.toggle('has-wa', !!waUrl);
   }
 
+  // Calendario de Cal.eu con su script oficial de embed (modo inline).
+  // Si no llega a cargar (bloqueo, sin conexión…), se muestra un botón para abrirlo aparte.
   function loadCal() {
     if (calLoaded || !CONFIG.calLink) return;
     calLoaded = true;
-    var wrap = $('#calFrame');
-    if (!wrap) return;
-    var iframe = document.createElement('iframe');
-    iframe.src = CONFIG.calLink.replace(/\/$/, '') + '/embed?embed=&layout=month_view&theme=dark';
-    iframe.title = 'Calendario para reservar una llamada con Aether';
-    iframe.loading = 'lazy';
-    iframe.addEventListener('load', function () { wrap.classList.add('is-loaded'); });
-    wrap.appendChild(iframe);
+    var embed = $('#calEmbed');
+    if (!embed) return;
+    var url;
+    try { url = new URL(CONFIG.calLink); } catch (e) { return calFallback(); }
+    var path = url.pathname.replace(/^\/+|\/+$/g, '');
+    var ns = 'aether';
+    var ready = false;
+    var timer = setTimeout(function () { if (!ready) calFallback(); }, 10000);
+
+    // Stub oficial de Cal: encola llamadas hasta que carga embed.js
+    if (!window.Cal) {
+      var Cal = window.Cal = function () {
+        var args = arguments;
+        if (args[0] === 'init' && typeof args[1] === 'string') {
+          var api = function () { api.q.push(arguments); };
+          api.q = [];
+          Cal.ns[args[1]] = Cal.ns[args[1]] || api;
+          Cal.ns[args[1]].q.push(args);
+          Cal.q.push(['initNamespace', args[1]]);
+          return;
+        }
+        Cal.q.push(args);
+      };
+      Cal.ns = {}; Cal.q = []; Cal.loaded = true;
+      var script = document.createElement('script');
+      script.src = 'https://app.' + url.hostname.replace(/^app\./, '') + '/embed/embed.js';
+      script.async = true;
+      script.onerror = function () { clearTimeout(timer); calFallback(); };
+      document.head.appendChild(script);
+    }
+
+    window.Cal('init', ns, { origin: url.origin });
+    var cal = window.Cal.ns[ns];
+    cal('inline', {
+      elementOrSelector: '#calEmbed',
+      calLink: path,
+      config: { layout: 'month_view', theme: 'dark' }
+    });
+    cal('ui', {
+      theme: 'dark',
+      hideEventTypeDetails: false,
+      cssVarsPerTheme: { dark: { 'cal-brand': '#6EA8FF' } }
+    });
+    cal('on', {
+      action: 'linkReady',
+      callback: function () {
+        ready = true;
+        clearTimeout(timer);
+        var l = $('#calLoading'); if (l) l.hidden = true;
+      }
+    });
+    cal('on', { action: 'linkFailed', callback: function () { clearTimeout(timer); calFallback(); } });
+  }
+
+  function calFallback() {
+    var embed = $('#calEmbed'), loading = $('#calLoading'), off = $('#calOff');
+    if (embed) embed.hidden = true;
+    if (loading) loading.hidden = true;
+    if (off) off.hidden = false;
   }
 
   /* ══════════ Soluciones: pestañas ══════════ */
