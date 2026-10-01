@@ -15,6 +15,45 @@ function reply(int $status, array $body): never
     exit;
 }
 
+// Diagnóstico: abre api/chat.php?diagnostico en el navegador para ver qué falla
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['diagnostico'])) {
+    $cfgFile = __DIR__ . '/config.php';
+    $cfg = is_file($cfgFile) ? require $cfgFile : null;
+    $key = is_array($cfg) ? trim((string) ($cfg['groq_api_key'] ?? '')) : '';
+    $model = is_array($cfg) ? (string) ($cfg['model'] ?? '') : '';
+    $report = [
+        'php' => PHP_VERSION,
+        'curl' => function_exists('curl_init'),
+        'config_php' => is_array($cfg) ? 'ok' : 'no encontrado o mal formado',
+        'clave_puesta' => $key !== '',
+        'clave_formato' => $key === '' ? null : (str_starts_with($key, 'gsk_') ? 'ok (gsk_…)' : 'no empieza por gsk_'),
+        'modelo' => $model,
+    ];
+    if ($key !== '' && function_exists('curl_init')) {
+        $ch = curl_init(rtrim($cfg['base_url'] ?? 'https://api.groq.com/openai/v1', '/') . '/models');
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 15,
+            CURLOPT_HTTPHEADER => ['Authorization: Bearer ' . $key],
+        ]);
+        $raw = curl_exec($ch);
+        $code = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $err = curl_error($ch);
+        curl_close($ch);
+        $json = is_string($raw) ? json_decode($raw, true) : null;
+        $report['groq_conexion'] = $raw === false ? 'error: ' . $err : 'HTTP ' . $code;
+        if ($code === 200 && isset($json['data'])) {
+            $ids = array_column($json['data'], 'id');
+            $report['modelo_disponible'] = in_array($model, $ids, true);
+            $report['modelos_llama'] = array_values(array_filter($ids, fn ($id) => stripos($id, 'llama') !== false));
+        } elseif (is_array($json)) {
+            $report['groq_error'] = $json['error']['message'] ?? 'desconocido';
+        }
+    }
+    header('X-Robots-Tag: noindex');
+    reply(200, $report);
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     reply(405, ['error' => 'method_not_allowed']);
 }
@@ -116,7 +155,7 @@ if ($status === 429) {
 $data = json_decode((string) $raw, true);
 if ($status !== 200 || !is_array($data)) {
     error_log('Aether chat API error ' . $status . ': ' . mb_substr((string) $raw, 0, 500));
-    reply(502, ['error' => 'upstream']);
+    reply(502, ['error' => 'upstream', 'status' => $status, 'detail' => mb_substr((string) ($data['error']['message'] ?? ''), 0, 200)]);
 }
 
 $text = trim((string) ($data['choices'][0]['message']['content'] ?? ''));

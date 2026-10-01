@@ -745,7 +745,8 @@
           if (!res.ok || !data.reply) throw new Error(data.error || 'HTTP ' + res.status);
           return data.reply;
         });
-      }).catch(function () {
+      }).catch(function (err) {
+        if (window.console) console.warn('Asistente: respuesta preparada porque falló el servidor →', err.message);
         return localAnswer(q);
       }).then(function (reply) {
         typing.remove();
