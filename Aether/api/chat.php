@@ -1,6 +1,6 @@
 <?php
 /*
- * Asistente de la web: recibe la conversación del navegador y responde con un modelo Llama en Groq.
+ * Asistente de la web: recibe la conversación del navegador y responde con un modelo de IA en Groq.
  * La clave de API está en config.php (privado), nunca llega al navegador.
  */
 declare(strict_types=1);
@@ -124,14 +124,22 @@ file_put_contents($rateFile, json_encode($hits), LOCK_EX);
 
 // ── Llamada a Groq (API compatible con OpenAI) ──
 $payload = [
-    'model' => $config['model'] ?? 'llama-3.3-70b-versatile',
+    'model' => $model = $config['model'] ?? 'openai/gpt-oss-120b',
     'messages' => array_merge(
         [['role' => 'system', 'content' => require __DIR__ . '/prompt.php']],
         $messages
     ),
     'temperature' => 0.4,
-    'max_tokens' => 600,
+    'max_tokens' => 1500,
 ];
+// Modelos que razonan antes de responder: poco razonamiento y sin mostrarlo,
+// para que respondan rápido y no se coman el espacio de la respuesta
+if (str_starts_with($model, 'openai/gpt-oss')) {
+    $payload['reasoning_effort'] = 'low';
+    $payload['include_reasoning'] = false;
+} elseif (stripos($model, 'qwen') !== false) {
+    $payload['reasoning_format'] = 'hidden';
+}
 
 $endpoint = rtrim($config['base_url'] ?? 'https://api.groq.com/openai/v1', '/') . '/chat/completions';
 $ch = curl_init($endpoint);
@@ -163,7 +171,8 @@ if ($status !== 200 || !is_array($data)) {
     reply(502, ['error' => 'upstream', 'status' => $status, 'detail' => mb_substr((string) ($data['error']['message'] ?? ''), 0, 200)]);
 }
 
-$text = trim((string) ($data['choices'][0]['message']['content'] ?? ''));
+$text = (string) ($data['choices'][0]['message']['content'] ?? '');
+$text = trim((string) preg_replace('/<think>.*?<\/think>/s', '', $text));
 if ($text === '') {
     reply(502, ['error' => 'empty']);
 }

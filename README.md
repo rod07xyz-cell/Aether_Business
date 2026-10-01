@@ -21,7 +21,7 @@ Hay dos archivos con datos privados que están en `.gitignore`. Se crean a parti
 | Archivo | Plantilla | Qué lleva |
 |---|---|---|
 | `Aether/scripts/config.js` | `config.example.js` | ID de Formspree, WhatsApp, teléfono, email, enlace de Cal.eu |
-| `Aether/api/config.php` | `config.example.php` | Clave de API de Groq, modelo Llama y límite de mensajes por hora del asistente |
+| `Aether/api/config.php` | `config.example.php` | Clave de API de Groq, modelo y límite de mensajes por hora del asistente |
 
 Si `config.js` no existe, la web funciona igual: se ocultan WhatsApp y teléfono, y el formulario abre el email del visitante.
 
@@ -32,10 +32,10 @@ Pendiente de revisar:
 
 ## Asistente con IA
 
-Burbuja de chat en todas las vistas. El navegador habla con `api/chat.php`, que llama a un modelo Llama en [Groq](https://console.groq.com) (API compatible con OpenAI). La clave de API nunca llega al navegador.
+Burbuja de chat en todas las vistas. El navegador habla con `api/chat.php`, que llama a un modelo de IA en [Groq](https://console.groq.com) (API compatible con OpenAI). La clave de API nunca llega al navegador.
 
 - Necesita PHP 8.1 o superior con la extensión cURL (la tienen los planes de Hostinger con PHP). No hay dependencias que instalar.
-- El modelo se cambia en `api/config.php` (lista de modelos en https://console.groq.com/docs/models).
+- El modelo se cambia en `api/config.php`. Para ver qué modelos ofrece Groq y si la clave funciona, abre `api/chat.php?diagnostico`.
 - Si el servidor del asistente no responde (por ejemplo, en local sin PHP), la burbuja da respuestas preparadas para no dejar al visitante sin respuesta.
 
 ## Subir a Hostinger
