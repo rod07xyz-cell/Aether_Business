@@ -1,6 +1,6 @@
 <?php
 /*
- * Asistente de la web: recibe la conversación del navegador y responde con Claude.
+ * Asistente de la web: recibe la conversación del navegador y responde con un modelo Llama en Groq.
  * La clave de API está en config.php (privado), nunca llega al navegador.
  */
 declare(strict_types=1);
@@ -32,8 +32,8 @@ if ($origin !== '' && strtolower($originHost) !== strtolower($_SERVER['HTTP_HOST
 
 $configFile = __DIR__ . '/config.php';
 $config = is_file($configFile) ? require $configFile : [];
-$apiKey = $config['anthropic_api_key'] ?? '';
-if ($apiKey === '' || !is_file(__DIR__ . '/vendor/autoload.php')) {
+$apiKey = $config['groq_api_key'] ?? '';
+if ($apiKey === '' || !function_exists('curl_init')) {
     reply(503, ['error' => 'not_configured']);
 }
 
@@ -78,51 +78,48 @@ if (count($hits) >= $limit) {
 $hits[] = $now;
 file_put_contents($rateFile, json_encode($hits), LOCK_EX);
 
-// ── Llamada a Claude ──
-require __DIR__ . '/vendor/autoload.php';
+// ── Llamada a Groq (API compatible con OpenAI) ──
+$payload = [
+    'model' => $config['model'] ?? 'llama-3.3-70b-versatile',
+    'messages' => array_merge(
+        [['role' => 'system', 'content' => require __DIR__ . '/prompt.php']],
+        $messages
+    ),
+    'temperature' => 0.4,
+    'max_tokens' => 600,
+];
 
-use Anthropic\Client;
-use Anthropic\Core\Exceptions\APIConnectionException;
-use Anthropic\Core\Exceptions\APIStatusException;
-use Anthropic\Core\Exceptions\RateLimitException;
+$endpoint = rtrim($config['base_url'] ?? 'https://api.groq.com/openai/v1', '/') . '/chat/completions';
+$ch = curl_init($endpoint);
+curl_setopt_array($ch, [
+    CURLOPT_POST => true,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTPHEADER => [
+        'Content-Type: application/json',
+        'Authorization: Bearer ' . $apiKey,
+    ],
+    CURLOPT_POSTFIELDS => json_encode($payload, JSON_UNESCAPED_UNICODE),
+]);
+$raw = curl_exec($ch);
+$status = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$curlError = curl_error($ch);
+curl_close($ch);
 
-try {
-    $client = new Client(apiKey: $apiKey, baseUrl: $config['base_url'] ?? null);
-    $message = $client->beta->messages->create(
-        maxTokens: 2048,
-        messages: $messages,
-        model: $config['model'] ?? 'claude-opus-5-5',
-        system: [
-            ['type' => 'text', 'text' => require __DIR__ . '/prompt.php', 'cacheControl' => ['type' => 'ephemeral']],
-        ],
-        outputConfig: ['effort' => 'low'],
-        fallbacks: 'default',
-        betas: ['server-side-fallback-2026-07-01'],
-    );
-} catch (RateLimitException $e) {
+if ($raw === false) {
+    error_log('Aether chat connection error: ' . $curlError);
+    reply(502, ['error' => 'upstream']);
+}
+if ($status === 429) {
     reply(503, ['error' => 'busy']);
-} catch (APIStatusException $e) {
-    error_log('Aether chat API error: ' . $e->getMessage());
+}
+$data = json_decode((string) $raw, true);
+if ($status !== 200 || !is_array($data)) {
+    error_log('Aether chat API error ' . $status . ': ' . mb_substr((string) $raw, 0, 500));
     reply(502, ['error' => 'upstream']);
-} catch (APIConnectionException $e) {
-    error_log('Aether chat connection error: ' . $e->getMessage());
-    reply(502, ['error' => 'upstream']);
-} catch (\Throwable $e) {
-    error_log('Aether chat error: ' . $e->getMessage());
-    reply(500, ['error' => 'server']);
 }
 
-if ($message->stopReason === 'refusal') {
-    reply(200, ['reply' => 'De eso no puedo ayudarte, pero si tienes dudas sobre Aether o quieres automatizar tu negocio, pregúntame o [reserva una llamada](#contacto).']);
-}
-
-$text = '';
-foreach ($message->content as $block) {
-    if ($block->type === 'text') {
-        $text .= $block->text;
-    }
-}
-$text = trim($text);
+$text = trim((string) ($data['choices'][0]['message']['content'] ?? ''));
 if ($text === '') {
     reply(502, ['error' => 'empty']);
 }

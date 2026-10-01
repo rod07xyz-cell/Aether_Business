@@ -2,5 +2,3 @@
 Aether/scripts/config.js
 Aether/api/config.php
 
-# Dependencias PHP (se instalan con composer en el hosting)
-Aether/api/vendor/

@@ -1,6 +1,5 @@
 # Solo chat.php es accesible desde fuera
-<FilesMatch "^(config|config\.example|prompt)\.php$|^composer\.(json|lock)$">
+<FilesMatch "^(config|config\.example|prompt)\.php$">
     Require all denied
 </FilesMatch>
-RedirectMatch 404 ^/(.*/)?api/vendor/
 Options -Indexes

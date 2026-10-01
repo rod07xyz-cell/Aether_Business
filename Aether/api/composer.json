@@ -1,9 +1,0 @@
-{
-    "name": "aether/web-assistant",
-    "description": "Asistente con IA de la web de Aether",
-    "require": {
-        "php": ">=8.2",
-        "anthropic-ai/sdk": "^0.54",
-        "guzzlehttp/guzzle": "^8.2"
-    }
-}

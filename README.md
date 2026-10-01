@@ -21,7 +21,7 @@ Hay dos archivos con datos privados que están en `.gitignore`. Se crean a parti
 | Archivo | Plantilla | Qué lleva |
 |---|---|---|
 | `Aether/scripts/config.js` | `config.example.js` | ID de Formspree, WhatsApp, teléfono, email, enlace de Cal.eu |
-| `Aether/api/config.php` | `config.example.php` | Clave de API de Anthropic, modelo y límite de mensajes por hora del asistente |
+| `Aether/api/config.php` | `config.example.php` | Clave de API de Groq, modelo Llama y límite de mensajes por hora del asistente |
 
 Si `config.js` no existe, la web funciona igual: se ocultan WhatsApp y teléfono, y el formulario abre el email del visitante.
 
@@ -32,15 +32,15 @@ Pendiente de revisar:
 
 ## Asistente con IA
 
-Burbuja de chat en todas las vistas. El navegador habla con `api/chat.php`, que llama a Claude con el SDK oficial de PHP. La clave de API nunca llega al navegador.
+Burbuja de chat en todas las vistas. El navegador habla con `api/chat.php`, que llama a un modelo Llama en [Groq](https://console.groq.com) (API compatible con OpenAI). La clave de API nunca llega al navegador.
 
-- Necesita PHP 8.2 o superior. Los planes de Hostinger con PHP valen.
-- Dependencias: `cd Aether/api && composer install --no-dev` (por SSH en Hostinger, o en local y luego subes la carpeta `vendor/`).
+- Necesita PHP 8.1 o superior con la extensión cURL (la tienen los planes de Hostinger con PHP). No hay dependencias que instalar.
+- El modelo se cambia en `api/config.php` (lista de modelos en https://console.groq.com/docs/models).
 - Si el servidor del asistente no responde (por ejemplo, en local sin PHP), la burbuja da respuestas preparadas para no dejar al visitante sin respuesta.
 
 ## Subir a Hostinger
 
-1. Sube el contenido de `Aether/` a `public_html/`, incluidos `scripts/config.js`, `api/config.php` y `api/vendor/`.
+1. Sube el contenido de `Aether/` a `public_html/`, incluidos `scripts/config.js` y `api/config.php`.
 2. Pon la clave de API en `api/config.php`.
 3. Comprueba que `https://tudominio/api/config.php` devuelve un error 403 (lo protege `api/.htaccess`).
 
@@ -52,7 +52,7 @@ Aether/
 ├── privacidad.html, aviso-legal.html, cookies.html
 ├── favicon.svg
 ├── scripts/config.js     # Configuración privada (gitignored; plantilla: config.example.js)
-├── api/chat.php          # Asistente con IA (PHP)
+├── api/chat.php          # Asistente con IA (PHP + Groq)
 ├── api/prompt.php        # Instrucciones y conocimiento del asistente
 ├── scripts/main.js       # Router de vistas, demos, formulario
 └── styles/               # reset, variables (colores), main
