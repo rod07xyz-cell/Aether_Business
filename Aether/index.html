@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aether — Ayudamos a empresas B2B a automatizar procesos y ahorrar tiempo con soluciones diseñadas para sus problemas reales.">
+  <title>Aether — Menos tareas. Más progreso.</title>
+
+  <!-- Space Grotesk + Inter (fallback) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/variables.css">
+  <link rel="stylesheet" href="styles/main.css">
+
+  <style>
+    /* ── Hero visual card ── */
+    .hero-visual { display:flex; justify-content:center; margin-top:2.5rem; }
+    .hero-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r-xl); padding: 1.25rem 1.5rem;
+      max-width: 420px; width: 100%;
+      backdrop-filter: blur(12px); box-shadow: var(--shadow-glow);
+    }
+    .hero-card-hd { display:flex; align-items:center; gap:5px; margin-bottom:.875rem; }
+    .hcd { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+    .hcd-g { background:#34d399; } .hcd-y { background:#fbbf24; } .hcd-r { background:#f87171; }
+    .hero-card-lbl { font-size:11px; color:var(--text-3); font-family:var(--font); margin-left:6px; }
+    .hero-card-metrics { display:flex; align-items:center; gap:1.5rem; margin-bottom:.875rem; }
+    .hmetric { flex:1; }
+    .hmetric-val { display:block; font-size:1.25rem; font-weight:700; color:var(--text-1); font-family:var(--font); letter-spacing:-.02em; }
+    .hmetric-lbl { display:block; font-size:11px; color:var(--text-2); font-family:var(--font); margin-top:3px; }
+    .hmetric-div { width:1px; height:40px; background:var(--border); flex-shrink:0; }
+    .hero-card-ft { padding-top:.75rem; border-top:1px solid var(--border); display:flex; align-items:center; gap:6px; }
+    .hero-card-dot-live { width:6px; height:6px; border-radius:50%; background:#34d399; flex-shrink:0; animation:pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .hero-card-status { font-size:11px; color:var(--text-2); font-family:var(--font); }
+
+    /* ── Problem stat ── */
+    .problem-stat {
+      display:flex; align-items:flex-start; gap:.875rem;
+      padding:.875rem 1.125rem; margin-top:1.75rem;
+      background:var(--bg-card); border:1px solid var(--border);
+      border-left:3px solid var(--accent); border-radius:var(--r-md);
+    }
+    .problem-stat-num { font-size:1.875rem; font-weight:700; color:var(--accent); font-family:var(--font); line-height:1.1; flex-shrink:0; }
+    .problem-stat-txt { font-size:.8125rem; color:var(--text-2); font-family:var(--font); line-height:1.55; padding-top:.2rem; }
+
+    /* ── Services CTA ── */
+    .services-cta { text-align:center; margin-top:3rem; padding-top:2.5rem; border-top:1px solid var(--border); }
+    .services-cta p { font-size:1.0625rem; color:var(--text-2); font-family:var(--font); margin-bottom:1.25rem; }
+
+    /* ── About ── */
+    .about-inner { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+    @media (max-width:768px) { .about-inner { grid-template-columns:1fr; gap:2rem; } }
+    .about-linkedin {
+      display:inline-flex; align-items:center; gap:7px; margin-top:1.75rem;
+      padding:10px 20px; background:var(--bg-card); border:1px solid var(--border);
+      border-radius:var(--r-full); color:var(--text-1); font-family:var(--font);
+      font-size:13px; font-weight:500; text-decoration:none; transition:var(--t);
+    }
+    .about-linkedin:hover { border-color:#0A66C2; background:rgba(10,102,194,.1); color:#7AB5F5; }
+    .about-instagram {
+      display:inline-flex; align-items:center; gap:7px; margin-top:.75rem;
+      padding:10px 20px; background:var(--bg-card); border:1px solid var(--border);
+      border-radius:var(--r-full); color:var(--text-1); font-family:var(--font);
+      font-size:13px; font-weight:500; text-decoration:none; transition:var(--t);
+    }
+    .about-instagram:hover { border-color:#E1306C; background:rgba(225,48,108,.1); color:#f472b6; }
+    .about-photo-wrap { position:relative; }
+    .about-photo { width:100%; border-radius:var(--r-2xl); border:1px solid var(--border); display:block; }
+    .about-photo-caption {
+      position:absolute; bottom:1.25rem; left:1.25rem; right:1.25rem;
+      background:rgba(5,8,22,.88); backdrop-filter:blur(8px);
+      border:1px solid var(--border); border-radius:var(--r-lg); padding:.75rem 1rem;
+    }
+    .about-photo-caption p { margin:0; font-family:var(--font); }
+    .about-photo-name { font-size:13px; font-weight:600; color:var(--text-1); }
+    .about-photo-role { font-size:11px; color:var(--text-2); margin-top:2px !important; }
+
+    /* ── Contact extras ── */
+    .contact-cta-call {
+      display:inline-flex; align-items:center; gap:8px; margin-top:1.75rem;
+      padding:12px 22px; background:var(--accent); border-radius:var(--r-full);
+      color:#050816; font-family:var(--font); font-size:14px; font-weight:600;
+      text-decoration:none; transition:var(--t);
+    }
+    .contact-cta-call:hover { background:var(--accent-2); transform:translateY(-1px); }
+    .contact-or { font-size:12px; color:var(--text-3); font-family:var(--font); margin:1.125rem 0 .375rem; }
+    .contact-email-direct {
+      display:inline-flex; align-items:center; gap:6px;
+      color:var(--text-2); font-family:var(--font); font-size:13px;
+      text-decoration:none; transition:var(--t);
+    }
+    .contact-email-direct:hover { color:var(--accent); }
+
+    /* ── Proyectos propios ── */
+    .projects-showcase { margin-top:4rem; padding-top:3.5rem; border-top:1px solid var(--border); }
+    .projects-header { text-align:center; max-width:600px; margin-inline:auto; margin-bottom:3rem; }
+    .projects-title { font-size:clamp(1.5rem,3vw,2.25rem); font-weight:700; letter-spacing:-.03em; line-height:1.2; margin-bottom:.75rem; font-family:var(--font); }
+    .projects-subdesc { color:var(--text-2); font-size:.9375rem; line-height:1.7; font-family:var(--font); }
+    .projects-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
+    @media (max-width:900px) { .projects-grid { grid-template-columns:1fr; } }
+
+    .project-card { background:rgba(255,255,255,.025); border:1px solid var(--border); border-radius:var(--r-xl); overflow:hidden; transition:border-color var(--t), transform var(--t); }
+    .project-card:hover { border-color:rgba(110,168,255,.35); transform:translateY(-4px); }
+
+    .project-preview { height:190px; padding:1.25rem; display:flex; align-items:center; justify-content:center; }
+    .project-preview--leadbot { background:linear-gradient(135deg,#0A1224 0%,#0f1f3d 100%); }
+    .project-preview--contract { background:linear-gradient(135deg,#0f0a1e 0%,#1a0f2e 100%); }
+    .project-preview--report   { background:linear-gradient(135deg,#070e1c 0%,#0c1a2e 100%); }
+
+    .mock-chat { width:100%; display:flex; flex-direction:column; gap:6px; font-size:11px; font-family:var(--font); }
+    .mock-msg { padding:6px 10px; border-radius:12px; max-width:88%; line-height:1.4; }
+    .mock-msg--in  { background:rgba(255,255,255,.08); color:var(--text-1); align-self:flex-start; }
+    .mock-msg--out { background:rgba(90,108,245,.4); color:#e0e4ff; align-self:flex-end; }
+    .mock-msg--system { background:rgba(40,200,100,.1); border:1px solid rgba(40,200,100,.25); color:#6ee7a0; align-self:center; text-align:center; font-size:10px; border-radius:8px; padding:4px 8px; width:100%; box-sizing:border-box; }
+
+    .mock-doc { width:100%; font-family:var(--font); }
+    .mock-doc-header { display:flex; align-items:center; gap:8px; padding:7px 10px; background:rgba(255,255,255,.05); border-radius:8px 8px 0 0; font-size:11px; color:var(--text-2); margin-bottom:10px; }
+    .mock-doc-result { display:flex; flex-direction:column; gap:7px; }
+    .mock-doc-item { display:flex; align-items:center; gap:8px; font-size:11px; color:var(--text-1); }
+    .mock-tag { font-size:10px; padding:2px 7px; border-radius:4px; font-weight:600; flex-shrink:0; }
+    .mock-tag--ok   { background:rgba(40,200,100,.15); color:#6ee7a0; }
+    .mock-tag--warn { background:rgba(251,191,36,.15); color:#fbbf24; }
+
+    .mock-report { width:100%; font-family:var(--font); }
+    .mock-report-title { font-size:11px; font-weight:600; color:var(--text-1); margin-bottom:10px; }
+    .mock-bars { display:flex; flex-direction:column; gap:8px; }
+    .mock-bar-row { display:flex; align-items:center; gap:8px; font-size:10px; color:var(--text-2); }
+    .mock-bar-row span:first-child { width:35px; flex-shrink:0; }
+    .mock-bar-row span:last-child  { width:28px; flex-shrink:0; text-align:right; color:var(--text-1); }
+    .mock-bar { flex:1; height:6px; background:rgba(255,255,255,.06); border-radius:99px; overflow:hidden; }
+    .mock-bar-fill { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); }
+    .mock-bar-fill--2 { background:linear-gradient(90deg,#7c6af5,var(--accent)); }
+    .mock-bar-fill--3 { background:linear-gradient(90deg,#6af5c4,#3ab5ff); }
+    .mock-report-footer { margin-top:10px; font-size:10px; color:#6ee7a0; }
+
+    .project-info { padding:1.25rem; }
+    .project-tag { display:inline-block; font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem; font-family:var(--font); }
+    .project-name { font-size:1.125rem; font-weight:700; letter-spacing:-.02em; margin-bottom:.5rem; color:var(--text-1); font-family:var(--font); }
+    .project-desc { font-size:.8125rem; color:var(--text-2); line-height:1.65; margin-bottom:1rem; font-family:var(--font); }
+    .project-metric { display:flex; align-items:baseline; gap:8px; padding-top:1rem; border-top:1px solid var(--border); }
+    .metric-value { font-size:1.125rem; font-weight:700; color:var(--accent); letter-spacing:-.02em; font-family:var(--font); }
+    .metric-label { font-size:12px; color:var(--text-2); line-height:1.4; font-family:var(--font); }
+
+    /* ── LeadBot Demo ── */
+    .lb-free-badge {
+      display:inline-flex; align-items:center; gap:6px; margin-bottom:1rem;
+      padding:5px 14px; background:rgba(37,211,102,.1); border:1px solid rgba(37,211,102,.25);
+      border-radius:var(--r-full); font-size:11px; font-weight:600; letter-spacing:.06em;
+      text-transform:uppercase; color:#6ee7a0; font-family:var(--font);
+    }
+    .lb-free-dot { width:6px; height:6px; border-radius:50%; background:#6ee7a0; flex-shrink:0; animation:pulse-dot 2s infinite; }
+    .lb-header { text-align:center; max-width:680px; margin-inline:auto; margin-bottom:3.5rem; }
+
+    .lb-showcase { display:grid; grid-template-columns:1fr 1.15fr; gap:4rem; align-items:center; }
+    @media (max-width:900px) { .lb-showcase { grid-template-columns:1fr; gap:3rem; } }
+
+    /* Phone */
+    .lb-phone-wrap { display:flex; justify-content:center; }
+    .lb-phone {
+      width:270px; height:530px; background:#050C1A;
+      border-radius:38px; border:6px solid rgba(255,255,255,.09);
+      box-shadow:0 28px 72px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.04), var(--shadow-glow);
+      overflow:hidden; display:flex; flex-direction:column;
+    }
+    .lb-phone-notch { width:56px; height:14px; background:rgba(255,255,255,.05); margin:8px auto 0; border-radius:0 0 9px 9px; }
+    .lb-wa-header {
+      background:rgba(18,140,126,.14); border-bottom:1px solid rgba(255,255,255,.07);
+      padding:9px 13px; display:flex; align-items:center; gap:9px; flex-shrink:0;
+    }
+    .lb-wa-back { color:var(--text-2); font-size:20px; line-height:1; cursor:default; }
+    .lb-wa-avatar {
+      width:32px; height:32px; border-radius:50%;
+      background:linear-gradient(135deg,#128C7E,#25D366);
+      display:flex; align-items:center; justify-content:center;
+      font-size:13px; font-weight:700; color:#fff; flex-shrink:0; font-family:var(--font);
+    }
+    .lb-wa-name { font-size:12px; font-weight:600; color:var(--text-1); font-family:var(--font); line-height:1.2; }
+    .lb-wa-status { font-size:10px; color:#25D366; font-family:var(--font); }
+    .lb-chat-body {
+      flex:1; overflow-y:auto; padding:10px 9px; background:var(--bg-3);
+      display:flex; flex-direction:column; gap:5px; scrollbar-width:none;
+    }
+    .lb-chat-body::-webkit-scrollbar { display:none; }
+
+    .lb-msg {
+      padding:7px 10px; border-radius:12px; max-width:85%;
+      font-size:11.5px; line-height:1.45; font-family:var(--font);
+      white-space:pre-line; animation:lb-pop .22s ease;
+    }
+    .lb-msg-time { font-size:9px; opacity:.45; margin-top:2px; text-align:right; }
+    @keyframes lb-pop { from{opacity:0;transform:scale(.9) translateY(5px)} to{opacity:1;transform:scale(1) translateY(0)} }
+    .lb-msg--in  { background:rgba(255,255,255,.09); color:var(--text-1); align-self:flex-start; border-bottom-left-radius:3px; }
+    .lb-msg--out { background:#005C4B; color:#d9fdd3; align-self:flex-end; border-bottom-right-radius:3px; }
+    .lb-msg--system {
+      background:rgba(37,211,102,.08); border:1px solid rgba(37,211,102,.2); color:#6ee7a0;
+      align-self:center; text-align:center; font-size:10px; border-radius:8px;
+      padding:6px 10px; width:100%; box-sizing:border-box; line-height:1.55; white-space:pre-line;
+    }
+    .lb-typing {
+      display:flex; align-items:center; gap:4px; padding:8px 12px;
+      background:rgba(255,255,255,.07); border-radius:12px; border-bottom-left-radius:3px;
+      align-self:flex-start; animation:lb-pop .2s ease;
+    }
+    .lb-typing span { width:5px; height:5px; border-radius:50%; background:var(--text-2); animation:lb-bounce 1.2s infinite; }
+    .lb-typing span:nth-child(2){animation-delay:.2s}
+    .lb-typing span:nth-child(3){animation-delay:.4s}
+    @keyframes lb-bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
+
+    .lb-phone-input {
+      border-top:1px solid rgba(255,255,255,.07); padding:8px 11px;
+      display:flex; align-items:center; gap:8px; background:rgba(0,0,0,.35); flex-shrink:0;
+    }
+    .lb-phone-input-txt {
+      flex:1; background:rgba(255,255,255,.07); border-radius:18px; padding:6px 11px;
+      font-size:11px; color:var(--text-3); font-family:var(--font);
+    }
+    .lb-phone-send {
+      width:28px; height:28px; border-radius:50%; background:#128C7E;
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .lb-replay-btn {
+      display:inline-flex; align-items:center; gap:5px; font-size:11px; color:var(--text-3);
+      font-family:var(--font); background:none; border:none; cursor:pointer;
+      transition:var(--t); padding:4px 8px;
+    }
+    .lb-replay-btn:hover { color:var(--accent); }
+
+    /* Pipeline */
+    .lb-pipeline-title { font-size:1.25rem; font-weight:700; color:var(--text-1); font-family:var(--font); letter-spacing:-.02em; margin-bottom:2rem; }
+    .lb-steps { display:flex; flex-direction:column; gap:1.25rem; margin-bottom:2.25rem; }
+    .lb-step { display:flex; gap:1rem; align-items:flex-start; }
+    .lb-step-num {
+      width:30px; height:30px; border-radius:50%; flex-shrink:0;
+      background:var(--accent-glow-strong); border:1px solid rgba(110,168,255,.3);
+      display:flex; align-items:center; justify-content:center;
+      font-size:11px; font-weight:700; color:var(--accent); font-family:var(--font);
+    }
+    .lb-step-title { font-size:.875rem; font-weight:600; color:var(--text-1); font-family:var(--font); margin-bottom:3px; }
+    .lb-step-desc  { font-size:.8rem; color:var(--text-2); font-family:var(--font); line-height:1.6; }
+
+    .lb-cta-group { display:flex; flex-direction:column; gap:.75rem; }
+    .btn-wa {
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:12px 22px; background:#25D366; border-radius:var(--r-full);
+      color:#fff; font-family:var(--font); font-size:14px; font-weight:600;
+      text-decoration:none; transition:var(--t);
+    }
+    .btn-wa:hover { background:#22C55E; transform:translateY(-1px); }
+    .lb-cta-note { font-size:11px; color:var(--text-3); font-family:var(--font); text-align:center; margin-top:.5rem; }
+
+    /* ── AutoReport Demo ── */
+    #autoreport {
+      display:none; position:fixed; inset:0; z-index:9000;
+      overflow-y:auto; background:rgba(5,8,22,.97); backdrop-filter:blur(12px);
+    }
+    #autoreport.ar-open { display:block; }
+    .ar-showcase { display:grid; grid-template-columns:1fr 1.1fr; gap:4rem; align-items:start; padding-top:.5rem; }
+    @media (max-width:900px) { .ar-showcase { grid-template-columns:1fr; gap:3rem; } }
+
+    .ar-table-wrap { display:flex; flex-direction:column; align-items:center; gap:.875rem; }
+    .ar-table {
+      width:290px; background:#0a0f1e; border-radius:10px;
+      border:1px solid rgba(110,168,255,.2); overflow:hidden; position:relative;
+    }
+    .ar-table-tab { padding:8px 14px; background:rgba(110,168,255,.07); font-size:11px; color:var(--accent); font-family:var(--font); display:flex; align-items:center; gap:6px; border-bottom:1px solid rgba(110,168,255,.1); }
+    .ar-table-head { display:grid; grid-template-columns:2fr 1.2fr 1fr 1fr; padding:6px 12px; font-size:9.5px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:.07em; font-family:var(--font); background:rgba(255,255,255,.03); }
+    .ar-table-row { display:grid; grid-template-columns:2fr 1.2fr 1fr 1fr; padding:5.5px 12px; font-size:10.5px; color:var(--text-2); font-family:var(--font); border-top:1px solid rgba(255,255,255,.03); }
+    .ar-table-row.ar-hl { background:rgba(110,168,255,.06); color:var(--text-1); }
+    .ar-table-row span:nth-child(3) { color:var(--accent); font-weight:600; }
+    .ar-table-footer { padding:7px 12px; font-size:10px; color:var(--text-3); font-family:var(--font); border-top:1px solid rgba(255,255,255,.04); display:flex; align-items:center; gap:6px; }
+
+    .ar-scanner { position:absolute; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,rgba(110,168,255,.7),transparent); top:0; opacity:0; }
+    .ar-scanner.active { opacity:1; animation:ar-scan 1.8s ease-in-out forwards; }
+    @keyframes ar-scan { 0%{top:30px;opacity:1} 100%{top:175px;opacity:0} }
+
+    .ar-analyzing { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text-2); font-family:var(--font); margin-bottom:1.5rem; opacity:0; transition:opacity .3s; }
+    .ar-analyzing.show { opacity:1; }
+    .ar-dot { width:7px; height:7px; border-radius:50%; background:var(--accent); animation:ar-pulse 1.2s infinite; }
+    .ar-dot:nth-child(2){animation-delay:.2s} .ar-dot:nth-child(3){animation-delay:.4s}
+    @keyframes ar-pulse { 0%,100%{opacity:.3;transform:scale(.8)} 50%{opacity:1;transform:scale(1)} }
+    .ar-results-wrap .ca-result { opacity:0; transform:translateY(8px); transition:opacity .35s,transform .35s; }
+    .ar-results-wrap .ca-result.visible { opacity:1; transform:none; }
+
+    /* ── ContractAI Demo ── */
+    #contractai {
+      display:none; position:fixed; inset:0; z-index:9000;
+      overflow-y:auto; background:rgba(5,8,22,.97); backdrop-filter:blur(12px);
+    }
+    #contractai.ca-open { display:block; }
+
+    .ca-showcase { display:grid; grid-template-columns:1fr 1.1fr; gap:4rem; align-items:start; padding-top:.5rem; }
+    @media (max-width:900px) { .ca-showcase { grid-template-columns:1fr; gap:3rem; } }
+
+    .ca-doc-wrap { display:flex; justify-content:center; flex-direction:column; align-items:center; gap:.875rem; }
+    .ca-doc {
+      width:260px; background:#0a0f1e; border-radius:10px;
+      border:1px solid rgba(255,255,255,.09);
+      box-shadow:0 20px 60px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.04), var(--shadow-glow);
+      overflow:hidden; position:relative;
+    }
+    .ca-doc-tab {
+      background:rgba(255,255,255,.04); border-bottom:1px solid rgba(255,255,255,.07);
+      padding:8px 12px; display:flex; align-items:center; gap:7px;
+      font-size:10px; color:var(--text-3); font-family:var(--font); letter-spacing:.02em;
+    }
+    .ca-doc-body { padding:12px; display:flex; flex-direction:column; gap:6px; }
+    .ca-doc-line { height:7px; border-radius:3px; background:rgba(255,255,255,.06); }
+    .ca-doc-line--lg  { height:10px; width:72%; background:rgba(255,255,255,.1); }
+    .ca-doc-line--sm  { width:50%; }
+    .ca-doc-line--md  { width:82%; }
+    .ca-doc-line--xs  { width:38%; }
+    .ca-doc-line--gap { height:4px; background:transparent; }
+    .ca-doc-line--hl-blue   { background:rgba(90,108,245,.18); border:1px solid rgba(90,108,245,.3); height:8px; width:88%; }
+    .ca-doc-line--hl-red    { background:rgba(248,113,113,.12); border:1px solid rgba(248,113,113,.2); height:8px; width:75%; }
+    .ca-doc-line--hl-orange { background:rgba(251,146,60,.1); border:1px solid rgba(251,146,60,.2); height:8px; width:68%; }
+
+    .ca-scanner {
+      position:absolute; left:0; right:0; height:2px;
+      background:linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+      box-shadow:0 0 8px var(--accent), 0 0 16px rgba(90,108,245,.4);
+      top:40px; opacity:0;
+    }
+    .ca-scanner.active { animation:ca-scan 2.8s ease-in-out forwards; }
+    @keyframes ca-scan {
+      0%   { top:40px; opacity:1; }
+      85%  { top:92%;  opacity:1; }
+      100% { top:92%;  opacity:0; }
+    }
+
+    .ca-results-wrap { display:flex; flex-direction:column; gap:.625rem; }
+    .ca-result {
+      background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);
+      border-radius:10px; padding:11px 14px;
+      opacity:0; transform:translateY(8px);
+      transition:opacity .3s ease, transform .3s ease;
+    }
+    .ca-result.visible { opacity:1; transform:translateY(0); }
+    .ca-result--risk { background:rgba(248,113,113,.05); border-color:rgba(248,113,113,.2); }
+    .ca-result--warn { background:rgba(251,146,60,.05);  border-color:rgba(251,146,60,.2); }
+    .ca-result--ok   { background:rgba(74,222,128,.05);  border-color:rgba(74,222,128,.2); }
+    .ca-result-lbl {
+      font-size:9.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--text-3); margin-bottom:4px; font-family:var(--font);
+    }
+    .ca-result--risk .ca-result-lbl { color:#f87171; }
+    .ca-result--warn .ca-result-lbl { color:#fb923c; }
+    .ca-result--ok   .ca-result-lbl { color:#4ade80; }
+    .ca-result-val { font-size:12.5px; color:var(--text-1); font-family:var(--font); line-height:1.45; }
+
+    .ca-analyzing {
+      display:none; align-items:center; gap:7px;
+      font-size:12px; color:var(--text-3); font-family:var(--font); margin-bottom:.75rem;
+    }
+    .ca-analyzing.show { display:flex; }
+    .ca-dot { width:5px; height:5px; border-radius:50%; background:var(--accent); animation:lb-bounce 1.2s infinite; }
+    .ca-dot:nth-child(2){ animation-delay:.2s; }
+    .ca-dot:nth-child(3){ animation-delay:.4s; }
+
+    /* Modal overlay */
+    #leadbot {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      overflow-y: auto;
+      background: rgba(5,8,22,.97);
+      backdrop-filter: blur(12px);
+    }
+    #leadbot.lb-open { display: block; }
+    .lb-modal-bar {
+      position: sticky; top: 0; z-index: 1;
+      display: flex; justify-content: flex-end;
+      padding: 1.25rem 1.5rem 0;
+      pointer-events: none;
+    }
+    .lb-modal-close {
+      pointer-events: auto;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,.07); border: 1px solid var(--border);
+      color: var(--text-2); font-size: 20px; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: var(--t);
+    }
+    .lb-modal-close:hover { background: rgba(255,255,255,.13); color: var(--text-1); }
+
+  </style>
+
+  <!-- SVG del logo (reutilizable vía <use>) -->
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="aetherGradient" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%"   stop-color="#F5F7FA"/>
+        <stop offset="100%" stop-color="#AEB8C5"/>
+      </linearGradient>
+      <filter id="aetherGlow" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <filter id="aetherGlowSm" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <symbol id="aether-logo" viewBox="0 0 512 512">
+        <!-- "A" metálica -->
+        <path d="M256 120L360 320H320L256 200L192 320H152L256 120Z"
+              fill="url(#aetherGradient)"/>
+        <!-- Estrella de 4 puntas (destellos) -->
+        <path d="M256 250L266 276L292 286L266 296L256 322L246 296L220 286L246 276L256 250Z"
+              fill="#FFFFFF"/>
+      </symbol>
+    </defs>
+  </svg>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════ -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+
+      <a href="#" class="nav-logo">
+        <svg width="34" height="34" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="navGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%"   stop-color="#F5F7FA"/>
+              <stop offset="100%" stop-color="#AEB8C5"/>
+            </linearGradient>
+          </defs>
+          <path d="M256 120L360 320H320L256 200L192 320H152L256 120Z" fill="url(#navGrad)"/>
+          <path d="M256 250L266 276L292 286L266 296L256 322L246 296L220 286L246 276L256 250Z" fill="#FFFFFF"/>
+        </svg>
+        <span class="nav-logo-name">Aether</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proceso">Cómo trabajamos</a></li>
+        <li><a href="#resultados">Resultados</a></li>
+        <li><a href="#testimonios">Referentes</a></li>
+        <li><a href="#trabajo">Nuestro trabajo</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#contacto" class="btn btn-primary">Habla con nosotros</a>
+        <button class="nav-menu-btn" aria-label="Abrir menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg"></div>
+    <div class="container hero-inner">
+
+      <!-- Logo animado como elemento hero central -->
+      <div class="hero-logo-wrap reveal">
+        <svg class="logo-animated"
+             width="100" height="100"
+             viewBox="0 0 512 512"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%"   stop-color="#F5F7FA"/>
+              <stop offset="100%" stop-color="#AEB8C5"/>
+            </linearGradient>
+            <filter id="heroGlow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="14" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <g filter="url(#heroGlow)">
+            <path d="M256 120L360 320H320L256 200L192 320H152L256 120Z" fill="url(#heroGrad)"/>
+            <path d="M256 250L266 276L292 286L266 296L256 322L246 296L220 286L246 276L256 250Z" fill="#FFFFFF"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="hero-badge reveal reveal-delay-1">
+        <span class="hero-badge-dot"></span>
+        IA Aplicada · Automatización B2B · ROI desde el primer mes
+      </div>
+
+      <h1 class="hero-title reveal reveal-delay-2">
+        Tu empresa pierde tiempo<br>
+        <span class="accent-word">y dinero cada día.</span><br>
+        <span class="highlight">La IA puede cambiarlo.</span>
+      </h1>
+
+      <p class="hero-subtitle reveal reveal-delay-3">
+        Automatizamos con IA los procesos que frenan a tu equipo. Ahorra entre 5 y 20 horas
+        semanales, reduce costes operativos hasta un 60% y escala sin contratar más personas.
+      </p>
+
+      <div class="hero-actions reveal reveal-delay-4">
+        <a href="https://cal.eu/aetherlabs/30min" class="btn btn-primary btn-lg">Reserva una llamada gratuita</a>
+        <a href="#proceso" class="btn btn-ghost btn-lg">
+          Ver cómo trabajamos
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="hero-proof reveal reveal-delay-4">
+        <span>Sin compromiso inicial</span>
+        <span class="hero-proof-divider"></span>
+        <span>Diagnóstico gratuito</span>
+        <span class="hero-proof-divider"></span>
+        <span>Soluciones a medida</span>
+        <span class="hero-proof-divider"></span>
+        <span>Respuesta en 24h</span>
+      </div>
+
+      <!-- Tarjeta visual: resultado real de automatización -->
+      <div class="hero-visual reveal reveal-delay-4">
+        <div class="hero-card">
+          <div class="hero-card-hd">
+            <span class="hcd hcd-g"></span>
+            <span class="hcd hcd-y"></span>
+            <span class="hcd hcd-r"></span>
+            <span class="hero-card-lbl">Informe mensual · Automatizado</span>
+          </div>
+          <div class="hero-card-metrics">
+            <div class="hmetric">
+              <span class="hmetric-val">4h → 20 min</span>
+              <span class="hmetric-lbl">Tiempo de generación</span>
+            </div>
+            <div class="hmetric-div"></div>
+            <div class="hmetric">
+              <span class="hmetric-val">100%</span>
+              <span class="hmetric-lbl">Sin intervención manual</span>
+            </div>
+          </div>
+          <div class="hero-card-ft">
+            <span class="hero-card-dot-live"></span>
+            <span class="hero-card-status">Ejecutado hoy a las 08:00 AM</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       PROBLEMA / SOLUCIÓN
+  ══════════════════════════════════════ -->
+  <section class="problem section" id="sobre-nosotros">
+    <div class="container problem-inner">
+
+      <div>
+        <span class="section-label reveal">El problema real</span>
+        <h2 class="section-title reveal">La tecnología no es<br>el problema.<br>Tampoco la solución.</h2>
+        <p class="section-desc reveal">
+          La mayoría de las empresas ya tienen herramientas. El problema es que no
+          trabajan juntas, los procesos siguen siendo manuales y el tiempo se pierde
+          en tareas que deberían estar automatizadas.
+        </p>
+        <p class="section-desc reveal">
+          Nosotros no vendemos software. Identificamos exactamente dónde se rompe tu
+          operación, diseñamos la solución y la ponemos a funcionar.
+        </p>
+
+        <!-- Dato que valida el problema -->
+        <div class="problem-stat reveal">
+          <span class="problem-stat-num">68%</span>
+          <span class="problem-stat-txt">de los empleados dedica más de 2 horas al día a tareas repetitivas que podrían automatizarse. Ese tiempo tiene un coste real.</span>
+        </div>
+
+        <a href="#contacto" class="btn btn-primary reveal" style="margin-top:1.75rem">Cuéntanos tu problema</a>
+      </div>
+
+      <div class="problem-items">
+
+        <div class="problem-item reveal">
+          <span class="problem-item-icon">⏱️</span>
+          <div>
+            <p class="problem-item-title">Procesos lentos y manuales</p>
+            <p class="problem-item-desc">Tu equipo dedica horas a tareas repetitivas que podrían hacerse solas. Ese tiempo tiene un coste real.</p>
+          </div>
+        </div>
+
+        <div class="problem-item reveal reveal-delay-1">
+          <span class="problem-item-icon">🔗</span>
+          <div>
+            <p class="problem-item-title">Sistemas que no se hablan</p>
+            <p class="problem-item-desc">Tu CRM, tu web, tu ERP y tus hojas de cálculo funcionan por separado. Los datos se pierden entre herramientas.</p>
+          </div>
+        </div>
+
+        <div class="problem-item reveal reveal-delay-2">
+          <span class="problem-item-icon">📊</span>
+          <div>
+            <p class="problem-item-title">Sin visibilidad real del negocio</p>
+            <p class="problem-item-desc">Tomar decisiones sin datos fiables en tiempo real es operar a ciegas. Cada día sin visibilidad es un coste.</p>
+          </div>
+        </div>
+
+        <div class="problem-item reveal reveal-delay-3">
+          <span class="problem-item-icon">🚧</span>
+          <div>
+            <p class="problem-item-title">Crecimiento frenado por la operación</p>
+            <p class="problem-item-desc">Cuando escalar significa contratar más personas para hacer lo mismo, algo falla. La operación debe escalar sola.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SERVICIOS
+  ══════════════════════════════════════ -->
+  <section class="services section" id="servicios">
+    <div class="container">
+
+      <div class="services-header">
+        <span class="section-label reveal">Qué hacemos</span>
+        <h2 class="section-title reveal">Soluciones concretas<br>para problemas reales</h2>
+        <p class="section-desc reveal">No ofrecemos un catálogo de productos. Analizamos tu operación y construimos exactamente lo que necesitas.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-card-icon">⚡</div>
+          <h3 class="service-card-title">Automatización con IA</h3>
+          <p class="service-card-desc">
+            Identificamos las tareas repetitivas que consumen tiempo de tu equipo y las
+            automatizamos con IA. Desde flujos de aprobación hasta generación de informes,
+            clasificación de documentos o notificaciones inteligentes.
+          </p>
+          <span class="service-card-tag">Ahorro de tiempo y dinero</span>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-card-icon">🤖</div>
+          <h3 class="service-card-title">Agentes de IA a Medida</h3>
+          <p class="service-card-desc">
+            Desarrollamos agentes de inteligencia artificial adaptados a tu operación.
+            Asistentes internos para tu equipo, bots de atención al cliente, procesamiento
+            automático de documentos y correos — disponibles 24/7.
+          </p>
+          <span class="service-card-tag">IA aplicada al negocio</span>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-card-icon">🌐</div>
+          <h3 class="service-card-title">Soluciones Web a Medida</h3>
+          <p class="service-card-desc">
+            Desarrollamos herramientas web adaptadas exactamente a tu flujo de trabajo.
+            Portales de cliente, paneles de gestión, intranets o plataformas operativas
+            que tu equipo realmente usará.
+          </p>
+          <span class="service-card-tag">Digitalización</span>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-card-icon">🔌</div>
+          <h3 class="service-card-title">Integración de Sistemas</h3>
+          <p class="service-card-desc">
+            Conectamos las herramientas que ya usas para que trabajen juntas sin
+            fricción. CRM, ERP, contabilidad, e-commerce — sincronizados
+            en tiempo real, sin duplicidades ni errores manuales.
+          </p>
+          <span class="service-card-tag">Sin silos de datos</span>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-card-icon">📈</div>
+          <h3 class="service-card-title">Paneles de Control Inteligentes</h3>
+          <p class="service-card-desc">
+            Centraliza todos tus datos operativos en un dashboard con IA que detecta
+            anomalías, predice tendencias y actualiza en tiempo real. Decisiones basadas
+            en información fiable, no en hojas de cálculo desactualizadas.
+          </p>
+          <span class="service-card-tag">Visibilidad total</span>
+        </div>
+
+      </div>
+
+      <!-- CTA al final de servicios -->
+      <div class="services-cta reveal">
+        <p>¿Te suena alguno de estos problemas?</p>
+        <a href="#contacto" class="btn btn-primary">Hablamos sin compromiso</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       ESTADÍSTICAS
+  ══════════════════════════════════════ -->
+  <section class="stats" id="resultados">
+    <div class="container">
+      <div class="stats-grid">
+
+        <div class="reveal">
+          <p class="stat-number" data-target="60" data-suffix="%">60%</p>
+          <p class="stat-label">Reducción media de costes operativos con IA</p>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <p class="stat-number" data-target="20" data-suffix="h">20h</p>
+          <p class="stat-label">Horas semanales recuperadas por equipo</p>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+          <p class="stat-number" data-target="3" data-suffix="x">3x</p>
+          <p class="stat-label">Más velocidad en operaciones automatizadas</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       PROCESO
+  ══════════════════════════════════════ -->
+  <section class="process section" id="proceso">
+    <div class="container">
+
+      <div class="process-header">
+        <span class="section-label reveal">Cómo trabajamos</span>
+        <h2 class="section-title reveal">De tu problema a<br>la solución en funcionamiento</h2>
+        <p class="section-desc reveal">Sin tecnicismos. Sin sorpresas. Un proceso claro en tres fases.</p>
+      </div>
+
+      <div class="process-steps">
+
+        <div class="process-step reveal">
+          <div class="step-number">01</div>
+          <h3 class="step-title">Diagnóstico gratuito</h3>
+          <p class="step-desc">
+            Analizamos tus procesos actuales, hablamos con tu equipo y detectamos
+            exactamente dónde se pierde tiempo y dinero. Una llamada de 30 minutos,
+            sin coste ni compromiso.
+          </p>
+        </div>
+
+        <div class="process-step reveal reveal-delay-1">
+          <div class="step-number">02</div>
+          <h3 class="step-title">Propuesta a medida</h3>
+          <p class="step-desc">
+            Diseñamos la solución exacta para tu empresa. Te presentamos el plan
+            completo antes de escribir una sola línea de código. Propuesta lista
+            en 48 horas. Tú decides.
+          </p>
+        </div>
+
+        <div class="process-step reveal reveal-delay-2">
+          <div class="step-number">03</div>
+          <h3 class="step-title">Implementación</h3>
+          <p class="step-desc">
+            Desarrollamos e implantamos la solución. Primera entrega en 2–4 semanas.
+            Te acompañamos hasta que esté funcionando perfectamente y tu equipo
+            la domine.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- PROYECTOS PROPIOS -->
+      <div class="projects-showcase" id="trabajo">
+
+        <div class="projects-header reveal">
+          <span class="section-label">En funcionamiento</span>
+          <h3 class="projects-title">Herramientas que ya existen.<br>Solo para que veas el potencial.</h3>
+          <p class="projects-subdesc">No son conceptos ni demos vacías. Son proyectos propios, funcionales, que construimos para demostrar lo que es posible.</p>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- Proyecto 1: LeadBot — enlace a sección dedicada -->
+          <div class="project-card reveal" style="cursor:pointer;" onclick="openLeadBot()">
+            <div class="project-preview project-preview--leadbot" style="align-items:center;justify-content:center;flex-direction:column;gap:.875rem;">
+              <div style="width:52px;height:52px;border-radius:50%;background:rgba(37,211,102,.12);border:1.5px solid rgba(37,211,102,.3);display:flex;align-items:center;justify-content:center;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </div>
+              <div style="text-align:center;">
+                <p style="font-size:13px;font-weight:600;color:var(--text-1);font-family:var(--font);margin-bottom:4px;">Ver demo interactiva</p>
+                <p style="font-size:11px;color:var(--text-2);font-family:var(--font);">Mira el bot en acción →</p>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="project-tag">WhatsApp · CRM</span>
+              <h4 class="project-name">LeadBot</h4>
+              <p class="project-desc">Bot que califica leads por WhatsApp, les puntúa según criterios de negocio y los vuelca en el CRM sin intervención humana.</p>
+              <div class="project-metric">
+                <span class="metric-value">3 min</span>
+                <span class="metric-label">de media para cualificar un lead</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 2: ContractAI -->
+          <div class="project-card reveal reveal-delay-1" style="cursor:pointer;" onclick="openContractAI()">
+            <div class="project-preview project-preview--contract" style="align-items:center;justify-content:center;flex-direction:column;gap:.875rem;">
+              <div style="width:52px;height:52px;border-radius:50%;background:rgba(90,108,245,.12);border:1.5px solid rgba(90,108,245,.3);display:flex;align-items:center;justify-content:center;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5A6CF5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+              </div>
+              <div style="text-align:center;">
+                <p style="font-size:13px;font-weight:600;color:var(--text-1);font-family:var(--font);margin-bottom:4px;">Ver demo interactiva</p>
+                <p style="font-size:11px;color:var(--text-2);font-family:var(--font);">Mira el análisis en acción →</p>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="project-tag">IA · Documentos</span>
+              <h4 class="project-name">ContractAI</h4>
+              <p class="project-desc">Sube cualquier contrato en PDF y en segundos extrae fechas clave, cláusulas críticas y riesgos. Sin leer una sola página.</p>
+              <div class="project-metric">
+                <span class="metric-value">&lt; 8 seg</span>
+                <span class="metric-label">para analizar un contrato completo</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 3: AutoReport -->
+          <div class="project-card reveal reveal-delay-2" style="cursor:pointer;" onclick="openAutoReport()">
+            <div class="project-preview project-preview--report" style="align-items:center;justify-content:center;flex-direction:column;gap:.875rem;">
+              <div style="width:52px;height:52px;border-radius:50%;background:rgba(110,168,255,.12);border:1.5px solid rgba(110,168,255,.3);display:flex;align-items:center;justify-content:center;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6EA8FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+                </svg>
+              </div>
+              <div style="text-align:center;">
+                <p style="font-size:13px;font-weight:600;color:var(--text-1);font-family:var(--font);margin-bottom:4px;">Ver demo interactiva</p>
+                <p style="font-size:11px;color:var(--text-2);font-family:var(--font);">Mira el análisis en acción →</p>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="project-tag">Reporting · IA</span>
+              <h4 class="project-name">AutoReport</h4>
+              <p class="project-desc">Conecta con tus fuentes de datos y genera un informe ejecutivo en PDF cada lunes a las 8:00. Sin recordatorios, sin Excel.</p>
+              <div class="project-metric">
+                <span class="metric-value">4 h</span>
+                <span class="metric-label">ahorradas por persona cada semana</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- FIN PROYECTOS PROPIOS -->
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       LEADBOT — Demo interactiva + prueba gratuita
+  ══════════════════════════════════════ -->
+  <section class="section" id="leadbot">
+    <div class="lb-modal-bar">
+      <button class="lb-modal-close" id="lbClose" aria-label="Cerrar">×</button>
+    </div>
+    <div class="container">
+
+      <!-- Header -->
+      <div class="lb-header reveal">
+        <div class="lb-free-badge">
+          <span class="lb-free-dot"></span>
+          Herramienta gratuita · Disponible ahora
+        </div>
+        <h2 class="section-title" style="text-align:center;max-width:none;margin-bottom:.875rem;">LeadBot — Tu comercial en WhatsApp, activo las 24h</h2>
+        <p class="section-desc" style="text-align:center;max-width:600px;margin-inline:auto;">
+          Un bot real que califica cada lead que te escribe por WhatsApp, le puntúa con IA y lo vuelca en tu CRM automáticamente. Mira cómo funciona o pruébalo ahora mismo.
+        </p>
+      </div>
+
+      <!-- Showcase: phone mockup + pipeline -->
+      <div class="lb-showcase">
+
+        <!-- Phone mockup animado -->
+        <div class="lb-phone-wrap reveal">
+          <div>
+            <div class="lb-phone">
+              <div class="lb-phone-notch"></div>
+              <div class="lb-wa-header">
+                <div class="lb-wa-back">‹</div>
+                <div class="lb-wa-avatar">A</div>
+                <div>
+                  <div class="lb-wa-name">Aether Bot</div>
+                  <div class="lb-wa-status">en línea</div>
+                </div>
+              </div>
+              <div class="lb-chat-body" id="lbChatBody"></div>
+              <div class="lb-phone-input">
+                <div class="lb-phone-input-txt">Escribe un mensaje...</div>
+                <div class="lb-phone-send">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </div>
+              </div>
+            </div>
+            <div style="text-align:center;margin-top:.625rem;">
+              <button class="lb-replay-btn" id="lbReplayBtn" style="display:none;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.12"/></svg>
+                Repetir demo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pipeline + CTA -->
+        <div class="lb-pipeline reveal reveal-delay-2">
+          <p class="lb-pipeline-title">¿Qué ocurre en cada conversación?</p>
+          <div class="lb-steps">
+            <div class="lb-step">
+              <span class="lb-step-num">1</span>
+              <div>
+                <p class="lb-step-title">El lead escribe en WhatsApp</p>
+                <p class="lb-step-desc">El bot responde al instante con 5 preguntas de cualificación. Sin tiempo de espera, sin intervención humana.</p>
+              </div>
+            </div>
+            <div class="lb-step">
+              <span class="lb-step-num">2</span>
+              <div>
+                <p class="lb-step-title">IA analiza y puntúa al lead</p>
+                <p class="lb-step-desc">Gemini AI lee las respuestas, clasifica al lead como HOT / WARM / COLD y genera un resumen ejecutivo en segundos.</p>
+              </div>
+            </div>
+            <div class="lb-step">
+              <span class="lb-step-num">3</span>
+              <div>
+                <p class="lb-step-title">CRM actualizado automáticamente</p>
+                <p class="lb-step-desc">El lead, sus datos, la puntuación y el resumen se guardan en Airtable. Sin copiar y pegar, sin errores manuales.</p>
+              </div>
+            </div>
+            <div class="lb-step">
+              <span class="lb-step-num">4</span>
+              <div>
+                <p class="lb-step-title">Notificación al equipo comercial</p>
+                <p class="lb-step-desc">Tu equipo recibe inmediatamente el perfil completo del lead por WhatsApp. Solo queda llamar y cerrar.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lb-cta-group">
+            <!--
+              REEMPLAZA "YOUR_PHONE" con el número del bot (sin + ni espacios).
+              Ejemplo: wa.me/34612345678?text=Hola%2C%20quiero%20probar%20el%20LeadBot
+            -->
+            <a href="https://wa.me/YOUR_PHONE?text=Hola%2C%20quiero%20probar%20el%20LeadBot%20de%20Aether" class="btn-wa" target="_blank" rel="noopener">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Pruébalo gratis en WhatsApp
+            </a>
+            <a href="#contacto" class="btn btn-ghost" style="text-align:center;">Quiero esto para mi empresa →</a>
+          </div>
+          <p class="lb-cta-note">Sin coste · Sin registro · Solo escribe y observa el proceso</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CONTRACTAI — Demo interactiva
+  ══════════════════════════════════════ -->
+  <section class="section" id="contractai">
+    <div class="lb-modal-bar">
+      <button class="lb-modal-close" id="caClose" aria-label="Cerrar">×</button>
+    </div>
+    <div class="container">
+
+      <!-- Header -->
+      <div class="lb-header reveal">
+        <div class="lb-free-badge" style="background:rgba(90,108,245,.1);border-color:rgba(90,108,245,.25);color:#a5b4fc;">
+          <span class="lb-free-dot" style="background:#a5b4fc;animation:pulse-dot 2s infinite;"></span>
+          IA · Análisis de documentos
+        </div>
+        <h2 class="section-title" style="text-align:center;max-width:none;margin-bottom:.875rem;">ContractAI — Analiza cualquier contrato en segundos</h2>
+        <p class="section-desc" style="text-align:center;max-width:600px;margin-inline:auto;">
+          Sube una foto de tu contrato y la IA extrae lo que importa: partes, fechas clave, cláusulas críticas y riesgos ocultos. Sin leer una sola página.
+        </p>
+      </div>
+
+      <!-- Showcase -->
+      <div class="ca-showcase">
+
+        <!-- Document mockup animado -->
+        <div class="ca-doc-wrap reveal">
+          <div class="ca-doc">
+            <div class="ca-scanner" id="caScanner"></div>
+            <div class="ca-doc-tab">
+              📄&nbsp; contrato_arrendamiento.jpg
+            </div>
+            <div class="ca-doc-body">
+              <div class="ca-doc-line ca-doc-line--lg"></div>
+              <div class="ca-doc-line ca-doc-line--gap"></div>
+              <div class="ca-doc-line"></div>
+              <div class="ca-doc-line ca-doc-line--md"></div>
+              <div class="ca-doc-line ca-doc-line--sm"></div>
+              <div class="ca-doc-line ca-doc-line--gap"></div>
+              <div class="ca-doc-line ca-doc-line--hl-blue"></div>
+              <div class="ca-doc-line ca-doc-line--md"></div>
+              <div class="ca-doc-line ca-doc-line--gap"></div>
+              <div class="ca-doc-line"></div>
+              <div class="ca-doc-line ca-doc-line--sm"></div>
+              <div class="ca-doc-line ca-doc-line--hl-red"></div>
+              <div class="ca-doc-line ca-doc-line--gap"></div>
+              <div class="ca-doc-line ca-doc-line--md"></div>
+              <div class="ca-doc-line"></div>
+              <div class="ca-doc-line ca-doc-line--hl-orange"></div>
+              <div class="ca-doc-line ca-doc-line--xs"></div>
+              <div class="ca-doc-line ca-doc-line--gap"></div>
+              <div class="ca-doc-line"></div>
+              <div class="ca-doc-line ca-doc-line--md"></div>
+            </div>
+          </div>
+          <button class="lb-replay-btn" id="caReplayBtn" style="display:none;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.12"/></svg>
+            Repetir demo
+          </button>
+        </div>
+
+        <!-- Results + CTA -->
+        <div class="reveal reveal-delay-2">
+          <div class="ca-analyzing" id="caAnalyzing">
+            <div class="ca-dot"></div>
+            <div class="ca-dot"></div>
+            <div class="ca-dot"></div>
+            Analizando contrato con IA…
+          </div>
+
+          <div class="ca-results-wrap" id="caResults">
+            <div class="ca-result" id="ca-r1">
+              <div class="ca-result-lbl">Tipo de contrato</div>
+              <div class="ca-result-val">Arrendamiento de local comercial</div>
+            </div>
+            <div class="ca-result" id="ca-r2">
+              <div class="ca-result-lbl">Partes</div>
+              <div class="ca-result-val"><strong>INMOFLEX GRUP S.L.</strong> — Arrendador<br><strong>NOVATECH SOLUTIONS S.L.</strong> — Arrendatario</div>
+            </div>
+            <div class="ca-result" id="ca-r3">
+              <div class="ca-result-lbl">Vigencia · Valor</div>
+              <div class="ca-result-val">01/03/2024 → 28/02/2027 &nbsp;·&nbsp; <strong>3 años</strong> &nbsp;·&nbsp; <strong>1.850 €/mes</strong></div>
+            </div>
+            <div class="ca-result ca-result--risk" id="ca-r4">
+              <div class="ca-result-lbl">⚠ Riesgo alto</div>
+              <div class="ca-result-val">Penalización del 20% sobre rentas pendientes si se rescinde antes de 18 meses</div>
+            </div>
+            <div class="ca-result ca-result--warn" id="ca-r5">
+              <div class="ca-result-lbl">▲ Riesgo medio</div>
+              <div class="ca-result-val">Actualización de renta según IPC sin límite máximo establecido</div>
+            </div>
+            <div class="ca-result ca-result--ok" id="ca-r6">
+              <div class="ca-result-lbl">✓ A tu favor</div>
+              <div class="ca-result-val">Derecho de tanteo si el propietario decide vender el inmueble</div>
+            </div>
+          </div>
+
+          <div class="lb-cta-group" id="caCta" style="display:none;margin-top:1.75rem;">
+            <a href="#contacto" class="btn btn-primary" onclick="closeContractAI()" style="text-align:center;">Quiero esto para mis contratos →</a>
+            <p class="lb-cta-note">Analiza fotos, escaneos o PDFs · Cualquier tipo de contrato</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Steps -->
+      <div class="lb-pipeline reveal" style="max-width:640px;margin-inline:auto;margin-top:4rem;">
+        <p class="lb-pipeline-title">¿Cómo funciona internamente?</p>
+        <div class="lb-steps">
+          <div class="lb-step">
+            <span class="lb-step-num">1</span>
+            <div>
+              <p class="lb-step-title">Subes la foto o PDF del contrato</p>
+              <p class="lb-step-desc">Una foto con el móvil es suficiente. El sistema acepta imágenes y PDFs.</p>
+            </div>
+          </div>
+          <div class="lb-step">
+            <span class="lb-step-num">2</span>
+            <div>
+              <p class="lb-step-title">Gemini Vision lee y comprende el documento</p>
+              <p class="lb-step-desc">La IA analiza el texto y la estructura del contrato, aunque no esté digitalizado.</p>
+            </div>
+          </div>
+          <div class="lb-step">
+            <span class="lb-step-num">3</span>
+            <div>
+              <p class="lb-step-title">Extrae partes, fechas y cláusulas clave</p>
+              <p class="lb-step-desc">En menos de 10 segundos tienes un informe estructurado con lo que realmente importa.</p>
+            </div>
+          </div>
+          <div class="lb-step">
+            <span class="lb-step-num">4</span>
+            <div>
+              <p class="lb-step-title">Alertas de riesgo automáticas</p>
+              <p class="lb-step-desc">Detecta cláusulas abusivas, penalizaciones ocultas y renovaciones automáticas antes de firmar.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lb-cta-group" style="margin-top:0;">
+          <a href="#contacto" class="btn btn-primary" onclick="closeContractAI()" style="text-align:center;">Implementarlo en mi empresa →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       AUTOREPORT — Demo interactiva
+  ══════════════════════════════════════ -->
+  <section class="section" id="autoreport">
+    <div class="lb-modal-bar">
+      <button class="lb-modal-close" id="arClose" aria-label="Cerrar">×</button>
+    </div>
+    <div class="container">
+
+      <div class="lb-header reveal">
+        <div class="lb-free-badge" style="background:rgba(110,168,255,.1);border-color:rgba(110,168,255,.25);color:var(--accent);">
+          <span class="lb-free-dot" style="background:var(--accent);"></span>
+          SQL · Excel · IA
+        </div>
+        <h2 class="section-title" style="text-align:center;max-width:none;margin-bottom:.875rem;">AutoReport — De datos a informe ejecutivo en 30 segundos</h2>
+        <p class="section-desc" style="text-align:center;max-width:600px;margin-inline:auto;">
+          Conecta tu base de datos SQL o sube un Excel y obtén al instante un análisis completo de ventas, clientes, sectores y tendencias con resumen de IA.
+        </p>
+      </div>
+
+      <div class="ar-showcase">
+
+        <!-- Tabla de datos animada -->
+        <div class="ar-table-wrap reveal">
+          <div class="ar-table">
+            <div class="ar-scanner" id="arScanner"></div>
+            <div class="ar-table-tab">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              ventas_anuario_2025.xlsx
+            </div>
+            <div class="ar-table-head"><span>Cliente</span><span>Sector</span><span>Importe</span><span>Fecha</span></div>
+            <div class="ar-table-row ar-hl"><span>Grupo Meridian</span><span>Industria</span><span>1.840€</span><span>12/03</span></div>
+            <div class="ar-table-row"><span>TechSol S.L.</span><span>Tecnología</span><span>920€</span><span>15/03</span></div>
+            <div class="ar-table-row ar-hl"><span>Nova Retail</span><span>Comercio</span><span>1.200€</span><span>21/03</span></div>
+            <div class="ar-table-row"><span>Ibérica Parts</span><span>Industrial</span><span>680€</span><span>24/03</span></div>
+            <div class="ar-table-row ar-hl"><span>Distrib. Centro</span><span>Comercio</span><span>450€</span><span>28/03</span></div>
+            <div class="ar-table-footer">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              1.247 registros · analizando…
+            </div>
+          </div>
+          <button class="lb-replay-btn" id="arReplayBtn" style="display:none;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.12"/></svg>
+            Repetir demo
+          </button>
+        </div>
+
+        <!-- Resultados + CTA -->
+        <div class="reveal reveal-delay-2">
+          <div class="ar-analyzing" id="arAnalyzing">
+            <div class="ar-dot"></div>
+            <div class="ar-dot"></div>
+            <div class="ar-dot"></div>
+            Procesando datos con IA…
+          </div>
+
+          <div class="ar-results-wrap ca-results-wrap" id="arResults">
+            <div class="ca-result" id="ar-r1">
+              <div class="ca-result-lbl">Fuente analizada</div>
+              <div class="ca-result-val">ventas_anuario_2025.xlsx &nbsp;·&nbsp; <strong>1.247 registros</strong></div>
+            </div>
+            <div class="ca-result" id="ar-r2">
+              <div class="ca-result-lbl">Total ventas · Período</div>
+              <div class="ca-result-val"><strong>€142.850,00</strong> &nbsp;·&nbsp; ene 2025 — dic 2025</div>
+            </div>
+            <div class="ca-result" id="ar-r3">
+              <div class="ca-result-lbl">Clientes · Ticket medio</div>
+              <div class="ca-result-val"><strong>87 clientes únicos</strong> &nbsp;·&nbsp; ticket medio <strong>€114,56</strong> &nbsp;·&nbsp; mes pico <strong>Oct 2025</strong></div>
+            </div>
+            <div class="ca-result" id="ar-r4">
+              <div class="ca-result-lbl">Sector principal</div>
+              <div class="ca-result-val">Industria <strong>34%</strong> &nbsp;·&nbsp; Tecnología <strong>28%</strong> &nbsp;·&nbsp; Comercio <strong>21%</strong></div>
+            </div>
+            <div class="ca-result ca-result--warn" id="ar-r5">
+              <div class="ca-result-lbl">▲ Atención</div>
+              <div class="ca-result-val">3 clientes sin actividad en más de 90 días — riesgo de fuga</div>
+            </div>
+            <div class="ca-result ca-result--ok" id="ar-r6">
+              <div class="ca-result-lbl">✓ Resumen IA</div>
+              <div class="ca-result-val">Crecimiento sostenido de +18% en Q4. El sector industrial lidera las ventas y Grupo Meridian concentra el 12,3% del total.</div>
+            </div>
+          </div>
+
+          <div class="lb-cta-group" id="arCta" style="display:none;margin-top:1.75rem;">
+            <a href="#contacto" class="btn btn-primary" onclick="closeAutoReport()" style="text-align:center;">Quiero esto para mis datos →</a>
+            <p class="lb-cta-note">Compatible con Excel, CSV, MySQL, PostgreSQL y SQLite</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Pasos -->
+      <div class="lb-pipeline reveal" style="max-width:640px;margin-inline:auto;margin-top:4rem;">
+        <p class="lb-pipeline-title">¿Cómo funciona internamente?</p>
+        <div class="lb-steps">
+          <div class="lb-step">
+            <span class="lb-step-num">1</span>
+            <div>
+              <p class="lb-step-title">Subes tu Excel, CSV o conectas tu base de datos SQL</p>
+              <p class="lb-step-desc">Compatible con .xlsx, .csv, MySQL, PostgreSQL y SQLite. Sin instalar nada.</p>
+            </div>
+          </div>
+          <div class="lb-step">
+            <span class="lb-step-num">2</span>
+            <div>
+              <p class="lb-step-title">Detección automática de columnas</p>
+              <p class="lb-step-desc">El sistema identifica columnas de fecha, importe, cliente y sector sin configuración manual.</p>
+            </div>
+          </div>
+          <div class="lb-step">
+            <span class="lb-step-num">3</span>
+            <div>
+              <p class="lb-step-title">Análisis estadístico completo</p>
+              <p class="lb-step-desc">Totales, tendencias, top clientes, desglose sectorial y evolución mensual en segundos.</p>
+            </div>
+          </div>
+          <div class="lb-step">
+            <span class="lb-step-num">4</span>
+            <div>
+              <p class="lb-step-title">Resumen ejecutivo con IA</p>
+              <p class="lb-step-desc">La IA genera conclusiones, alertas y recomendaciones accionables en lenguaje natural.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lb-cta-group" style="margin-top:0;">
+          <a href="#contacto" class="btn btn-primary" onclick="closeAutoReport()" style="text-align:center;">Implementarlo en mi empresa →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       POR QUÉ AETHER
+  ══════════════════════════════════════ -->
+  <section class="why section">
+    <div class="container why-inner">
+
+      <div class="why-left">
+        <span class="section-label reveal">Por qué Aether</span>
+        <h2 class="section-title reveal">No somos consultores.<br>Somos tu equipo técnico.</h2>
+        <p class="section-desc reveal">
+          La diferencia entre contratar tecnología y contratar resultados está
+          en quién entiende primero el negocio antes de proponer la solución.
+        </p>
+        <a href="#contacto" class="btn btn-primary reveal">Empezar el diagnóstico</a>
+      </div>
+
+      <div class="why-features">
+
+        <div class="why-feature reveal">
+          <span class="why-feature-icon">🎯</span>
+          <div>
+            <p class="why-feature-title">Soluciones, no productos</p>
+            <p class="why-feature-desc">No tenemos un catálogo que encajarte a la fuerza. Cada solución parte de entender tu problema específico.</p>
+          </div>
+        </div>
+
+        <div class="why-feature reveal reveal-delay-1">
+          <span class="why-feature-icon">🤝</span>
+          <div>
+            <p class="why-feature-title">Relación directa, sin intermediarios</p>
+            <p class="why-feature-desc">Trabajas directamente con quien construye tu solución. Sin gestores de cuenta ni capas de comunicación.</p>
+          </div>
+        </div>
+
+        <div class="why-feature reveal reveal-delay-2">
+          <span class="why-feature-icon">🚀</span>
+          <div>
+            <p class="why-feature-title">Resultados desde el primer mes</p>
+            <p class="why-feature-desc">No hacemos proyectos de 18 meses que nunca terminan. Priorizamos impacto rápido y entregamos en semanas.</p>
+          </div>
+        </div>
+
+        <div class="why-feature reveal reveal-delay-3">
+          <span class="why-feature-icon">🔒</span>
+          <div>
+            <p class="why-feature-title">Compromiso con el resultado</p>
+            <p class="why-feature-desc">No cerramos un proyecto hasta que funciona como prometimos. Tu operación mejorada es nuestra validación.</p>
+          </div>
+        </div>
+
+        <div class="why-feature reveal reveal-delay-4">
+          <span class="why-feature-icon">📐</span>
+          <div>
+            <p class="why-feature-title">100% a medida, 0% genérico</p>
+            <p class="why-feature-desc">Rechazamos las soluciones de copia y pega. Si tu empresa es única, tu solución también debe serlo.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SOBRE NOSOTROS
+  ══════════════════════════════════════ -->
+  <section class="why section" id="equipo">
+    <div class="container about-inner">
+
+      <div>
+        <span class="section-label reveal">Quiénes somos</span>
+        <h2 class="section-title reveal">Ayudamos a empresas a recuperar tiempo y tomar mejores decisiones.</h2>
+        <p class="section-desc reveal">
+          No somos un equipo de consultores que entrega informes. Somos el equipo técnico que
+          identifica exactamente dónde se pierde tiempo en tu operación y lo resuelve — con
+          soluciones que tu equipo adopta desde el primer día.
+        </p>
+        <p class="section-desc reveal">
+          Cada proyecto lo tratamos como si fuera el nuestro. Entendemos el negocio antes de
+          proponer nada, y no cerramos hasta que el resultado funciona como prometimos.
+        </p>
+        <a href="https://www.linkedin.com/in/rodrigo-ord%C3%B3%C3%B1ez-697a5a409" class="about-linkedin reveal" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46C23.2 24 24 23.23 24 22.27V1.73C24 .77 23.2 0 22.23 0z"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://www.instagram.com/aether_labs.ai/" class="about-instagram reveal" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+          Instagram
+        </a>
+      </div>
+
+      <div class="about-photo-wrap reveal">
+        <img
+          src="Banner%20Linkedin/Foto%20Buena%20Rodrigo.png"
+          alt="Rodrigo Ordóñez - Fundador de Aether"
+          class="about-photo"
+          style="object-fit:cover; object-position:top center;"
+        >
+        <div class="about-photo-caption">
+          <p class="about-photo-name">Rodrigo Ordóñez</p>
+          <p class="about-photo-role">Fundador · Aether</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       REFERENTES
+  ══════════════════════════════════════ -->
+  <section class="testimonials section" id="testimonios">
+    <div class="container">
+
+      <div class="testimonials-header">
+        <span class="section-label reveal">El consenso del sector</span>
+        <h2 class="section-title reveal">Lo que dicen quienes<br>construyeron el futuro</h2>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal">
+          <div style="font-size:2.5rem;color:var(--accent);opacity:.35;line-height:1;margin-bottom:.875rem;font-family:Georgia,serif;font-weight:700;">"</div>
+          <p class="testimonial-quote">
+            "La primera regla de cualquier tecnología en los negocios es que la automatización
+            aplicada a una operación eficiente multiplicará la eficiencia. La segunda: aplicada
+            a una operación ineficiente, multiplicará la ineficiencia."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">BG</div>
+            <div>
+              <p class="author-name">Bill Gates</p>
+              <p class="author-role">Cofundador de Microsoft</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div style="font-size:2.5rem;color:var(--accent);opacity:.35;line-height:1;margin-bottom:.875rem;font-family:Georgia,serif;font-weight:700;">"</div>
+          <p class="testimonial-quote">
+            "La IA es la nueva electricidad. Así como la electricidad transformó casi todas
+            las industrias hace 100 años, la IA transformará ahora casi todas las industrias."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AN</div>
+            <div>
+              <p class="author-name">Andrew Ng</p>
+              <p class="author-role">Pionero de la IA · Cofundador de Google Brain</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div style="font-size:2.5rem;color:var(--accent);opacity:.35;line-height:1;margin-bottom:.875rem;font-family:Georgia,serif;font-weight:700;">"</div>
+          <p class="testimonial-quote">
+            "Toda empresa es ya una empresa de software. Tienes que empezar a pensar
+            y operar como una empresa digital."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SN</div>
+            <div>
+              <p class="author-name">Satya Nadella</p>
+              <p class="author-role">CEO de Microsoft</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CONTACTO — Formulario inteligente
+  ══════════════════════════════════════ -->
+  <section class="contact-section section" id="contacto">
+    <div class="container">
+      <div class="contact-grid reveal">
+
+        <!-- Columna izquierda: copy -->
+        <div class="contact-left">
+
+          <div style="display:flex;align-items:center;margin-bottom:2rem;">
+            <svg width="44" height="44" viewBox="0 0 512 512" fill="none">
+              <defs>
+                <linearGradient id="ctaGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%"   stop-color="#F5F7FA"/>
+                  <stop offset="100%" stop-color="#AEB8C5"/>
+                </linearGradient>
+              </defs>
+              <path d="M256 120L360 320H320L256 200L192 320H152L256 120Z" fill="url(#ctaGrad)"/>
+              <path d="M256 250L266 276L292 286L266 296L256 322L246 296L220 286L246 276L256 250Z" fill="#FFFFFF"/>
+            </svg>
+          </div>
+
+          <span class="section-label">Hablemos</span>
+          <h2 class="contact-title">¿Listo para que tu empresa trabaje de otra manera?</h2>
+          <p class="contact-desc">
+            Cuéntanos tu situación. Hacemos un diagnóstico gratuito y te decimos
+            exactamente qué podemos hacer y cuánto tardará — sin compromiso.
+          </p>
+
+          <ul class="contact-benefits">
+            <li>
+              <span class="benefit-icon">✓</span>
+              <span>Respuesta en menos de 24 horas</span>
+            </li>
+            <li>
+              <span class="benefit-icon">✓</span>
+              <span>Diagnóstico gratuito de tus procesos</span>
+            </li>
+            <li>
+              <span class="benefit-icon">✓</span>
+              <span>Sin compromiso, sin letra pequeña</span>
+            </li>
+            <li>
+              <span class="benefit-icon">✓</span>
+              <span>Propuesta a medida en 48h</span>
+            </li>
+          </ul>
+
+          <!-- Opción rápida: reservar llamada -->
+          <a href="https://cal.eu/aetherlabs/30min" class="contact-cta-call">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            Reservar llamada gratuita de 30 min
+          </a>
+
+        </div>
+
+        <!-- Columna derecha: formulario -->
+        <div class="contact-form-wrap reveal reveal-delay-2">
+          <form class="contact-form" id="contactForm" novalidate>
+
+            <!-- Fila: Nombre + Nombre empresa -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="nombre">Nombre <span class="form-required">*</span></label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  placeholder="Tu nombre"
+                  required
+                  autocomplete="given-name"
+                >
+                <span class="form-error" id="error-nombre"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="empresa">Empresa <span class="form-required">*</span></label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="empresa"
+                  name="empresa"
+                  placeholder="Nombre de tu empresa"
+                  required
+                  autocomplete="organization"
+                >
+                <span class="form-error" id="error-empresa"></span>
+              </div>
+            </div>
+
+            <!-- Sector -->
+            <div class="form-group">
+              <label class="form-label" for="sector">Sector <span class="form-required">*</span></label>
+              <div class="form-select-wrap">
+                <select class="form-input form-select" id="sector" name="sector" required>
+                  <option value="" disabled selected>Selecciona el sector de tu empresa</option>
+                  <optgroup label="Industria y Operaciones">
+                    <option value="Industria / Manufactura">Industria / Manufactura</option>
+                    <option value="Logística y Distribución">Logística y Distribución</option>
+                    <option value="Construcción / Inmobiliaria">Construcción / Inmobiliaria</option>
+                    <option value="Alimentación / Bebidas">Alimentación / Bebidas</option>
+                  </optgroup>
+                  <optgroup label="Servicios">
+                    <option value="Servicios profesionales">Servicios profesionales (legal, RRHH, etc.)</option>
+                    <option value="Consultoría">Consultoría y Gestión</option>
+                    <option value="Finanzas / Seguros">Finanzas / Seguros</option>
+                    <option value="Salud y Bienestar">Salud y Bienestar</option>
+                    <option value="Educación">Educación y Formación</option>
+                  </optgroup>
+                  <optgroup label="Digital y Comercio">
+                    <option value="Tecnología / Software">Tecnología / Software / SaaS</option>
+                    <option value="Retail / Comercio">Retail / Comercio</option>
+                    <option value="Hostelería / Turismo">Hostelería / Turismo</option>
+                    <option value="Marketing / Comunicación">Marketing / Comunicación</option>
+                  </optgroup>
+                  <option value="Otro">Otro sector</option>
+                </select>
+                <svg class="select-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="form-error" id="error-sector"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label class="form-label" for="email">Email de contacto <span class="form-required">*</span></label>
+              <input
+                class="form-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="tu@empresa.com"
+                required
+                autocomplete="email"
+              >
+              <span class="form-error" id="error-email"></span>
+            </div>
+
+            <!-- Servicios buscados (checkboxes) -->
+            <div class="form-group">
+              <label class="form-label">Servicios buscados / Motivo de la consulta <span class="form-required">*</span></label>
+              <div class="form-checks">
+                <label class="form-check">
+                  <input type="checkbox" name="servicios" value="Auditoría de procesos con IA">
+                  <span class="check-box"></span>
+                  <span class="check-label">Auditoría de procesos con IA</span>
+                </label>
+                <label class="form-check">
+                  <input type="checkbox" name="servicios" value="Automatización de procesos con IA">
+                  <span class="check-box"></span>
+                  <span class="check-label">Automatización de procesos con IA</span>
+                </label>
+                <label class="form-check">
+                  <input type="checkbox" name="servicios" value="Agente de IA a medida">
+                  <span class="check-box"></span>
+                  <span class="check-label">Agente de IA a medida</span>
+                </label>
+                <label class="form-check">
+                  <input type="checkbox" name="servicios" value="Desarrollo web a medida">
+                  <span class="check-box"></span>
+                  <span class="check-label">Desarrollo web a medida</span>
+                </label>
+                <label class="form-check">
+                  <input type="checkbox" name="servicios" value="Integración de sistemas">
+                  <span class="check-box"></span>
+                  <span class="check-label">Integración de sistemas</span>
+                </label>
+                <label class="form-check">
+                  <input type="checkbox" name="servicios" value="Panel de control / Dashboard">
+                  <span class="check-box"></span>
+                  <span class="check-label">Panel de control / Dashboard</span>
+                </label>
+                <label class="form-check">
+                  <input type="checkbox" name="servicios" value="Consultoría de procesos">
+                  <span class="check-box"></span>
+                  <span class="check-label">Consultoría de procesos</span>
+                </label>
+                <label class="form-check">
+                  <input type="checkbox" name="servicios" value="Otro / Necesito orientación">
+                  <span class="check-box"></span>
+                  <span class="check-label">Otro / Necesito orientación</span>
+                </label>
+              </div>
+              <span class="form-error" id="error-servicios"></span>
+            </div>
+
+            <!-- Mensaje libre (opcional) -->
+            <div class="form-group">
+              <label class="form-label" for="mensaje">Cuéntanos más <span class="form-optional">(opcional)</span></label>
+              <textarea
+                class="form-input form-textarea"
+                id="mensaje"
+                name="mensaje"
+                placeholder="Describe brevemente tu situación o el problema que quieres resolver..."
+                rows="4"
+              ></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary btn-lg form-submit" id="submitBtn">
+              <span class="submit-text">Enviar consulta</span>
+              <span class="submit-spinner" aria-hidden="true"></span>
+            </button>
+
+            <!-- Estados de resultado -->
+            <div class="form-success" id="formSuccess">
+              <span class="success-icon">✓</span>
+              <div>
+                <p class="success-title">¡Consulta enviada!</p>
+                <p class="success-desc">Te responderemos en menos de 24 horas.</p>
+              </div>
+            </div>
+
+            <div class="form-error-msg" id="formError">
+              Algo salió mal. Por favor, inténtalo de nuevo o escríbenos a
+              <a href="mailto:aetherlabs@aetherlabsai.tech">aetherlabs@aetherlabsai.tech</a>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-top">
+
+        <div>
+          <a href="#" class="nav-logo" style="margin-bottom:0;">
+            <svg width="30" height="30" viewBox="0 0 512 512" fill="none">
+              <defs>
+                <linearGradient id="footerGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%"   stop-color="#F5F7FA"/>
+                  <stop offset="100%" stop-color="#AEB8C5"/>
+                </linearGradient>
+              </defs>
+              <path d="M256 120L360 320H320L256 200L192 320H152L256 120Z" fill="url(#footerGrad)"/>
+              <path d="M256 250L266 276L292 286L266 296L256 322L246 296L220 286L246 276L256 250Z" fill="#FFFFFF"/>
+            </svg>
+            <span class="nav-logo-name" style="font-size:1.1rem;">Aether</span>
+          </a>
+          <p class="footer-brand-desc">
+            Menos tareas. Más progreso.<br>
+            Ayudamos a empresas B2B a automatizar procesos y ahorrar tiempo
+            con soluciones diseñadas para sus problemas reales.
+          </p>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Servicios</p>
+          <ul class="footer-links">
+            <li><a href="#servicios">Automatización</a></li>
+            <li><a href="#servicios">Soluciones Web</a></li>
+            <li><a href="#servicios">Integraciones</a></li>
+            <li><a href="#servicios">Paneles de datos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Empresa</p>
+          <ul class="footer-links">
+            <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+            <li><a href="#proceso">Cómo trabajamos</a></li>
+            <li><a href="#testimonios">Referentes</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Contacto</p>
+          <ul class="footer-links">
+            <li><a href="mailto:aetherlabs@aetherlabsai.tech">aetherlabs@aetherlabsai.tech</a></li>
+            <li><a href="tel:+34900000000">+34 900 000 000</a></li>
+            <li><a href="https://www.linkedin.com/in/rodrigo-ord%C3%B3%C3%B1ez-697a5a409" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/aether_labs.ai/" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Aether. Todos los derechos reservados.</p>
+        <div class="footer-legal">
+          <button class="footer-legal-toggle" id="legalToggle" aria-expanded="false" aria-controls="legalMenu">
+            Legalidad <span class="toggle-arrow" aria-hidden="true">▾</span>
+          </button>
+          <ul class="footer-legal-menu" id="legalMenu" hidden>
+            <li><a href="privacy.html">Política de privacidad</a></li>
+            <li><a href="legal.html">Aviso legal</a></li>
+            <li><a href="cookies.html">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+  // ── AutoReport modal open/close ──
+  function openAutoReport() {
+    var modal = document.getElementById('autoreport');
+    modal.classList.add('ar-open');
+    modal.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+    var results = document.getElementById('arResults');
+    if (results && !results._arStarted) {
+      results._arStarted = true;
+      setTimeout(function() { runAutoReportDemo(); }, 400);
+    }
+  }
+
+  function closeAutoReport() {
+    document.getElementById('autoreport').classList.remove('ar-open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var arClose = document.getElementById('arClose');
+    if (arClose) arClose.addEventListener('click', closeAutoReport);
+    var arReplay = document.getElementById('arReplayBtn');
+    if (arReplay) arReplay.addEventListener('click', function() {
+      var r = document.getElementById('arResults');
+      if (r) r._arStarted = false;
+      runAutoReportDemo();
+    });
+  });
+
+  (function() {
+    function sleep(ms) { return new Promise(function(res){ setTimeout(res, ms); }); }
+
+    async function runDemo() {
+      var ids = ['ar-r1','ar-r2','ar-r3','ar-r4','ar-r5','ar-r6'];
+      ids.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.remove('visible');
+      });
+      var cta      = document.getElementById('arCta');
+      var replay   = document.getElementById('arReplayBtn');
+      var analyzing = document.getElementById('arAnalyzing');
+      var scanner  = document.getElementById('arScanner');
+      if (cta)    cta.style.display = 'none';
+      if (replay) replay.style.display = 'none';
+
+      if (analyzing) analyzing.classList.add('show');
+      await sleep(500);
+
+      if (scanner) {
+        scanner.classList.remove('active');
+        void scanner.offsetWidth;
+        scanner.classList.add('active');
+      }
+
+      await sleep(1600);
+      if (analyzing) analyzing.classList.remove('show');
+
+      for (var i = 0; i < ids.length; i++) {
+        await sleep(i === 0 ? 200 : 520);
+        var el = document.getElementById(ids[i]);
+        if (el) el.classList.add('visible');
+      }
+
+      await sleep(600);
+      if (cta)    cta.style.display = 'flex';
+      if (replay) replay.style.display = 'inline-flex';
+    }
+
+    window.runAutoReportDemo = function() {
+      var r = document.getElementById('arResults');
+      if (r) { r._arStarted = true; runDemo(); }
+    };
+  })();
+
+  // ── ContractAI modal open/close ──
+  function openContractAI() {
+    var modal = document.getElementById('contractai');
+    modal.classList.add('ca-open');
+    modal.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+    var results = document.getElementById('caResults');
+    if (results && !results._caStarted) {
+      results._caStarted = true;
+      setTimeout(function() { runContractAIDemo(); }, 400);
+    }
+  }
+
+  function closeContractAI() {
+    document.getElementById('contractai').classList.remove('ca-open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var caClose = document.getElementById('caClose');
+    if (caClose) caClose.addEventListener('click', closeContractAI);
+    var caReplay = document.getElementById('caReplayBtn');
+    if (caReplay) caReplay.addEventListener('click', function() {
+      var r = document.getElementById('caResults');
+      if (r) r._caStarted = false;
+      runContractAIDemo();
+    });
+  });
+
+  (function() {
+    function sleep(ms) { return new Promise(function(res){ setTimeout(res, ms); }); }
+
+    async function runDemo() {
+      var ids = ['ca-r1','ca-r2','ca-r3','ca-r4','ca-r5','ca-r6'];
+      ids.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.remove('visible');
+      });
+      var cta     = document.getElementById('caCta');
+      var replay  = document.getElementById('caReplayBtn');
+      var analyzing = document.getElementById('caAnalyzing');
+      var scanner   = document.getElementById('caScanner');
+      if (cta)    cta.style.display = 'none';
+      if (replay) replay.style.display = 'none';
+
+      if (analyzing) analyzing.classList.add('show');
+      await sleep(500);
+
+      if (scanner) {
+        scanner.classList.remove('active');
+        void scanner.offsetWidth;
+        scanner.classList.add('active');
+      }
+
+      await sleep(1400);
+      if (analyzing) analyzing.classList.remove('show');
+
+      for (var i = 0; i < ids.length; i++) {
+        await sleep(i === 0 ? 200 : 520);
+        var el = document.getElementById(ids[i]);
+        if (el) el.classList.add('visible');
+      }
+
+      await sleep(600);
+      if (cta)    cta.style.display = 'flex';
+      if (replay) replay.style.display = 'inline-flex';
+    }
+
+    window.runContractAIDemo = function() {
+      var r = document.getElementById('caResults');
+      if (r) { r._caStarted = true; runDemo(); }
+    };
+  })();
+
+  // ── LeadBot modal open/close ──
+  function openLeadBot() {
+    var modal = document.getElementById('leadbot');
+    modal.classList.add('lb-open');
+    modal.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+    // Arrancar animación si no ha empezado aún
+    var chat = document.getElementById('lbChatBody');
+    if (chat && !chat._lbStarted) {
+      chat._lbStarted = true;
+      setTimeout(function() { runLeadBotDemo(); }, 300);
+    }
+  }
+
+  function closeLeadBot() {
+    document.getElementById('leadbot').classList.remove('lb-open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Botón cerrar
+    var closeBtn = document.getElementById('lbClose');
+    if (closeBtn) closeBtn.addEventListener('click', closeLeadBot);
+
+    // Interceptar link del navbar
+    var navLink = document.querySelector('a[href="#leadbot"]');
+    if (navLink) {
+      navLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        openLeadBot();
+      });
+    }
+
+    // Cerrar con Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { closeLeadBot(); closeContractAI(); closeAutoReport(); }
+    });
+  });
+
+  // ── LeadBot chat animation ──
+  (function () {
+    var MSGS = [
+      { t: 'in',  s: '¡Hola! Soy el asistente virtual de Aether.\nPara conectarte con el equipo correcto, te haré 5 preguntas rápidas.\n\n¿Cuál es tu nombre?', ms: 950 },
+      { t: 'out', s: 'Carlos García', ms: 650 },
+      { t: 'in',  s: '¿A qué empresa o proyecto representas?', ms: 700 },
+      { t: 'out', s: 'Logistika S.L.', ms: 600 },
+      { t: 'in',  s: '¿Qué estás buscando? Descríbeme brevemente qué necesitas solucionar o lograr.', ms: 900 },
+      { t: 'out', s: 'Automatizar los informes semanales de ventas que ahora hacemos a mano en Excel', ms: 1100 },
+      { t: 'in',  s: '¿Tienes un presupuesto estimado? (Escribe "por definir" si prefieres)', ms: 800 },
+      { t: 'out', s: 'Unos 3.000€', ms: 600 },
+      { t: 'in',  s: '¿En qué plazo lo necesitas? (Ej: urgente, 1 mes, 3 meses, sin prisa)', ms: 800 },
+      { t: 'out', s: 'Urgente, si puede ser esta semana', ms: 700 },
+      { t: 'in',  s: 'Perfecto, estoy procesando tu información.\nEl equipo se pondrá en contacto contigo pronto...', ms: 650 },
+      { t: 'sys', s: '🔴 Lead HOT · Puntuación 91/100\nCRM actualizado · Equipo comercial notificado vía WhatsApp' }
+    ];
+
+    var PAUSE = 420;
+
+    function sleep(ms) { return new Promise(function(r){ setTimeout(r, ms); }); }
+
+    function nowTime() {
+      var d = new Date();
+      return d.getHours() + ':' + String(d.getMinutes()).padStart(2, '0');
+    }
+
+    function showTyping(el) {
+      var t = document.createElement('div');
+      t.className = 'lb-typing'; t.id = 'lb-t';
+      t.innerHTML = '<span></span><span></span><span></span>';
+      el.appendChild(t);
+      el.scrollTop = el.scrollHeight;
+    }
+
+    function dropTyping() {
+      var t = document.getElementById('lb-t');
+      if (t) t.remove();
+    }
+
+    function appendMsg(el, msg) {
+      var d = document.createElement('div');
+      if (msg.t === 'sys') {
+        d.className = 'lb-msg lb-msg--system';
+        d.textContent = msg.s;
+      } else {
+        d.className = 'lb-msg lb-msg--' + (msg.t === 'in' ? 'in' : 'out');
+        d.textContent = msg.s;
+        var tm = document.createElement('div');
+        tm.className = 'lb-msg-time';
+        tm.textContent = nowTime();
+        d.appendChild(tm);
+      }
+      el.appendChild(d);
+      el.scrollTop = el.scrollHeight;
+    }
+
+    async function runDemo(chatEl, replayBtn) {
+      chatEl.innerHTML = '';
+      if (replayBtn) replayBtn.style.display = 'none';
+      await sleep(600);
+      for (var i = 0; i < MSGS.length; i++) {
+        var msg = MSGS[i];
+        if (msg.t === 'in' || msg.t === 'sys') {
+          showTyping(chatEl);
+          await sleep(msg.ms || 700);
+          dropTyping();
+        } else {
+          await sleep(PAUSE);
+        }
+        appendMsg(chatEl, msg);
+        await sleep(PAUSE);
+      }
+      if (replayBtn) replayBtn.style.display = 'inline-flex';
+    }
+
+    // Exponer función globalmente para que openLeadBot() pueda llamarla
+    window.runLeadBotDemo = function() {
+      var chat = document.getElementById('lbChatBody');
+      var replay = document.getElementById('lbReplayBtn');
+      if (chat) runDemo(chat, replay);
+    };
+
+    function init() {
+      var replay = document.getElementById('lbReplayBtn');
+      if (replay) {
+        replay.addEventListener('click', function() {
+          window.runLeadBotDemo();
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+
+  <script src="scripts/main.js"></script>
+  <script src="scripts/airtable.js"></script>
+
+  <!-- ── Cookie consent banner ── -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p>Usamos cookies propias para el funcionamiento del sitio. No utilizamos cookies de seguimiento ni analítica de terceros. <a href="cookies.html">Ver política de cookies</a></p>
+    <div class="cookie-banner-actions">
+      <button class="btn btn-ghost" style="font-size:var(--size-xs);padding:var(--s2) var(--s4);" id="cookieReject">Rechazar</button>
+      <button class="btn btn-primary" style="font-size:var(--size-xs);padding:var(--s2) var(--s4);" id="cookieAccept">Aceptar todo</button>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    /* ── Cookie banner ── */
+    var banner = document.getElementById('cookieBanner');
+    if (localStorage.getItem('cookie_consent')) banner.classList.add('hidden');
+    document.getElementById('cookieAccept').addEventListener('click', function () {
+      localStorage.setItem('cookie_consent', 'accepted');
+      banner.classList.add('hidden');
+    });
+    document.getElementById('cookieReject').addEventListener('click', function () {
+      localStorage.setItem('cookie_consent', 'rejected');
+      banner.classList.add('hidden');
+    });
+
+    /* ── Footer legal dropdown ── */
+    var toggle = document.getElementById('legalToggle');
+    var menu   = document.getElementById('legalMenu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', function () {
+        var open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        menu.hidden = open;
+      });
+      document.addEventListener('click', function (e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          toggle.setAttribute('aria-expanded', 'false');
+          menu.hidden = true;
+        }
+      });
+    }
+  })();
+  </script>
+</body>
+</html>
