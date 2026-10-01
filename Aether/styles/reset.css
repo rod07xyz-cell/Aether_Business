@@ -5,7 +5,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -26,9 +25,9 @@ a {
 }
 
 button, input, textarea, select {
+  color: inherit;
   font: inherit;
   border: none;
-  outline: none;
   background: none;
   cursor: pointer;
 }
