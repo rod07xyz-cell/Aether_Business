@@ -163,19 +163,20 @@
   /* ══════════ Menú móvil ══════════ */
   var navToggle = $('#navToggle');
   var navMenu = $('#navMenu');
-  var solToggle = $('#solToggle');
-  function closeDrop() {
-    if (solToggle) solToggle.setAttribute('aria-expanded', 'false');
+  var dropBtns = $$('.nav-drop-btn');
+  function closeDrop(except) {
+    dropBtns.forEach(function (b) { if (b !== except) b.setAttribute('aria-expanded', 'false'); });
   }
-  if (solToggle) {
-    solToggle.addEventListener('click', function (e) {
+  dropBtns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
       e.stopPropagation();
-      solToggle.setAttribute('aria-expanded', String(solToggle.getAttribute('aria-expanded') !== 'true'));
+      closeDrop(btn);
+      btn.setAttribute('aria-expanded', String(btn.getAttribute('aria-expanded') !== 'true'));
     });
-    document.addEventListener('click', function (e) {
-      if (!e.target.closest('.nav-drop')) closeDrop();
-    });
-  }
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-drop')) closeDrop();
+  });
 
   function closeMenu() {
     closeDrop();
@@ -571,6 +572,91 @@
     onSector(function (key) { sectorSel.value = key; reset(key); });
   }
 
+  /* ══════════ Calculadora de huecos vacíos ══════════ */
+  // Cifras de ejemplo por sector (se muestran como ejemplo; el visitante pone las suyas)
+  var CALC_PRESETS = {
+    fisio:  { calcAppts: 60, calcNoShow: 8,  calcPrice: 40, calcPhone: 60, calcRecover: 3 },
+    dental: { calcAppts: 50, calcNoShow: 7,  calcPrice: 60, calcPhone: 75, calcRecover: 3 },
+    gym:    { calcAppts: 40, calcNoShow: 10, calcPrice: 30, calcPhone: 45, calcRecover: 3 },
+    otros:  { calcAppts: 40, calcNoShow: 8,  calcPrice: 40, calcPhone: 45, calcRecover: 3 }
+  };
+  var CONTACT_SECTOR = { fisio: 'Fisioterapia', dental: 'Clínica dental', gym: 'Gimnasio / Centro deportivo' };
+  var PROJECT_PRICE = 1000;   // "desde 1.000 €" (vista Precios)
+  var WEEKS_PER_MONTH = 4.33;
+  var WORKDAYS_PER_MONTH = 22;
+
+  // 12480 → "12.480" (Intl en es-ES no separa los miles de 4 cifras)
+  function num(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+
+  function initCalc() {
+    var form = $('#calcForm');
+    if (!form) return;
+    var inputs = $$('input[type="range"]', form);
+    var v = {};
+
+    function update() {
+      inputs.forEach(function (i) {
+        v[i.id] = Number(i.value);
+        var out = $('#' + i.id + 'Out');
+        out.textContent = num(i.value) + out.getAttribute('data-unit');
+        i.style.setProperty('--fill', ((i.value - i.min) / (i.max - i.min) * 100) + '%');
+      });
+      var lostAppts = v.calcAppts * v.calcNoShow / 100 * WEEKS_PER_MONTH;
+      var loss = lostAppts * v.calcPrice;
+      var hours = v.calcPhone * WORKDAYS_PER_MONTH / 60;
+      var rec = loss * v.calcRecover / 10;
+
+      $('#calcLoss').textContent = num(loss) + ' €';
+      $('#calcLossSub').textContent = '≈ ' + num(lostAppts) + ' citas al mes · ' + num(loss * 12) + ' € al año';
+      $('#calcHours').textContent = num(hours) + ' h';
+      $('#calcRecLabel').textContent = 'Si recuperas ' + v.calcRecover + ' de cada 10 huecos';
+      $('#calcRec').textContent = '+' + num(rec) + ' €/mes';
+
+      var pay = $('#calcPayback');
+      var months = rec > 0 ? Math.ceil(PROJECT_PRICE / rec) : Infinity;
+      pay.classList.toggle('is-warn', months > 24);
+      if (months === Infinity) {
+        pay.textContent = 'Sin huecos recuperados, los recordatorios no se pagan solos. Puede que te compense más automatizar otra cosa: lo vemos en la llamada.';
+      } else if (months > 24) {
+        pay.textContent = 'Con estos números, un proyecto de 1.000 € tardaría más de 2 años en pagarse solo con huecos recuperados. Puede que te compense empezar por otra cosa.';
+      } else {
+        pay.textContent = 'Con estos números, un proyecto de 1.000 € se pagaría en ' +
+          (months <= 1 ? 'menos de un mes' : 'unos ' + months + ' meses') + ' solo con los huecos recuperados.';
+      }
+    }
+
+    function applyPreset(key) {
+      var p = CALC_PRESETS[key];
+      if (!p) return;
+      Object.keys(p).forEach(function (id) { $('#' + id).value = p[id]; });
+      $$('[data-calc-preset]').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.getAttribute('data-calc-preset') === key));
+      });
+      update();
+    }
+
+    form.addEventListener('input', function () {
+      // Al tocar un control dejan de ser las cifras de ejemplo
+      $$('[data-calc-preset]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      update();
+    });
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+    $$('[data-calc-preset]').forEach(function (b) {
+      b.addEventListener('click', function () { setSector(b.getAttribute('data-calc-preset')); });
+    });
+    onSector(applyPreset);
+
+    // Lleva las cuentas al formulario de contacto, si el visitante no ha escrito nada
+    $('#calcCta').addEventListener('click', function () {
+      var msg = $('#cMsg'), sel = $('#cSector');
+      if (msg && !msg.value.trim()) {
+        msg.value = 'Calculadora: ' + v.calcAppts + ' citas a la semana, ' + v.calcNoShow + ' % fallan, ' +
+          v.calcPrice + ' € por cita → unos ' + $('#calcLoss').textContent + ' al mes en huecos vacíos.';
+      }
+      if (sel && !sel.value && CONTACT_SECTOR[sector]) sel.value = CONTACT_SECTOR[sector];
+    });
+  }
+
   /* ══════════ Formulario de contacto ══════════ */
   function initContact() {
     var form = $('#contactForm');
@@ -682,6 +768,12 @@
   // Respuestas preparadas si el servidor del asistente no está disponible
   function localAnswer(q) {
     var t = q.toLowerCase();
+    if (/datos|rgpd|seguridad|privacidad|protecci/.test(t))
+      return 'Firmamos contrato de encargado del tratamiento, los recordatorios no llevan datos clínicos y los datos son tuyos. Lo tienes explicado en [Seguridad y datos](#seguridad).';
+    if (/calcul|compensa|amortiz|pierd|ausenc/.test(t))
+      return 'Puedes hacer la cuenta con los números de tu agenda en la [calculadora de huecos vacíos](#calculadora).';
+    if (/quién|quien|equipo|empresa|fundador/.test(t))
+      return 'Aether es un estudio pequeño: hablas con quien construye tu sistema desde la primera llamada. Más en [Quiénes somos](#nosotros).';
     if (/cuest|precio|cuánto|cuanto|tarifa|pagar|cuota|presupuesto/.test(t))
       return 'Cada solución se hace a medida. Una automatización completa cuesta desde 1.000 €, en un único pago, y el mantenimiento es opcional. Tienes el detalle en [Precios](#planes).';
     if (/cómo|como|trabaj|proceso|pasos|empez/.test(t))
@@ -794,6 +886,7 @@
   initTabs();
   initBooking();
   initChat();
+  initCalc();
   initContact();
   initAssistant();
   initMisc();

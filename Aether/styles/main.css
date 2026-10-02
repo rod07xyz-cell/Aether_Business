@@ -88,7 +88,7 @@ p a, .note a, .form-status a { color: var(--accent); text-decoration: underline;
 .nav-links a[aria-current="page"] { color: var(--text-1); background: rgba(110,168,255,.12); }
 .nav-actions { display: flex; align-items: center; gap: var(--s2); }
 
-/* Desplegable Soluciones */
+/* Desplegables (Soluciones, Empresa) */
 .nav-drop { position: relative; }
 .nav-drop-btn {
   display: flex; align-items: center; gap: 4px;
@@ -433,6 +433,83 @@ html:not(.js) .view[hidden] { display: block; }
 .faq details[open] summary::after { content: "−"; }
 .faq details p { color: var(--text-2); font-size: var(--size-sm); padding-bottom: var(--s4); }
 
+/* ══════════ Aviso destacado (Precios, Seguridad) ══════════ */
+.callout {
+  display: flex; align-items: center; gap: var(--s4);
+  max-width: 880px; margin: 0 auto var(--s8); padding: var(--s4) var(--s5);
+  border-radius: var(--r-xl); background: var(--accent-glow); border: 1px solid rgba(110,168,255,.22);
+}
+.callout .tile-icon { margin: 0; flex-shrink: 0; }
+.callout p { flex: 1; min-width: 0; font-size: var(--size-sm); color: var(--text-2); }
+.callout strong { color: var(--text-1); font-weight: 600; }
+.trust + .callout { margin-top: var(--s8); margin-bottom: 0; }
+
+/* ══════════ Calculadora ══════════ */
+.calc { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--s6); align-items: start; }
+.calc-inputs { display: flex; flex-direction: column; gap: var(--s6); }
+.calc-presets { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); }
+.calc-presets-label { font-size: var(--size-xs); color: var(--text-3); text-transform: uppercase; letter-spacing: .1em; margin-right: var(--s1); }
+.chip-sm { padding: 0.3rem 0.8rem; font-size: var(--size-xs); color: var(--text-2); }
+.chip[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-glow); color: var(--text-1); }
+
+.range-field { display: flex; flex-direction: column; gap: var(--s2); }
+.range-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s4); }
+.range-head label { font-size: var(--size-sm); font-weight: 500; }
+.range-head output { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--accent-2); }
+.range-hint { font-size: var(--size-xs); color: var(--text-3); }
+.range-field input[type="range"] {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: var(--r-full);
+  background: linear-gradient(to right, var(--accent) var(--fill, 50%), rgba(255,255,255,.1) var(--fill, 50%));
+  cursor: pointer;
+}
+.range-field input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--text-1); border: 3px solid var(--accent); box-shadow: 0 0 0 4px var(--accent-glow);
+}
+.range-field input[type="range"]::-moz-range-thumb {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--text-1); border: 3px solid var(--accent); box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+.calc-results {
+  position: sticky; top: calc(64px + var(--s4));
+  display: flex; flex-direction: column; gap: var(--s3);
+  border-color: rgba(110,168,255,.3); background: linear-gradient(180deg, rgba(110,168,255,.07), var(--bg-2) 55%);
+}
+.calc-label { font-size: var(--size-sm); color: var(--text-2); }
+.calc-big { font-size: clamp(2.25rem, 5vw, 3rem); font-weight: 700; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.calc-sub { font-size: var(--size-sm); color: var(--text-3); }
+.calc-rows { display: flex; flex-direction: column; margin-block: var(--s2); border-top: 1px solid var(--border); }
+.calc-row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s4); padding-block: var(--s3); border-bottom: 1px solid var(--border); font-size: var(--size-sm); }
+.calc-row dt { color: var(--text-2); }
+.calc-row dd { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.calc-payback { font-size: var(--size-sm); color: var(--text-1); padding: var(--s3) var(--s4); border-radius: var(--r-md); background: rgba(52,211,153,.08); border: 1px solid rgba(52,211,153,.25); }
+.calc-payback.is-warn { background: rgba(251,191,36,.08); border-color: rgba(251,191,36,.25); }
+.calc-note { font-size: var(--size-xs); color: var(--text-3); }
+
+/* ══════════ Quiénes somos ══════════ */
+.about { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: var(--s8); align-items: start; }
+.about-person { display: flex; flex-direction: column; align-items: center; gap: var(--s4); text-align: center; }
+.about-photo {
+  width: 112px; height: 112px; border-radius: 50%; object-fit: cover;
+  display: grid; place-items: center; font-size: var(--size-3xl); font-weight: 700; letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--accent), #3B6FD8); color: #fff;
+  box-shadow: 0 0 0 6px var(--accent-glow);
+}
+.about-name { font-size: var(--size-lg); font-weight: 600; }
+.about-role { font-size: var(--size-sm); color: var(--text-3); }
+.about-links { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s2); }
+.about-text { display: flex; flex-direction: column; gap: var(--s4); max-width: 680px; color: var(--text-2); font-size: var(--size-lg); }
+.values { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s4); margin-top: var(--s4); }
+.values li { display: flex; flex-direction: column; gap: var(--s1); padding-top: var(--s4); border-top: 1px solid var(--border); font-size: var(--size-sm); }
+.values strong { color: var(--text-1); font-weight: 600; font-size: var(--size-base); }
+
+/* ══════════ Seguridad ══════════ */
+.trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s4); }
+.trust-item { padding: var(--s6); border-radius: var(--r-xl); background: var(--bg-2); border: 1px solid var(--border); }
+.trust-title { font-size: var(--size-base); font-weight: 600; line-height: 1.3; }
+.trust-desc { font-size: var(--size-sm); color: var(--text-2); margin-top: var(--s2); }
+
 /* ══════════ Contacto ══════════ */
 .contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--s6); align-items: start; }
 .card { padding: var(--s6); border-radius: var(--r-xl); background: var(--bg-2); border: 1px solid var(--border); }
@@ -573,7 +650,7 @@ textarea.input { resize: vertical; min-height: 90px; }
   .nav-links { flex-direction: column; }
   .nav-links a { padding: 0.75rem 0.75rem; font-size: var(--size-base); border-radius: var(--r-md); }
   .nav-drop-btn { display: none; }
-  .nav-drop::before { content: "Soluciones"; display: block; padding: 0.75rem 0.75rem 0.25rem; font-size: var(--size-xs); text-transform: uppercase; letter-spacing: .1em; color: var(--text-3); }
+  .nav-drop::before { content: attr(data-label); display: block; padding: 0.75rem 0.75rem 0.25rem; font-size: var(--size-xs); text-transform: uppercase; letter-spacing: .1em; color: var(--text-3); }
   .nav-drop-menu a { padding-left: 1.25rem; }
   .nav-drop-menu, .nav-drop-btn[aria-expanded="true"] + .nav-drop-menu {
     display: block; position: static; transform: none; width: auto; padding: 0;
@@ -590,6 +667,9 @@ textarea.input { resize: vertical; min-height: 90px; }
   .hero { grid-template-columns: 1fr; gap: var(--s8); }
   .hero-visual { display: none; }
   .solutions, .plans, .plans--two, .how { grid-template-columns: 1fr; }
+  .calc, .about { grid-template-columns: minmax(0, 1fr); }
+  .calc-results { position: static; }
+  .trust { grid-template-columns: repeat(2, 1fr); }
   .plans { gap: var(--s6); }
   .demo-layout, .demo-layout--chat, .contact-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
@@ -605,6 +685,9 @@ textarea.input { resize: vertical; min-height: 90px; }
   .tabs { display: grid; grid-template-columns: 1fr 1fr; width: 100%; border-radius: var(--r-xl); }
   .tab { border-radius: var(--r-lg); }
   .tiles { grid-template-columns: 1fr; }
+  .trust, .values { grid-template-columns: 1fr; }
+  .callout { flex-wrap: wrap; }
+  .callout .btn { width: 100%; }
   .bk-services { grid-template-columns: 1fr; }
   .bk-days { grid-template-columns: repeat(3, 1fr); }
   .booking-head { padding: var(--s4); }
