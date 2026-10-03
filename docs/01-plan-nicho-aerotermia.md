@@ -457,6 +457,8 @@ Google no penaliza el contenido por estar hecho con IA, sino el contenido **sin 
 
 ### 9.1 Dominio sugerido
 
+> **Decisión tomada:** se usará el dominio ya disponible **zfan.xyz** como marca neutra (permite expandir a otros nichos de hogar eficiente). Hosting: Hostinger. Las propuestas de abajo quedan solo como referencia.
+
 Criterios: corto, fácil de recordar, sin guiones, .com. Comprueba la disponibilidad en el registrador; algunas propuestas:
 
 1. **guiaaerotermia.com**

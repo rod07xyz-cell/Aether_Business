@@ -4,10 +4,12 @@ Basado en el plan `01-plan-nicho-aerotermia.md`. Marca cada paso al completarlo.
 
 ## A. Lo que tienes que hacer tú (requiere tu cuenta, tarjeta o identidad)
 
-- [ ] **Elegir dominio** (ver sección 9.1 del plan) y comprobar disponibilidad.
-- [ ] **Comprar dominio** (.com) en el registrador que elijas (Namecheap, etc.).
-- [ ] **Contratar hosting** optimizado para WordPress (o un plan de WordPress.com con plugins).
-- [ ] **Instalar WordPress** desde el panel del hosting (instalador de 1 clic).
+- [x] **Dominio**: `zfan.xyz` (ya comprado).
+- [ ] Comprobar historial del dominio: buscar `site:zfan.xyz` en Google y revisarlo en web.archive.org (que no se usara antes para spam).
+- [ ] **Contratar hosting en Hostinger** (plan Premium o Business de WordPress). No hace falta el dominio gratis del plan.
+- [ ] Añadir `zfan.xyz` en hPanel y apuntar los nameservers del registrador a los que indique Hostinger (o registro A a la IP del hosting).
+- [ ] Activar SSL gratuito (HTTPS) y forzar redirección a https.
+- [ ] **Instalar WordPress** desde hPanel (instalador automático).
 - [ ] Crear cuenta de **Google Search Console** y verificar el dominio.
 - [ ] Crear cuenta de **Google AdSense** (cuando haya 30‑40 artículos y páginas legales).
 - [ ] Rellenar tus **datos reales** en las páginas legales (titular, NIF/email de contacto).
@@ -16,7 +18,7 @@ Basado en el plan `01-plan-nicho-aerotermia.md`. Marca cada paso al completarlo.
 ## B. Configuración de WordPress
 
 - [ ] Tema ligero: GeneratePress / Astra.
-- [ ] Plugins: Rank Math (SEO), LiteSpeed Cache o WP Super Cache (caché), Wordfence o Solid Security (seguridad), Complianz (cookies/RGPD).
+- [ ] Plugins: Rank Math (SEO), LiteSpeed Cache (caché; Hostinger usa servidores LiteSpeed), Wordfence o Solid Security (seguridad), Complianz (cookies/RGPD).
 - [ ] Ajustes → Enlaces permanentes → **Nombre de la entrada**.
 - [ ] Borrar «Hola mundo», página de ejemplo y comentario por defecto.
 - [ ] Crear páginas: Inicio, Sobre nosotros, Contacto, Política de privacidad, Aviso legal, Política de cookies.
