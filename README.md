@@ -52,3 +52,4 @@ npm run build   # genera dist/
 - Build command: `npm run build`
 - Build output directory: `dist`
 - Rama de producción: `Proyecto_AdSense`
+- Variable de entorno: `NODE_VERSION` = `22` (Astro necesita Node 22.12 o superior; también lo indica `.nvmrc`)
