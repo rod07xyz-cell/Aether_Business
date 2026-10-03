@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { SITE, CATEGORIES } from '../consts';
+
+const posts = (await getCollection('articulos')).filter((a) => !a.data.draft);
+const pick = (cat: string) => posts.find((p) => p.data.pillar && p.data.category === cat);
+const top = ['precios', 'consumo', 'ayudas'].map(pick).filter((p) => p !== undefined);
+const latest = [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 6);
+const jsonLd = [{ '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: `${SITE.url}/`, inLanguage: 'es-ES' }];
+---
+<Base title={SITE.tagline} jsonLd={jsonLd}>
+  <section class="hero">
+    <h1>Todo lo que necesitas saber antes de instalar aerotermia</h1>
+    <p>Precios reales, consumo, ayudas y comparativas independientes, explicados de forma clara para que tomes la mejor decisión para tu casa.</p>
+    {top[0] && <a class="btn" href={`/${top[0].id}/`}>¿Cuánto cuesta la aerotermia?</a>}
+  </section>
+
+  {top.length > 0 && (
+    <section>
+      <h2>Las tres dudas principales</h2>
+      <div class="grid">{top.map((p) => <ArticleCard id={p.id} title={p.data.title} description={p.data.description} category={p.data.category} />)}</div>
+    </section>
+  )}
+
+  <section>
+    <h2>Explora por temas</h2>
+    <div class="grid">
+      {CATEGORIES.map((c) => (
+        <a class="card" href={`/categoria/${c.slug}/`}><h3>{c.name}</h3><p>{c.description}</p></a>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <h2>Últimas guías</h2>
+    <div class="grid">{latest.map((p) => <ArticleCard id={p.id} title={p.data.title} description={p.data.description} category={p.data.category} />)}</div>
+  </section>
+
+  <section class="page">
+    <h2>Quiénes somos</h2>
+    <p>{SITE.name} es un proyecto independiente: no vendemos ni instalamos equipos. Recopilamos precios, fichas técnicas, normativa y experiencias de usuarios para explicar la aerotermia sin tecnicismos innecesarios. <a href="/sobre-nosotros/">Conoce cómo trabajamos</a>.</p>
+  </section>
+</Base>

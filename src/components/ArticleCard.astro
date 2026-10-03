@@ -1,0 +1,10 @@
+---
+import { categoryBySlug } from '../consts';
+interface Props { id: string; title: string; description: string; category: string }
+const { id, title, description, category } = Astro.props;
+---
+<a class="card" href={`/${id}/`}>
+  <span class="tag">{categoryBySlug(category).name}</span>
+  <h3>{title}</h3>
+  <p>{description}</p>
+</a>

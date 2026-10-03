@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../consts';
+---
+<Base title="Contacto" description={`Contacta con ${SITE.name} para correcciones, sugerencias o colaboraciones.`}>
+  <div class="page">
+    <h1>Contacto</h1>
+    <p>Puedes escribirnos para:</p>
+    <ul>
+      <li>Avisarnos de un dato incorrecto o desactualizado.</li>
+      <li>Proponer un tema que quieras que expliquemos.</li>
+      <li>Compartir tu experiencia (consumo, precio, instalación) con la aerotermia.</li>
+      <li>Propuestas de colaboración profesional.</li>
+    </ul>
+    <p><strong>Correo:</strong> <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+    <p class="muted">No damos asesoramiento técnico personalizado ni presupuestos. Para eso, contacta con un instalador habilitado de tu zona. Tratamos tus datos según nuestra <a href="/politica-de-privacidad/">política de privacidad</a>.</p>
+  </div>
+</Base>

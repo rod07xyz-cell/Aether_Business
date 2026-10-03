@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../consts';
+---
+<Base title="Aviso legal" description="Aviso legal y condiciones de uso del sitio web.">
+  <div class="page">
+    <h1>Aviso legal</h1>
+    <h2>1. Datos identificativos</h2>
+    <p>En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI‑CE), se informa de que el titular de este sitio web es:</p>
+    <ul>
+      <li><strong>Titular:</strong> {SITE.owner}</li>
+      <li><strong>Sitio web:</strong> {SITE.url.replace('https://', '')}</li>
+      <li><strong>Correo electrónico:</strong> <a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+    </ul>
+
+    <h2>2. Objeto</h2>
+    <p>Este sitio web ofrece información divulgativa sobre aerotermia, bombas de calor, eficiencia energética en la vivienda y temas relacionados. El acceso es gratuito y no requiere registro.</p>
+
+    <h2>3. Condiciones de uso</h2>
+    <p>El usuario se compromete a hacer un uso adecuado de los contenidos y a no emplearlos para actividades ilícitas o contrarias a la buena fe.</p>
+
+    <h2>4. Responsabilidad</h2>
+    <p>Los contenidos tienen carácter informativo y orientativo. Los precios, consumos, ayudas y normativa pueden variar y deben confirmarse con profesionales habilitados y fuentes oficiales. El titular no se hace responsable de las decisiones tomadas a partir de la información publicada ni de los daños derivados de su uso.</p>
+    <p>El titular no se responsabiliza del contenido de los sitios web externos a los que se enlace.</p>
+
+    <h2>5. Propiedad intelectual</h2>
+    <p>Los textos, diseño y elementos propios de este sitio son propiedad del titular o se usan con licencia. Se permite citar fragmentos enlazando a la fuente original. Queda prohibida la reproducción total sin autorización.</p>
+
+    <h2>6. Publicidad y afiliación</h2>
+    <p>Este sitio muestra publicidad de terceros (Google AdSense) y puede incluir enlaces de afiliado, por los que el titular puede recibir una comisión sin coste adicional para el usuario.</p>
+
+    <h2>7. Legislación aplicable</h2>
+    <p>Este aviso legal se rige por la legislación española.</p>
+  </div>
+</Base>

@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { CATEGORIES } from '../../consts';
+
+export function getStaticPaths() {
+  return CATEGORIES.map((c) => ({ params: { cat: c.slug }, props: { cat: c } }));
+}
+const { cat } = Astro.props;
+const posts = (await getCollection('articulos'))
+  .filter((a) => !a.data.draft && a.data.category === cat.slug)
+  .sort((a, b) => Number(b.data.pillar) - Number(a.data.pillar) || b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Base title={`${cat.name}: aerotermia`} description={cat.description}>
+  <nav class="breadcrumbs"><a href="/">Inicio</a> › {cat.name}</nav>
+  <h1>{cat.name}</h1>
+  <p class="muted">{cat.description}</p>
+  {posts.length ? (
+    <div class="grid">{posts.map((p) => <ArticleCard id={p.id} title={p.data.title} description={p.data.description} category={p.data.category} />)}</div>
+  ) : (
+    <p>Estamos preparando las primeras guías de esta sección. Vuelve pronto.</p>
+  )}
+</Base>

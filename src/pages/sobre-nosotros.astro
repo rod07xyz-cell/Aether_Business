@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../consts';
+---
+<Base title="Sobre nosotros" description={`Quién está detrás de ${SITE.name}, cómo elaboramos las guías de aerotermia y de dónde salen los datos.`}>
+  <div class="page">
+    <h1>Sobre nosotros</h1>
+    <p><strong>{SITE.name}</strong> es una guía independiente sobre aerotermia y bombas de calor para la vivienda, creada y editada por <strong>{SITE.owner}</strong>.</p>
+    <p>La idea nace de una pregunta muy común: <em>«¿Me compensa poner aerotermia en casa y cuánto me va a costar de verdad?»</em>. La información disponible suele venir de fabricantes o instaladores que quieren vender, o de foros con opiniones contradictorias. Aquí intentamos ordenar todo eso de forma clara y sin intereses ocultos.</p>
+
+    <h2>Cómo elaboramos el contenido</h2>
+    <ul>
+      <li><strong>Fuentes oficiales</strong> para normativa, ayudas y fiscalidad: BOE, Agencia Tributaria, IDAE y organismos autonómicos.</li>
+      <li><strong>Fichas técnicas</strong> de los fabricantes para rendimientos (COP, SCOP), potencias y rangos de funcionamiento.</li>
+      <li><strong>Precios orientativos</strong> a partir de presupuestos y tarifas públicas, siempre expresados en rangos porque cada vivienda es distinta.</li>
+      <li><strong>Revisión y actualización</strong>: los artículos de precios y ayudas se revisan periódicamente y muestran su fecha de actualización.</li>
+    </ul>
+
+    <h2>Independencia y publicidad</h2>
+    <p>No vendemos ni instalamos equipos. La web se financia con publicidad (Google AdSense) y, en algunos casos, con enlaces de afiliado que se indicarán claramente. Ningún anunciante decide lo que publicamos.</p>
+
+    <h2>Aviso importante</h2>
+    <p>La información de esta web es divulgativa y orientativa. Antes de cualquier instalación pide presupuesto y estudio a un instalador habilitado, y consulta en los organismos oficiales la vigencia de cualquier ayuda o deducción.</p>
+
+    <p>¿Has encontrado un error o quieres compartir tu experiencia con la aerotermia? <a href="/contacto/">Escríbenos</a>.</p>
+  </div>
+</Base>

@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../consts';
+---
+<Base title="Política de privacidad" description="Cómo tratamos tus datos personales conforme al RGPD y la LOPDGDD.">
+  <div class="page">
+    <h1>Política de privacidad</h1>
+    <p class="muted">Última actualización: octubre de 2026.</p>
+
+    <h2>1. Responsable del tratamiento</h2>
+    <ul>
+      <li><strong>Responsable:</strong> {SITE.owner}</li>
+      <li><strong>Correo de contacto:</strong> <a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+    </ul>
+
+    <h2>2. Qué datos tratamos y para qué</h2>
+    <ul>
+      <li><strong>Datos que nos envías por correo electrónico</strong> (nombre, dirección de correo y el contenido del mensaje): para responder a tu consulta. Base legal: tu consentimiento al escribirnos (art. 6.1.a RGPD).</li>
+      <li><strong>Datos de navegación</strong> (dirección IP, identificadores de cookies, tipo de navegador, páginas visitadas): para el funcionamiento técnico y la seguridad del sitio (interés legítimo, art. 6.1.f RGPD) y, solo si das tu consentimiento, para mostrar publicidad y medir audiencias.</li>
+    </ul>
+
+    <h2>3. Publicidad: Google AdSense</h2>
+    <p>Esta web usa Google AdSense, un servicio de Google Ireland Limited. Google y sus socios pueden usar cookies para mostrar anuncios basados en tus visitas a este y otros sitios web. Puedes obtener más información y gestionar tus preferencias en <a href="https://policies.google.com/technologies/partner-sites?hl=es" rel="nofollow">Cómo utiliza Google la información de sitios que usan sus servicios</a> y en <a href="https://adssettings.google.com/" rel="nofollow">Configuración de anuncios de Google</a>.</p>
+    <p>Los anuncios personalizados solo se muestran si los aceptas en el aviso de consentimiento. Si los rechazas, Google puede mostrar anuncios no personalizados.</p>
+
+    <h2>4. Encargados del tratamiento y transferencias</h2>
+    <ul>
+      <li><strong>Cloudflare, Inc.</strong>: alojamiento web, red de distribución y seguridad.</li>
+      <li><strong>Google Ireland Limited</strong>: publicidad (AdSense) y servicios de correo.</li>
+    </ul>
+    <p>Algunos de estos proveedores pueden transferir datos fuera del Espacio Económico Europeo, amparados en el Marco de Privacidad de Datos UE‑EE. UU. o en cláusulas contractuales tipo aprobadas por la Comisión Europea.</p>
+
+    <h2>5. Conservación</h2>
+    <p>Los correos se conservan el tiempo necesario para atender la consulta y, después, durante los plazos legales aplicables. Los datos de cookies se conservan según lo indicado en la <a href="/politica-de-cookies/">política de cookies</a>.</p>
+
+    <h2>6. Tus derechos</h2>
+    <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad, y retirar tu consentimiento en cualquier momento, escribiendo a <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Si consideras que no se han respetado tus derechos, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" rel="nofollow">www.aepd.es</a>).</p>
+
+    <h2>7. Menores</h2>
+    <p>Este sitio no está dirigido a menores de 14 años y no recoge conscientemente sus datos.</p>
+  </div>
+</Base>

@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../consts';
+---
+<Base title="Política de cookies" description="Qué cookies utiliza este sitio web y cómo puedes gestionarlas.">
+  <div class="page">
+    <h1>Política de cookies</h1>
+    <p class="muted">Última actualización: octubre de 2026.</p>
+
+    <h2>¿Qué son las cookies?</h2>
+    <p>Son pequeños archivos que un sitio web guarda en tu navegador para recordar información sobre tu visita. Pueden ser propias o de terceros, y de sesión o persistentes.</p>
+
+    <h2>Cookies que usa este sitio</h2>
+    <table>
+      <thead><tr><th>Tipo</th><th>Proveedor</th><th>Finalidad</th><th>¿Requiere consentimiento?</th></tr></thead>
+      <tbody>
+        <tr><td>Técnicas y de seguridad</td><td>Cloudflare</td><td>Proteger el sitio frente a tráfico malicioso y garantizar su funcionamiento.</td><td>No</td></tr>
+        <tr><td>Consentimiento</td><td>Google</td><td>Recordar tus preferencias sobre cookies.</td><td>No</td></tr>
+        <tr><td>Publicidad</td><td>Google AdSense y sus socios</td><td>Mostrar anuncios, limitar su repetición, medir su rendimiento y, si lo aceptas, personalizarlos.</td><td>Sí</td></tr>
+      </tbody>
+    </table>
+    <p>La lista de socios publicitarios de Google y sus cookies está disponible en <a href="https://business.safety.google/adscookies/" rel="nofollow">la información de Google sobre cookies publicitarias</a>.</p>
+
+    <h2>Cómo gestionar las cookies</h2>
+    <p>Al entrar por primera vez verás un aviso para aceptar, rechazar o configurar las cookies no necesarias. Puedes cambiar tu decisión en cualquier momento desde el enlace de privacidad que aparece en la web o borrando las cookies de tu navegador:</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647?hl=es" rel="nofollow">Chrome</a></li>
+      <li><a href="https://support.mozilla.org/es/kb/Borrar%20cookies" rel="nofollow">Firefox</a></li>
+      <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" rel="nofollow">Safari</a></li>
+      <li><a href="https://support.microsoft.com/es-es/microsoft-edge" rel="nofollow">Edge</a></li>
+    </ul>
+
+    <h2>Contacto</h2>
+    <p>Para cualquier duda sobre esta política escribe a <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+  </div>
+</Base>
