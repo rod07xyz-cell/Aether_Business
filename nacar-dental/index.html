@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Nácar Clínica Dental · Chamberí, Madrid</title>
+  <meta name="description" content="Odontología general y estética en Chamberí, Madrid. Primera visita sin compromiso, presupuesto cerrado y sedación consciente para quien lo pasa mal en el dentista.">
+  <meta name="theme-color" content="#f3f5f4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1211" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/icons/phosphor-light.css">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    /* Tema antes del primer pintado para evitar parpadeo */
+    try {
+      var t = localStorage.getItem('nacar-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+    } catch (e) {}
+    document.documentElement.classList.add('js');
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- NAV: isla flotante -->
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="Principal">
+      <a class="brand" href="#inicio" aria-label="Nácar Clínica Dental, inicio">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10.5 22V10.5l11 11V10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Nácar</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#tratamientos">Tratamientos</a></li>
+        <li><a href="#sin-miedo">Sin miedo</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Cambiar entre modo claro y oscuro">
+          <i class="ph-light ph-sun" aria-hidden="true"></i>
+          <i class="ph-light ph-moon" aria-hidden="true"></i>
+        </button>
+        <a class="btn btn-primary btn-sm nav-cta" href="#cita">Pedir cita</a>
+        <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil">
+          <span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu" id="menu-movil" hidden>
+    <ul>
+      <li><a href="#tratamientos">Tratamientos</a></li>
+      <li><a href="#sin-miedo">Sin miedo</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
+      <li><a href="#cita">Pedir cita</a></li>
+    </ul>
+    <p class="mobile-menu-foot">
+      <a href="tel:+34913482716"><i class="ph-light ph-phone" aria-hidden="true"></i> 913 48 27 16</a>
+    </p>
+  </div>
+
+  <main id="contenido">
+
+    <!-- HERO: split asimétrico -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="pill-eyebrow"><i class="ph-light ph-map-pin" aria-hidden="true"></i> Clínica dental en Chamberí, Madrid</p>
+          <h1 class="hero-title" data-split>Volver al dentista, esta vez <em>sin miedo.</em></h1>
+          <p class="hero-sub">Odontología general y estética en Chamberí. Te explicamos cada paso, sin prisas y con el precio cerrado antes de empezar.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#cita">
+              Pedir cita
+              <span class="btn-icon" aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span>
+            </a>
+            <a class="btn btn-ghost" href="#tratamientos">Ver tratamientos</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="bezel bezel-hero">
+            <figure class="media media-hero">
+              <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1400&q=80"
+                   alt="Gabinete luminoso de la clínica con el sillón dental preparado"
+                   width="1400" height="1750" fetchpriority="high" decoding="async" data-fallback-icon="tooth">
+            </figure>
+          </div>
+
+          <aside class="slot-card" aria-label="Próxima cita disponible">
+            <div class="slot-card-icon"><i class="ph-light ph-calendar-check" aria-hidden="true"></i></div>
+            <div class="slot-card-text">
+              <span class="slot-card-label">Primer hueco libre</span>
+              <strong class="slot-card-time" data-next-slot>Mañana, 10:30</strong>
+            </div>
+            <a class="btn btn-primary btn-sm" href="#cita" data-book-next>Reservar</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE: única cinta de la página -->
+    <section class="marquee" aria-label="Tratamientos que ofrecemos">
+      <div class="marquee-track">
+        <ul class="marquee-list">
+          <li><i class="ph-light ph-tooth" aria-hidden="true"></i> Implantes</li>
+          <li><i class="ph-light ph-sparkle" aria-hidden="true"></i> Carillas</li>
+          <li><i class="ph-light ph-smiley" aria-hidden="true"></i> Ortodoncia invisible</li>
+          <li><i class="ph-light ph-drop" aria-hidden="true"></i> Higiene dental</li>
+          <li><i class="ph-light ph-baby" aria-hidden="true"></i> Odontopediatría</li>
+          <li><i class="ph-light ph-first-aid" aria-hidden="true"></i> Urgencias</li>
+          <li><i class="ph-light ph-sun" aria-hidden="true"></i> Blanqueamiento</li>
+          <li><i class="ph-light ph-heartbeat" aria-hidden="true"></i> Periodoncia</li>
+        </ul>
+        <ul class="marquee-list" aria-hidden="true">
+          <li><i class="ph-light ph-tooth"></i> Implantes</li>
+          <li><i class="ph-light ph-sparkle"></i> Carillas</li>
+          <li><i class="ph-light ph-smiley"></i> Ortodoncia invisible</li>
+          <li><i class="ph-light ph-drop"></i> Higiene dental</li>
+          <li><i class="ph-light ph-baby"></i> Odontopediatría</li>
+          <li><i class="ph-light ph-first-aid"></i> Urgencias</li>
+          <li><i class="ph-light ph-sun"></i> Blanqueamiento</li>
+          <li><i class="ph-light ph-heartbeat"></i> Periodoncia</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TRATAMIENTOS: bento de 6 celdas -->
+    <section class="section" id="tratamientos">
+      <div class="container">
+        <h2 class="section-title reveal">Todo lo que tu boca necesita, en un mismo sitio.</h2>
+        <p class="section-lede reveal">Seis especialidades bajo el mismo techo, con el mismo equipo de principio a fin.</p>
+
+        <div class="bento">
+          <a class="bento-cell bento-implant reveal" href="#cita" data-treatment="Implantes">
+            <figure class="media">
+              <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80"
+                   alt="Odontóloga revisando la boca de una paciente" loading="lazy" decoding="async" width="1200" height="900" data-fallback-icon="tooth">
+            </figure>
+            <div class="bento-body on-image">
+              <h3>Implantes dentales</h3>
+              <p>Planificación guiada por escáner 3D y carga inmediata cuando el hueso lo permite.</p>
+              <span class="bento-price">desde 890 €</span>
+            </div>
+            <span class="bento-arrow" aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span>
+          </a>
+
+          <a class="bento-cell bento-ortho reveal" href="#cita" data-treatment="Ortodoncia invisible">
+            <figure class="media">
+              <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=900&q=80"
+                   alt="Paciente sonriendo tras su revisión" loading="lazy" decoding="async" width="900" height="1100" data-fallback-icon="smiley">
+            </figure>
+            <div class="bento-body on-image">
+              <h3>Ortodoncia invisible</h3>
+              <p>Alineadores transparentes con revisiones cada seis semanas.</p>
+              <span class="bento-price">desde 2.450 €</span>
+            </div>
+            <span class="bento-arrow" aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span>
+          </a>
+
+          <a class="bento-cell bento-veneer reveal" href="#cita" data-treatment="Carillas">
+            <div class="bento-body">
+              <i class="ph-light ph-sparkle bento-icon" aria-hidden="true"></i>
+              <h3>Carillas y estética</h3>
+              <p>Diseño digital de la sonrisa: la ves en pantalla antes de decidir.</p>
+              <span class="bento-price">desde 320 € / pieza</span>
+            </div>
+            <span class="bento-arrow" aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span>
+          </a>
+
+          <a class="bento-cell bento-kids reveal" href="#cita" data-treatment="Odontopediatría">
+            <div class="bento-body">
+              <i class="ph-light ph-baby bento-icon" aria-hidden="true"></i>
+              <h3>Odontopediatría</h3>
+              <p>Primera visita a partir del año, con tiempo para jugar antes de mirar.</p>
+              <span class="bento-price">desde 35 €</span>
+            </div>
+            <span class="bento-arrow" aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span>
+          </a>
+
+          <a class="bento-cell bento-hygiene reveal" href="#cita" data-treatment="Higiene dental">
+            <div class="bento-body">
+              <i class="ph-light ph-drop bento-icon" aria-hidden="true"></i>
+              <h3>Higiene y prevención</h3>
+              <p>Limpieza con ultrasonidos y aeropulidor, sin rascar de más.</p>
+              <span class="bento-price">45 €</span>
+            </div>
+            <span class="bento-arrow" aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span>
+          </a>
+
+          <a class="bento-cell bento-urgent reveal" href="tel:+34913482716">
+            <div class="bento-body">
+              <i class="ph-light ph-first-aid bento-icon" aria-hidden="true"></i>
+              <h3>Urgencias el mismo día</h3>
+              <p>Si te duele, llámanos antes de las 13:00 y te vemos hoy.</p>
+              <span class="bento-price bento-phone"><i class="ph-light ph-phone" aria-hidden="true"></i> 913 48 27 16</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIN MIEDO: sticky split con raíl de progreso -->
+    <section class="section fear" id="sin-miedo">
+      <div class="container fear-grid">
+        <div class="fear-sticky">
+          <h2 class="section-title">Pensada para quien lo pasa mal en el dentista.</h2>
+          <p class="section-lede">Si te pones nervioso solo de pensarlo, no eres el único. Aquí la visita se adapta a ti, y no al revés.</p>
+          <a class="btn btn-ghost" href="#cita">Pedir cita</a>
+        </div>
+
+        <ol class="fear-list" style="--steps: 4">
+          <li class="fear-item">
+            <span class="fear-icon"><i class="ph-light ph-coffee" aria-hidden="true"></i></span>
+            <div>
+              <h3>Una primera visita sin tocar nada</h3>
+              <p>Hablamos, miramos el escáner en pantalla y te vas con un plan. Nada de instrumentos si no quieres.</p>
+            </div>
+          </li>
+          <li class="fear-item">
+            <span class="fear-icon"><i class="ph-light ph-hand-heart" aria-hidden="true"></i></span>
+            <div>
+              <h3>Una señal para parar</h3>
+              <p>Levantas la mano y paramos. Siempre. Lo acordamos antes de empezar.</p>
+            </div>
+          </li>
+          <li class="fear-item">
+            <span class="fear-icon"><i class="ph-light ph-headphones" aria-hidden="true"></i></span>
+            <div>
+              <h3>Auriculares, manta y luz cálida</h3>
+              <p>Gabinetes silenciosos, tu música y anestesia computerizada que casi no se nota.</p>
+            </div>
+          </li>
+          <li class="fear-item">
+            <span class="fear-icon"><i class="ph-light ph-syringe" aria-hidden="true"></i></span>
+            <div>
+              <h3>Sedación consciente si la necesitas</h3>
+              <p>Con anestesista en la clínica. Estás despierta o despierto, pero tranquilo.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ANTES / DESPUÉS: comparador -->
+    <section class="section compare-section" id="resultados">
+      <div class="container compare-grid">
+        <div class="compare-copy reveal">
+          <h2 class="section-title">Arrastra para ver el cambio.</h2>
+          <p class="section-lede">Blanqueamiento y cuatro carillas de cerámica en dos sesiones. Caso de ejemplo con imagen ilustrativa.</p>
+          <dl class="compare-facts">
+            <div><dt>Sesiones</dt><dd>2</dd></div>
+            <div><dt>Duración</dt><dd>3 semanas</dd></div>
+            <div><dt>Anestesia</dt><dd>Local, mínima</dd></div>
+          </dl>
+        </div>
+
+        <div class="bezel compare-bezel reveal">
+          <div class="compare" style="--pos: 50%">
+            <figure class="media compare-after">
+              <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1400&q=80"
+                   alt="Sonrisa después del tratamiento" loading="lazy" decoding="async" width="1400" height="1000" data-fallback-icon="sparkle">
+            </figure>
+            <figure class="media compare-before" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1400&q=80"
+                   alt="" loading="lazy" decoding="async" width="1400" height="1000" data-fallback-icon="tooth">
+            </figure>
+            <span class="compare-tag compare-tag-before">Antes</span>
+            <span class="compare-tag compare-tag-after">Después</span>
+            <div class="compare-handle" aria-hidden="true"><i class="ph-light ph-arrows-left-right"></i></div>
+            <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPO: carrusel horizontal -->
+    <section class="section team" id="equipo">
+      <div class="container team-head">
+        <h2 class="section-title reveal">Cuatro doctoras y doctores. Siempre los mismos.</h2>
+        <div class="team-controls">
+          <button class="icon-btn" type="button" data-scroll="-1" aria-label="Anterior"><i class="ph-light ph-caret-left" aria-hidden="true"></i></button>
+          <button class="icon-btn" type="button" data-scroll="1" aria-label="Siguiente"><i class="ph-light ph-caret-right" aria-hidden="true"></i></button>
+        </div>
+      </div>
+
+      <ul class="team-track" tabindex="0" aria-label="Equipo médico">
+        <li class="doctor">
+          <figure class="media doctor-photo">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+                 alt="Retrato de la doctora Lucía Arrieta" loading="lazy" decoding="async" width="800" height="1000" data-fallback-initials="LA">
+          </figure>
+          <h3>Dra. Lucía Arrieta</h3>
+          <p>Directora médica. Implantología y cirugía oral.</p>
+          <span class="doctor-meta">Col. 28-04512</span>
+        </li>
+        <li class="doctor">
+          <figure class="media doctor-photo">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=80"
+                 alt="Retrato del doctor Mateo Villanueva" loading="lazy" decoding="async" width="800" height="1000" data-fallback-initials="MV">
+          </figure>
+          <h3>Dr. Mateo Villanueva</h3>
+          <p>Ortodoncia invisible y alineadores.</p>
+          <span class="doctor-meta">Col. 28-06139</span>
+        </li>
+        <li class="doctor">
+          <figure class="media doctor-photo">
+            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=800&q=80"
+                 alt="Retrato de la doctora Inés Caballero" loading="lazy" decoding="async" width="800" height="1000" data-fallback-initials="IC">
+          </figure>
+          <h3>Dra. Inés Caballero</h3>
+          <p>Estética dental y carillas de cerámica.</p>
+          <span class="doctor-meta">Col. 28-07784</span>
+        </li>
+        <li class="doctor">
+          <figure class="media doctor-photo">
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80"
+                 alt="Retrato del doctor Álvaro Quintana" loading="lazy" decoding="async" width="800" height="1000" data-fallback-initials="ÁQ">
+          </figure>
+          <h3>Dr. Álvaro Quintana</h3>
+          <p>Odontopediatría y anestesia en sedación consciente.</p>
+          <span class="doctor-meta">Col. 28-08321</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- OPINIONES: cita única con selector -->
+    <section class="section reviews" aria-labelledby="opiniones-titulo">
+      <div class="container reviews-grid">
+        <div class="reviews-score reveal">
+          <h2 id="opiniones-titulo" class="visually-hidden">Opiniones de pacientes</h2>
+          <p class="score-number">4,9</p>
+          <p class="score-stars" aria-label="4,9 de 5 estrellas">
+            <i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i>
+          </p>
+          <p class="score-caption">1.287 reseñas en Google</p>
+        </div>
+
+        <div class="quotes" data-quotes>
+          <figure class="quote is-active" data-quote="0">
+            <blockquote><p>“Llevaba ocho años sin ir al dentista por pánico. La primera visita fue solo hablar, y eso lo cambió todo.”</p></blockquote>
+            <figcaption><strong>Marta Echevarría</strong><span>Paciente de implantes, 2025</span></figcaption>
+          </figure>
+          <figure class="quote" data-quote="1" hidden>
+            <blockquote><p>“Me dieron el presupuesto cerrado el primer día y no cambió ni un euro. Mi hija ahora quiere volver.”</p></blockquote>
+            <figcaption><strong>Daniel Ortuño</strong><span>Padre de paciente de odontopediatría</span></figcaption>
+          </figure>
+          <figure class="quote" data-quote="2" hidden>
+            <blockquote><p>“Vi mi sonrisa en la pantalla antes de empezar. Las carillas quedaron exactamente así, ni más ni menos.”</p></blockquote>
+            <figcaption><strong>Claudia Benítez</strong><span>Paciente de estética dental</span></figcaption>
+          </figure>
+
+          <div class="quote-tabs" role="tablist" aria-label="Elegir opinión">
+            <button role="tab" aria-selected="true" data-quote-tab="0" aria-label="Opinión de Marta Echevarría">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80" alt="" width="40" height="40" loading="lazy" data-fallback-initials="ME">
+            </button>
+            <button role="tab" aria-selected="false" data-quote-tab="1" aria-label="Opinión de Daniel Ortuño">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80" alt="" width="40" height="40" loading="lazy" data-fallback-initials="DO">
+            </button>
+            <button role="tab" aria-selected="false" data-quote-tab="2" aria-label="Opinión de Claudia Benítez">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=160&q=80" alt="" width="40" height="40" loading="lazy" data-fallback-initials="CB">
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRECIOS: plan + tarifas por pestañas -->
+    <section class="section pricing" id="precios">
+      <div class="container">
+        <p class="eyebrow reveal">Precios</p>
+        <h2 class="section-title reveal">Sabrás lo que cuesta antes de sentarte.</h2>
+
+        <div class="pricing-grid">
+          <div class="bezel plan-bezel reveal">
+            <article class="plan">
+              <h3>Plan Nácar</h3>
+              <p class="plan-price"><span>14,90 €</span> al mes</p>
+              <p class="plan-desc">Para toda la familia que vive en tu casa. Sin permanencia.</p>
+              <ul class="plan-list">
+                <li><i class="ph-light ph-check" aria-hidden="true"></i> Dos limpiezas al año</li>
+                <li><i class="ph-light ph-check" aria-hidden="true"></i> Revisiones y radiografías incluidas</li>
+                <li><i class="ph-light ph-check" aria-hidden="true"></i> Urgencias sin coste de visita</li>
+                <li><i class="ph-light ph-check" aria-hidden="true"></i> 15 % en el resto de tratamientos</li>
+              </ul>
+              <a class="btn btn-on-accent" href="#cita" data-treatment="Plan Nácar">
+                Hacerme socio
+                <span class="btn-icon" aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span>
+              </a>
+            </article>
+          </div>
+
+          <div class="rates reveal">
+            <div class="tabs" role="tablist" aria-label="Categorías de precios">
+              <button role="tab" id="tab-general" aria-controls="panel-general" aria-selected="true">General</button>
+              <button role="tab" id="tab-estetica" aria-controls="panel-estetica" aria-selected="false" tabindex="-1">Estética</button>
+              <button role="tab" id="tab-orto" aria-controls="panel-orto" aria-selected="false" tabindex="-1">Ortodoncia</button>
+              <button role="tab" id="tab-implantes" aria-controls="panel-implantes" aria-selected="false" tabindex="-1">Implantes</button>
+              <span class="tabs-indicator" aria-hidden="true"></span>
+            </div>
+
+            <div class="rate-panel" role="tabpanel" id="panel-general" aria-labelledby="tab-general">
+              <dl class="rate-list">
+                <div><dt>Primera visita y diagnóstico</dt><dd>Gratis</dd></div>
+                <div><dt>Limpieza dental</dt><dd>45 €</dd></div>
+                <div><dt>Empaste estético</dt><dd>desde 60 €</dd></div>
+                <div><dt>Endodoncia</dt><dd>desde 190 €</dd></div>
+                <div><dt>Extracción simple</dt><dd>50 €</dd></div>
+              </dl>
+            </div>
+            <div class="rate-panel" role="tabpanel" id="panel-estetica" aria-labelledby="tab-estetica" hidden>
+              <dl class="rate-list">
+                <div><dt>Blanqueamiento en clínica</dt><dd>290 €</dd></div>
+                <div><dt>Carilla de composite</dt><dd>desde 140 €</dd></div>
+                <div><dt>Carilla de cerámica</dt><dd>desde 320 €</dd></div>
+                <div><dt>Diseño digital de sonrisa</dt><dd>90 €</dd></div>
+              </dl>
+            </div>
+            <div class="rate-panel" role="tabpanel" id="panel-orto" aria-labelledby="tab-orto" hidden>
+              <dl class="rate-list">
+                <div><dt>Estudio de ortodoncia</dt><dd>Gratis</dd></div>
+                <div><dt>Alineadores invisibles</dt><dd>desde 2.450 €</dd></div>
+                <div><dt>Brackets estéticos</dt><dd>desde 1.980 €</dd></div>
+                <div><dt>Retenedor fijo</dt><dd>120 €</dd></div>
+              </dl>
+            </div>
+            <div class="rate-panel" role="tabpanel" id="panel-implantes" aria-labelledby="tab-implantes" hidden>
+              <dl class="rate-list">
+                <div><dt>Estudio con escáner 3D</dt><dd>Gratis</dd></div>
+                <div><dt>Implante de titanio</dt><dd>desde 890 €</dd></div>
+                <div><dt>Corona sobre implante</dt><dd>desde 520 €</dd></div>
+                <div><dt>Elevación de seno</dt><dd>desde 650 €</dd></div>
+              </dl>
+            </div>
+            <p class="rates-note"><i class="ph-light ph-credit-card" aria-hidden="true"></i> Financiación hasta 24 meses sin intereses en tratamientos desde 600 €.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CITA: formulario con calendario -->
+    <section class="section booking" id="cita">
+      <div class="container booking-grid">
+        <div class="booking-info reveal">
+          <h2 class="section-title">Pide tu cita en un minuto.</h2>
+          <p class="section-lede">Te confirmamos por WhatsApp en menos de una hora, en horario de clínica.</p>
+
+          <ul class="info-list">
+            <li><i class="ph-light ph-map-pin" aria-hidden="true"></i><div><strong>Calle de Fuencarral 118, 2.º</strong><span>28010 Madrid. Metro Bilbao y Quevedo.</span></div></li>
+            <li><i class="ph-light ph-clock" aria-hidden="true"></i><div><strong>Lunes a viernes, 9:00 a 20:30</strong><span>Sábados de 10:00 a 14:00</span></div></li>
+            <li><i class="ph-light ph-phone" aria-hidden="true"></i><div><strong><a href="tel:+34913482716">913 48 27 16</a></strong><span>También por <a href="https://wa.me/34613482716">WhatsApp</a></span></div></li>
+            <li><i class="ph-light ph-wheelchair" aria-hidden="true"></i><div><strong>Accesible</strong><span>Ascensor y gabinete adaptado</span></div></li>
+          </ul>
+
+          <div class="map">
+            <iframe title="Mapa de la clínica en Calle de Fuencarral 118, Madrid" loading="lazy"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-3.7085%2C40.4268%2C-3.6955%2C40.4335&amp;layer=mapnik&amp;marker=40.43015%2C-3.70205"></iframe>
+          </div>
+        </div>
+
+        <div class="bezel form-bezel reveal">
+          <form class="booking-form" novalidate>
+            <div class="form-step" data-form-body>
+              <fieldset class="field">
+                <legend>¿Qué necesitas?</legend>
+                <div class="chips" data-chips>
+                  <label class="chip"><input type="radio" name="tratamiento" value="Primera visita" checked><span>Primera visita</span></label>
+                  <label class="chip"><input type="radio" name="tratamiento" value="Higiene dental"><span>Limpieza</span></label>
+                  <label class="chip"><input type="radio" name="tratamiento" value="Implantes"><span>Implantes</span></label>
+                  <label class="chip"><input type="radio" name="tratamiento" value="Ortodoncia invisible"><span>Ortodoncia</span></label>
+                  <label class="chip"><input type="radio" name="tratamiento" value="Carillas"><span>Estética</span></label>
+                  <label class="chip"><input type="radio" name="tratamiento" value="Odontopediatría"><span>Niños</span></label>
+                  <label class="chip"><input type="radio" name="tratamiento" value="Plan Nácar"><span>Plan Nácar</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="field">
+                <legend>Elige día</legend>
+                <div class="days" data-days role="radiogroup" aria-label="Días disponibles"></div>
+              </fieldset>
+
+              <fieldset class="field">
+                <legend>Elige hora</legend>
+                <div class="slots" data-slots role="radiogroup" aria-label="Horas disponibles"></div>
+                <p class="field-error" data-error="slot" hidden>Elige una hora para continuar.</p>
+              </fieldset>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="nombre">Nombre y apellidos</label>
+                  <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+                  <p class="field-error" data-error="nombre" hidden>Escribe tu nombre para saber a quién esperamos.</p>
+                </div>
+                <div class="field">
+                  <label for="telefono">Teléfono</label>
+                  <input id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required>
+                  <p class="field-error" data-error="telefono" hidden>Necesitamos un teléfono de 9 cifras para confirmarte.</p>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="nota">¿Algo que debamos saber? <span class="optional">Opcional</span></label>
+                <textarea id="nota" name="nota" rows="3" placeholder="Por ejemplo: me pongo nerviosa con las agujas"></textarea>
+              </div>
+
+              <label class="check">
+                <input type="checkbox" name="privacidad" required>
+                <span>Acepto la <a href="#politica">política de privacidad</a>.</span>
+              </label>
+              <p class="field-error" data-error="privacidad" hidden>Necesitamos tu permiso para guardar estos datos.</p>
+
+              <button class="btn btn-primary btn-block" type="submit">
+                <span class="btn-label">Confirmar cita</span>
+                <span class="btn-spinner" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="form-success" data-form-success hidden tabindex="-1">
+              <span class="success-icon"><i class="ph-light ph-check" aria-hidden="true"></i></span>
+              <h3>Cita solicitada</h3>
+              <p data-success-summary></p>
+              <div class="success-actions">
+                <button class="btn btn-primary" type="button" data-ics>
+                  Añadir al calendario
+                  <span class="btn-icon" aria-hidden="true"><i class="ph-light ph-calendar-check"></i></span>
+                </button>
+                <button class="btn btn-ghost" type="button" data-reset>Pedir otra cita</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREGUNTAS -->
+    <section class="section faq" id="preguntas">
+      <div class="container faq-grid">
+        <h2 class="section-title reveal">Preguntas que nos hacéis a menudo.</h2>
+        <div class="faq-list">
+          <details class="faq-item reveal">
+            <summary>¿La primera visita de verdad es gratis?<i class="ph-light ph-plus" aria-hidden="true"></i></summary>
+            <div class="faq-body"><p>Sí. Incluye exploración, escáner intraoral y el plan de tratamiento por escrito. No te cobramos nada aunque decidas no seguir.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>¿Trabajáis con seguros dentales?<i class="ph-light ph-plus" aria-hidden="true"></i></summary>
+            <div class="faq-body"><p>Atendemos a pacientes de las principales aseguradoras por reembolso y te ayudamos con el papeleo. El Plan Nácar es nuestra alternativa sin permanencia.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>¿Qué es la sedación consciente?<i class="ph-light ph-plus" aria-hidden="true"></i></summary>
+            <div class="faq-body"><p>Una medicación suave que te relaja durante el tratamiento. Sigues despierto y respondes, pero sin ansiedad. La administra un anestesista colegiado.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>¿A qué edad debe venir un niño por primera vez?<i class="ph-light ph-plus" aria-hidden="true"></i></summary>
+            <div class="faq-body"><p>Recomendamos la primera revisión al salir el primer diente o antes de cumplir un año. Es una visita corta y casi siempre en el regazo de mamá o papá.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>¿Puedo pagar a plazos?<i class="ph-light ph-plus" aria-hidden="true"></i></summary>
+            <div class="faq-body"><p>Sí, hasta 24 meses sin intereses en tratamientos desde 600 €, sujeto a aprobación de la entidad financiera.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <p class="footer-word" aria-hidden="true">Nácar</p>
+        <a class="btn btn-primary" href="#cita">
+          Pedir cita
+          <span class="btn-icon" aria-hidden="true"><i class="ph-light ph-arrow-up-right"></i></span>
+        </a>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h3>Clínica</h3>
+          <p>Calle de Fuencarral 118, 2.º<br>28010 Madrid</p>
+        </div>
+        <div>
+          <h3>Contacto</h3>
+          <p><a href="tel:+34913482716">913 48 27 16</a><br><a href="mailto:hola@nacardental.es">hola@nacardental.es</a></p>
+        </div>
+        <div>
+          <h3>Síguenos</h3>
+          <p class="socials">
+            <a href="#" aria-label="Instagram"><i class="ph-light ph-instagram-logo" aria-hidden="true"></i></a>
+            <a href="https://wa.me/34613482716" aria-label="WhatsApp"><i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i></a>
+            <a href="mailto:hola@nacardental.es" aria-label="Correo"><i class="ph-light ph-envelope-simple" aria-hidden="true"></i></a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-legal" id="politica">
+        <p>Nácar Clínica Dental es una marca ficticia. Todos los datos, precios, nombres y reseñas son de ejemplo.</p>
+        <p>Registro sanitario de ejemplo CS-15284</p>
+        <p class="legal-links"><a href="#politica">Aviso legal</a><a href="#politica">Privacidad</a><a href="#politica">Cookies</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Barra de cita fija en móvil -->
+  <div class="mobile-bar">
+    <a class="btn btn-ghost btn-sm" href="tel:+34913482716"><i class="ph-light ph-phone" aria-hidden="true"></i> Llamar</a>
+    <a class="btn btn-primary btn-sm" href="#cita">Pedir cita</a>
+  </div>
+
+  <div class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
