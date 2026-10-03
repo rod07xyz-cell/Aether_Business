@@ -46,10 +46,12 @@ npm run dev     # http://localhost:4321
 npm run build   # genera dist/
 ```
 
-## Despliegue en Cloudflare Pages
+## Despliegue en Cloudflare (Workers con static assets)
 
-- Framework preset: **Astro**
-- Build command: `npm run build`
-- Build output directory: `dist`
+El proyecto de Cloudflare se llama `proyecto-adsense` y usa `wrangler.jsonc`.
+
 - Rama de producción: `Proyecto_AdSense`
-- Variable de entorno: `NODE_VERSION` = `22` (Astro necesita Node 22.12 o superior; también lo indica `.nvmrc`)
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Root directory: `/`
+- Variable de build: `NODE_VERSION` = `22` (Astro necesita Node 22.12 o superior; también lo indica `.nvmrc`)
