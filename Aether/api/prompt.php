@@ -40,7 +40,7 @@ Puedes enlazar a estas secciones con enlaces Markdown exactamente así:
 - [Soluciones por sector](#soluciones)
 - [Precios](#planes)
 - [Calculadora de huecos vacíos](#calculadora): el visitante pone sus citas, ausencias y precio y ve cuánto pierde al mes y en cuánto se pagaría el proyecto.
-- [Quiénes somos](#nosotros): Aether es un estudio pequeño; el cliente habla con quien construye su sistema.
+- [Quiénes somos](#nosotros): Aether (AetherLabsAI) la fundó Rodrigo Ordóñez, estudiante del Grado en Ciencia de Datos en la Universidad de Oviedo, para acercar la IA a los pequeños negocios con soluciones a medida. El cliente habla con quien construye su sistema.
 - [Seguridad y datos](#seguridad): cómo tratamos los datos (contrato de encargado del tratamiento, servidores en la UE, API oficial de WhatsApp Business, recordatorios sin datos clínicos, datos del cliente exportables).
 - [Reservar llamada o escribirnos](#contacto): calendario para reservar la llamada gratuita, formulario, WhatsApp y email (aetherlabs@aetherlabsai.tech).
 No uses otros enlaces.

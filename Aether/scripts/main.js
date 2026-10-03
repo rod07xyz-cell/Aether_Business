@@ -773,7 +773,7 @@
     if (/calcul|compensa|amortiz|pierd|ausenc/.test(t))
       return 'Puedes hacer la cuenta con los números de tu agenda en la [calculadora de huecos vacíos](#calculadora).';
     if (/quién|quien|equipo|empresa|fundador/.test(t))
-      return 'Aether es un estudio pequeño: hablas con quien construye tu sistema desde la primera llamada. Más en [Quiénes somos](#nosotros).';
+      return 'Aether la fundó Rodrigo Ordóñez, estudiante de Ciencia de Datos en la Universidad de Oviedo, para acercar la IA a los pequeños negocios. Hablas con quien construye tu sistema desde la primera llamada. Más en [Quiénes somos](#nosotros).';
     if (/cuest|precio|cuánto|cuanto|tarifa|pagar|cuota|presupuesto/.test(t))
       return 'Cada solución se hace a medida. Una automatización completa cuesta desde 1.000 €, en un único pago, y el mantenimiento es opcional. Tienes el detalle en [Precios](#planes).';
     if (/cómo|como|trabaj|proceso|pasos|empez/.test(t))

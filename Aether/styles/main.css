@@ -561,7 +561,7 @@ html:not(.js) .view[hidden] { display: block; }
 
 /* ══════════ Quiénes somos ══════════ */
 .about { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: var(--s8); align-items: start; }
-.about-person { display: flex; flex-direction: column; align-items: center; gap: var(--s4); text-align: center; }
+.about-person { display: flex; flex-direction: column; align-items: center; gap: var(--s4); text-align: center; position: sticky; top: calc(64px + var(--s6)); }
 .about-photo {
   width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
   display: grid; place-items: center; font-size: var(--size-3xl); font-weight: 700; letter-spacing: -0.02em;
@@ -570,8 +570,15 @@ html:not(.js) .view[hidden] { display: block; }
 }
 .about-name { font-size: var(--size-lg); font-weight: 600; }
 .about-role { font-size: var(--size-sm); color: var(--text-3); }
+.about-study { font-size: var(--size-xs); color: var(--text-3); margin-top: var(--s2); }
 .about-links { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s2); }
-.about-text { display: flex; flex-direction: column; gap: var(--s4); max-width: 680px; color: var(--text-2); font-size: var(--size-lg); }
+.about-text { display: flex; flex-direction: column; gap: var(--s4); max-width: 680px; color: var(--text-2); }
+.about-story { display: flex; flex-direction: column; gap: var(--s4); font-size: 1.0625rem; line-height: 1.7; }
+.about-story p:first-child { font-size: var(--size-lg); color: var(--text-1); }
+.about-closing {
+  margin-top: var(--s2); padding-left: var(--s5); border-left: 2px solid var(--accent);
+  font-size: var(--size-xl); font-weight: 600; line-height: 1.4; color: var(--text-1); text-wrap: balance;
+}
 .values { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s4); margin-top: var(--s4); }
 .values li { display: flex; flex-direction: column; gap: var(--s1); padding-top: var(--s4); border-top: 1px solid var(--border); font-size: var(--size-sm); }
 .values strong { color: var(--text-1); font-weight: 600; font-size: var(--size-base); }
@@ -759,7 +766,7 @@ textarea.input { resize: vertical; min-height: 90px; }
   .hero-visual { display: none; }
   .solutions, .plans, .plans--two, .how { grid-template-columns: 1fr; }
   .calc, .about { grid-template-columns: minmax(0, 1fr); }
-  .calc-results { position: static; }
+  .calc-results, .about-person { position: static; }
   .trust { grid-template-columns: repeat(2, 1fr); }
   .plans { gap: var(--s6); }
   .demo-layout, .demo-layout--chat, .contact-grid { grid-template-columns: 1fr; }
