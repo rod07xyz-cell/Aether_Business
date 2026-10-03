@@ -58,5 +58,6 @@ Aether/
 ├── scripts/main.js       # Router de vistas, demos, formulario
 ├── scripts/vendor/       # lottie-web (reproductor de la animación del asistente)
 ├── assets/chatbot.json   # Animación del robot del asistente
+├── assets/hero-bg.json   # Animación del fondo (va a 30 fps; quieta con "reducir movimiento")
 └── styles/               # reset, variables (colores), main
 ```

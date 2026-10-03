@@ -785,27 +785,82 @@
     return 'Ahora mismo no puedo responder a eso con detalle. Escríbenos o [reserva una llamada](#contacto) y te contestamos en menos de 24 horas.';
   }
 
-  // Robot animado (Lottie). Se carga cuando la página ya se ha pintado; si algo falla, se queda el icono.
-  var BOT_PLAYER = 'scripts/vendor/lottie_light.min.js?v=5.13.0';
+  /* ══════════ Animaciones Lottie (robot del asistente y fondo) ══════════
+     Se cargan cuando la página ya se ha pintado; si algo falla, la web se queda como sin ellas. */
+  var LOTTIE_PLAYER = 'scripts/vendor/lottie_light.min.js?v=5.13.0';
+  var lottieReady = null;
+
+  function loadLottie(dataUrl) {
+    if (!lottieReady) {
+      lottieReady = window.lottie ? Promise.resolve() : new Promise(function (resolve, reject) {
+        var sc = document.createElement('script');
+        sc.src = LOTTIE_PLAYER;
+        sc.onload = resolve;
+        sc.onerror = function () { lottieReady = null; reject(new Error('reproductor')); };
+        document.head.appendChild(sc);
+      });
+    }
+    return lottieReady.then(function () {
+      return fetch(dataUrl).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      });
+    });
+  }
+
+  function afterLoad(fn) {
+    var run = function () { setTimeout(fn, 300); };
+    if (document.readyState === 'complete') run(); else window.addEventListener('load', run);
+  }
+
+  // Fondo animado: a 30 fps (el movimiento es lento y así cuesta la mitad); se para con la pestaña oculta
+  var BG_DATA = 'assets/hero-bg.json?v=1';
+  var BG_FPS = 30;
+  var BG_STILL_FRAME = 300;
+
+  function initBackground() {
+    var host = $('[data-bg-anim]');
+    if (!host) return;
+    afterLoad(function () {
+      loadLottie(BG_DATA).then(function (data) {
+        var anim = window.lottie.loadAnimation({
+          container: host,
+          renderer: 'svg',
+          loop: true,
+          autoplay: false,
+          animationData: data,
+          rendererSettings: { preserveAspectRatio: 'xMidYMid slice' }
+        });
+        var srcFps = data.fr || 60;
+        var frame = reduceMotion ? BG_STILL_FRAME : 0;
+        anim.goToAndStop(frame, true);
+        host.classList.add('is-ready');
+        if (reduceMotion) return;
+        var last = 0;
+        (function tick(now) {
+          if (!last) last = now;
+          var dt = now - last;
+          if (dt >= 1000 / BG_FPS) {
+            frame = (frame + Math.min(dt, 100) / 1000 * srcFps) % anim.totalFrames;
+            anim.goToAndStop(frame, true);
+            last = now;
+          }
+          requestAnimationFrame(tick);
+        })(performance.now());
+      }).catch(function (err) {
+        if (window.console) console.warn('Fondo animado no disponible →', err.message);
+      });
+    });
+  }
+
+  // Robot animado del asistente
   var BOT_DATA = 'assets/chatbot.json?v=1';
   var BOT_STILL_FRAME = 45; // con las burbujas a la vista (para quien prefiere menos movimiento)
 
   function loadBotAnimations(onReady) {
     var hosts = $$('[data-bot-anim]');
     if (!hosts.length) return;
-    var player = window.lottie ? Promise.resolve() : new Promise(function (resolve, reject) {
-      var sc = document.createElement('script');
-      sc.src = BOT_PLAYER;
-      sc.onload = resolve;
-      sc.onerror = reject;
-      document.head.appendChild(sc);
-    });
-    player.then(function () {
-      return fetch(BOT_DATA).then(function (res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.json();
-      });
-    }).then(function (data) {
+    loadLottie(BOT_DATA).then(function (data) {
       var anims = {};
       hosts.forEach(function (host) {
         host.innerHTML = '';
@@ -846,8 +901,7 @@
     function startBots() {
       loadBotAnimations(function (anims) { bots = anims; syncBots(); });
     }
-    if (document.readyState === 'complete') setTimeout(startBots, 300);
-    else window.addEventListener('load', function () { setTimeout(startBots, 300); });
+    afterLoad(startBots);
 
     function add(role, text) {
       var m = el('div', 'msg ' + (role === 'user' ? 'msg--out' : 'msg--in'));
@@ -946,6 +1000,7 @@
   initCalc();
   initContact();
   initAssistant();
+  initBackground();
   initMisc();
   route(false);
 })();

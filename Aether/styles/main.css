@@ -15,6 +15,13 @@ body {
 
 main { flex: 1; outline: none; overflow-x: clip; }
 
+/* Fondo animado: detrás de todo, aparece suave cuando ha cargado */
+.bg-anim {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  opacity: 0; transition: opacity 1.2s ease;
+}
+.bg-anim.is-ready { opacity: .55; }
+
 .container {
   width: 100%;
   max-width: var(--container);
@@ -763,6 +770,7 @@ textarea.input { resize: vertical; min-height: 90px; }
 @media (max-width: 640px) {
   .view { padding-block: var(--s8) var(--s12); }
   .nav-cta { display: none; }
+  .bg-anim.is-ready { opacity: .4; }
   .hero-actions .btn { flex: 1; }
   .hero-actions .btn-call { flex: 1 1 100%; }
   .hero-stats { gap: var(--s4); grid-template-columns: repeat(3, 1fr); }
