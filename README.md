@@ -37,6 +37,7 @@ Burbuja de chat en todas las vistas. El navegador habla con `api/chat.php`, que 
 - Necesita PHP 8.1 o superior con la extensión cURL (la tienen los planes de Hostinger con PHP). No hay dependencias que instalar.
 - El modelo se cambia en `api/config.php`. Para ver qué modelos ofrece Groq y si la clave funciona, abre `api/chat.php?diagnostico`.
 - Si el servidor del asistente no responde (por ejemplo, en local sin PHP), la burbuja da respuestas preparadas para no dejar al visitante sin respuesta.
+- El robot animado del botón es una animación Lottie (`assets/chatbot.json`) que reproduce `scripts/vendor/lottie_light.min.js` (lottie-web, licencia MIT). Para cambiarla, sustituye el JSON. Si no carga, el botón muestra un icono de chat.
 
 ## Subir a Hostinger
 
@@ -55,5 +56,7 @@ Aether/
 ├── api/chat.php          # Asistente con IA (PHP + Groq)
 ├── api/prompt.php        # Instrucciones y conocimiento del asistente
 ├── scripts/main.js       # Router de vistas, demos, formulario
+├── scripts/vendor/       # lottie-web (reproductor de la animación del asistente)
+├── assets/chatbot.json   # Animación del robot del asistente
 └── styles/               # reset, variables (colores), main
 ```

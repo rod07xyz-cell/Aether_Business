@@ -785,6 +785,48 @@
     return 'Ahora mismo no puedo responder a eso con detalle. Escríbenos o [reserva una llamada](#contacto) y te contestamos en menos de 24 horas.';
   }
 
+  // Robot animado (Lottie). Se carga cuando la página ya se ha pintado; si algo falla, se queda el icono.
+  var BOT_PLAYER = 'scripts/vendor/lottie_light.min.js?v=5.13.0';
+  var BOT_DATA = 'assets/chatbot.json?v=1';
+  var BOT_STILL_FRAME = 45; // con las burbujas a la vista (para quien prefiere menos movimiento)
+
+  function loadBotAnimations(onReady) {
+    var hosts = $$('[data-bot-anim]');
+    if (!hosts.length) return;
+    var player = window.lottie ? Promise.resolve() : new Promise(function (resolve, reject) {
+      var sc = document.createElement('script');
+      sc.src = BOT_PLAYER;
+      sc.onload = resolve;
+      sc.onerror = reject;
+      document.head.appendChild(sc);
+    });
+    player.then(function () {
+      return fetch(BOT_DATA).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      });
+    }).then(function (data) {
+      var anims = {};
+      hosts.forEach(function (host) {
+        host.innerHTML = '';
+        var anim = window.lottie.loadAnimation({
+          container: host,
+          renderer: 'svg',
+          loop: true,
+          autoplay: false,
+          animationData: JSON.parse(JSON.stringify(data)), // Lottie modifica los datos: una copia por animación
+          rendererSettings: { viewBoxSize: host.getAttribute('data-bot-anim') }
+        });
+        anim.goToAndStop(BOT_STILL_FRAME, true);
+        host.classList.add('is-ready');
+        anims[host.closest('.assist-panel') ? 'head' : 'fab'] = anim;
+      });
+      onReady(anims);
+    }).catch(function (err) {
+      if (window.console) console.warn('Animación del asistente no disponible →', err.message);
+    });
+  }
+
   function initAssistant() {
     var panel = $('#assistPanel');
     if (!panel) return;
@@ -792,6 +834,20 @@
     var history = [];
     var busy = false;
     var greeted = false;
+    var bots = {};
+
+    // Solo se mueve el robot que se ve: el del botón con el panel cerrado, el de la cabecera con él abierto
+    function syncBots() {
+      if (reduceMotion) return;
+      var isOpen = !panel.hidden;
+      if (bots.fab) { if (isOpen) bots.fab.pause(); else bots.fab.play(); }
+      if (bots.head) { if (isOpen) bots.head.play(); else bots.head.pause(); }
+    }
+    function startBots() {
+      loadBotAnimations(function (anims) { bots = anims; syncBots(); });
+    }
+    if (document.readyState === 'complete') setTimeout(startBots, 300);
+    else window.addEventListener('load', function () { setTimeout(startBots, 300); });
 
     function add(role, text) {
       var m = el('div', 'msg ' + (role === 'user' ? 'msg--out' : 'msg--in'));
@@ -804,6 +860,7 @@
       panel.hidden = !state;
       openBtn.setAttribute('aria-expanded', String(state));
       document.body.classList.toggle('assist-open', state);
+      syncBots();
       if (state) {
         if (!greeted) {
           greeted = true;

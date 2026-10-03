@@ -19,9 +19,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles/reset.css?v=20261002b">
-  <link rel="stylesheet" href="styles/variables.css?v=20261002b">
-  <link rel="stylesheet" href="styles/main.css?v=20261002b">
+  <link rel="stylesheet" href="styles/reset.css?v=20261003a">
+  <link rel="stylesheet" href="styles/variables.css?v=20261003a">
+  <link rel="stylesheet" href="styles/main.css?v=20261003a">
 
   <script>document.documentElement.classList.add('js');</script>
 
@@ -833,12 +833,18 @@
   <!-- Asistente de la web (IA) -->
   <div class="assist" id="assist">
     <button class="assist-fab" id="assistOpen" aria-expanded="false" aria-controls="assistPanel">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <!-- Animación del robot (assets/chatbot.json). Si no carga, se queda el icono. -->
+      <span class="assist-bot" aria-hidden="true">
+        <span class="assist-bot-anim" data-bot-anim="150 30 700 700">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </span>
+      </span>
       <span class="assist-fab-label">¿Dudas? Pregunta</span>
     </button>
     <section class="assist-panel" id="assistPanel" role="dialog" aria-label="Asistente de Aether" hidden>
       <header class="assist-head">
-        <div>
+        <span class="assist-avatar" data-bot-anim="290 170 420 420" aria-hidden="true"></span>
+        <div class="assist-head-text">
           <p class="assist-title">Asistente de Aether</p>
           <p class="assist-sub">Responde al momento · con IA</p>
         </div>
@@ -867,7 +873,7 @@
     <button class="btn btn-primary btn-sm" id="cookieOk">Entendido</button>
   </div>
 
-  <script src="scripts/config.js?v=20261002b"></script>
-  <script src="scripts/main.js?v=20261002b"></script>
+  <script src="scripts/config.js?v=20261003a"></script>
+  <script src="scripts/main.js?v=20261003a"></script>
 </body>
 </html>
