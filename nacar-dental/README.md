@@ -27,3 +27,7 @@ Las fotos se cargan desde Unsplash. Si alguna no carga, se muestra un respaldo d
 Todos los datos (nombres, precios, reseñas, dirección, colegiados) son de ejemplo.
 
 Fuentes: Bricolage Grotesque y Geist (OFL). Iconos: Phosphor (MIT). Alojados en `assets/`.
+
+## Figma
+
+Diseño editable en [Nácar Clínica Dental · Web](https://www.figma.com/design/MFUROcErndvqLPZjLoDGRs): página de escritorio (1440), versión móvil (390), componente Botón y lámina con colores y tipografía. Las fotos aparecen como huecos para sustituir.
