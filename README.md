@@ -1,4 +1,4 @@
-# Aether_Business · zfan.xyz
+# Aether_Business · xfan.xyz
 
 Web de contenido sobre aerotermia y bombas de calor, monetizada con Google AdSense. Está hecha con [Astro](https://astro.build) y se publica en Cloudflare Pages.
 

@@ -1,9 +1,9 @@
 export const SITE = {
-  name: 'zfan',
+  name: 'xfan',
   tagline: 'Guía independiente de aerotermia y bombas de calor',
   description:
     'Precios reales, consumo, ayudas, comparativas de marcas y solución de averías de aerotermia. Información independiente para decidir antes de instalar.',
-  url: 'https://zfan.xyz',
+  url: 'https://xfan.xyz',
   owner: 'Rodrigo Ordóñez',
   email: 'ordrod36@gmail.com',
   lang: 'es',

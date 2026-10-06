@@ -4,10 +4,10 @@ Basado en el plan `01-plan-nicho-aerotermia.md`. Marca cada paso al completarlo.
 
 ## A. Lo que tienes que hacer tú (requiere tu cuenta, tarjeta o identidad)
 
-- [x] **Dominio**: `zfan.xyz` (ya comprado).
-- [ ] Comprobar historial del dominio: buscar `site:zfan.xyz` en Google y revisarlo en web.archive.org (que no se usara antes para spam).
+- [x] **Dominio**: `xfan.xyz` (ya comprado).
+- [ ] Comprobar historial del dominio: buscar `site:xfan.xyz` en Google y revisarlo en web.archive.org (que no se usara antes para spam).
 - [ ] **Contratar hosting en Hostinger** (plan Premium o Business de WordPress). No hace falta el dominio gratis del plan.
-- [ ] Añadir `zfan.xyz` en hPanel y apuntar los nameservers del registrador a los que indique Hostinger (o registro A a la IP del hosting).
+- [ ] Añadir `xfan.xyz` en hPanel y apuntar los nameservers del registrador a los que indique Hostinger (o registro A a la IP del hosting).
 - [ ] Activar SSL gratuito (HTTPS) y forzar redirección a https.
 - [ ] **Instalar WordPress** desde hPanel (instalador automático).
 - [ ] Crear cuenta de **Google Search Console** y verificar el dominio.
