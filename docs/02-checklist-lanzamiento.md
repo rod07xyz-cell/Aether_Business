@@ -2,27 +2,21 @@
 
 Basado en el plan `01-plan-nicho-aerotermia.md`. Marca cada paso al completarlo.
 
-## A. Lo que tienes que hacer tú (requiere tu cuenta, tarjeta o identidad)
+## A. Dominio y publicación
 
-- [x] **Dominio**: `xfan.xyz` (ya comprado).
-- [ ] Comprobar historial del dominio: buscar `site:xfan.xyz` en Google y revisarlo en web.archive.org (que no se usara antes para spam).
-- [ ] **Contratar hosting en Hostinger** (plan Premium o Business de WordPress). No hace falta el dominio gratis del plan.
-- [ ] Añadir `xfan.xyz` en hPanel y apuntar los nameservers del registrador a los que indique Hostinger (o registro A a la IP del hosting).
-- [ ] Activar SSL gratuito (HTTPS) y forzar redirección a https.
-- [ ] **Instalar WordPress** desde hPanel (instalador automático).
-- [ ] Crear cuenta de **Google Search Console** y verificar el dominio.
-- [ ] Crear cuenta de **Google AdSense** (cuando haya 30‑40 artículos y páginas legales).
-- [ ] Rellenar tus **datos reales** en las páginas legales (titular, NIF/email de contacto).
-- [ ] Darte de alta en **Amazon Afiliados** (opcional, mes 3+).
+- [x] **Dominio**: `xfan.xyz` (Namecheap), nameservers apuntando a Cloudflare.
+- [x] Web estática (Astro) en este repositorio, rama `Proyecto_AdSense`.
+- [x] Publicada en Cloudflare Workers (`proyecto-adsense`) con dominios `xfan.xyz` y `www.xfan.xyz`.
+- [ ] Certificado SSL activo y **Always Use HTTPS** activado (SSL/TLS → Edge Certificates).
+- [ ] Regla de redirección `www` → sin `www` (Rules → Redirect Rules → "Redirect from WWW to root").
+- [ ] Comprobar historial del dominio: buscar `site:xfan.xyz` en Google y revisarlo en web.archive.org.
 
-## B. Configuración de WordPress
+## B. Google y legal
 
-- [ ] Tema ligero: GeneratePress / Astra.
-- [ ] Plugins: Rank Math (SEO), LiteSpeed Cache (caché; Hostinger usa servidores LiteSpeed), Wordfence o Solid Security (seguridad), Complianz (cookies/RGPD).
-- [ ] Ajustes → Enlaces permanentes → **Nombre de la entrada**.
-- [ ] Borrar «Hola mundo», página de ejemplo y comentario por defecto.
-- [ ] Crear páginas: Inicio, Sobre nosotros, Contacto, Política de privacidad, Aviso legal, Política de cookies.
-- [ ] Crear las 7 categorías: Precios, Consumo, Cómo funciona, Marcas, Ayudas, Averías y mantenimiento, Instalaciones.
+- [ ] **Google Search Console**: propiedad de dominio `xfan.xyz`, verificación TXT y envío de `sitemap-index.xml`.
+- [ ] Decidir si añadir NIF en el aviso legal (LSSI).
+- [ ] **Google AdSense** con 30‑40 artículos publicados; después poner el ID en `src/consts.ts`, crear `public/ads.txt` y activar el mensaje de consentimiento de Google (Privacidad y mensajes).
+- [ ] Amazon Afiliados (opcional, mes 3+).
 
 ## C. Contenido
 
