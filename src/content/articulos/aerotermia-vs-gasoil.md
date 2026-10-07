@@ -2,6 +2,7 @@
 title: "Aerotermia vs gasoil: cuánto ahorras de verdad al cambiar"
 description: "Comparativa entre aerotermia y caldera de gasoil: coste por kWh, gasto anual, mantenimiento, espacio, amortización y qué hacer con el depósito de gasoil."
 category: consumo
+updatedDate: 2026-10-07
 pubDate: 2026-10-07
 faq:
   - q: "¿Cuánto se ahorra cambiando gasoil por aerotermia?"
@@ -70,6 +71,38 @@ Las calderas de gasoil suelen trabajar con radiadores a alta temperatura. Antes 
 - **Pellets**: más barato que el gasoil, pero exige almacenar sacos o silo y cargar/limpiar. Lo comparamos en [aerotermia vs pellets](/aerotermia-vs-pellets/).
 - **Gas propano**: no suele ahorrar mucho frente al gasoil.
 - **Gas natural**: solo si llega red a tu calle; sigue siendo un combustible fósil.
+
+## Cuánto depende del precio del gasoil
+
+Vivienda que consume **1.500 litros al año** (≈ 13.200 kWh de calor útil). Con aerotermia gastaría unos **625 € al año** en electricidad:
+
+| Precio del gasoil | Gasto anual con gasoil | Ahorro con aerotermia |
+|---|---|---|
+| 0,85 €/L | ≈ 1.275 € | ≈ 650 € |
+| 1,05 €/L | ≈ 1.575 € | ≈ 950 € |
+| 1,25 €/L | ≈ 1.875 € | ≈ 1.250 € |
+
+Cuanto más caro esté el gasoil, más rápido se amortiza el cambio. Y con aerotermia dejas de depender de las subidas puntuales del combustible en pleno invierno.
+
+## Caso práctico: casa rural de 180 m²
+
+- Clima frío de interior, radiadores de hierro fundido grandes.
+- Consumo: **2.000 litros de gasoil al año** (≈ 2.100 € + 150 € de mantenimiento).
+- Prueba de los 50 °C superada: los radiadores calientan bien porque están sobredimensionados.
+- Equipo de 12 kW de alta eficiencia (SCOP estimado de 3,2 por el clima y los radiadores).
+- Consumo con aerotermia: ≈ 5.500 kWh → **≈ 990 €** + 130 € de mantenimiento.
+- **Ahorro: ≈ 1.130 € al año.**
+- Inversión: 14.000 € → **≈ 12 años** sin ayudas y **≈ 10 años** con deducción del 40 %.
+
+## Pasos para cambiar del gasoil a la aerotermia
+
+1. Reúne las **facturas de gasoil** de 2‑3 años para conocer tu consumo medio.
+2. Haz la **prueba de los 50 °C** con los radiadores.
+3. Pide **tres presupuestos** con cálculo de cargas, modelo y SCOP. Ver [cómo elegir instalador](/como-elegir-instalador-aerotermia/).
+4. Comprueba **ayudas y deducciones** y encarga el certificado energético previo si procede.
+5. Programa la obra en **primavera o verano**, con el depósito de gasoil casi vacío.
+6. Gestiona la **retirada o inertización del depósito**.
+7. Ajusta la **potencia eléctrica** y la tarifa. Ver [mejor tarifa de luz para aerotermia](/tarifa-luz-aerotermia/).
 
 ## Conclusión
 

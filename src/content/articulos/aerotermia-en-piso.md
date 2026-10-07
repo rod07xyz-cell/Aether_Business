@@ -2,6 +2,7 @@
 title: "Aerotermia en un piso: ¿es viable, cuánto cuesta y qué permisos necesitas?"
 description: "Cómo instalar aerotermia en un piso: dónde va la unidad exterior, permisos de la comunidad, espacio para el depósito, precio y alternativas."
 category: precios
+updatedDate: 2026-10-07
 pubDate: 2026-10-06
 faq:
   - q: "¿Se puede poner aerotermia en un piso?"
@@ -68,6 +69,37 @@ Si tu prioridad es ahorrar en **agua caliente**, el termo aerotérmico es una so
 2. Pide al instalador una **visita técnica** para valorar ubicación, ruido y paso de tuberías.
 3. Valora un equipo **monobloc compacto** o una unidad con **depósito integrado** para ahorrar espacio.
 4. Consulta las [ayudas disponibles](/ayudas-aerotermia/) en tu comunidad autónoma.
+
+## Ejemplo: piso de 80 m² con radiadores eléctricos y termo eléctrico
+
+Piso en clima mediterráneo, 3 personas, con una demanda de unos 4.000 kWh de calefacción y 2.000 kWh de agua caliente al año:
+
+| Opción | Inversión | Consumo eléctrico anual | Coste anual aprox. |
+|---|---|---|---|
+| Situación actual (radiadores + termo eléctricos) | — | ≈ 6.300 kWh | ≈ 1.130 € |
+| Aerotermia aire‑agua completa | 8.000 – 10.000 € | ≈ 1.700 kWh | ≈ 310 € |
+| Splits con bomba de calor + termo aerotérmico | 4.000 – 5.500 € | ≈ 1.700 kWh | ≈ 310 € |
+
+Las dos opciones ahorran unos **800 € al año**, pero la segunda cuesta **casi la mitad** y no necesita cambiar radiadores por un circuito de agua. Por eso, en pisos **sin calefacción por agua**, la combinación de **aire‑aire + termo aerotérmico** suele ser la más rentable: amortización en **5‑7 años** frente a 10‑12 de la instalación completa. Si el piso ya tiene radiadores de agua con caldera, la aerotermia aire‑agua tiene más sentido.
+
+## Ruido y convivencia con los vecinos
+
+- Consulta la **potencia sonora** (dB(A)) en la ficha técnica y compara modelos.
+- Coloca la unidad sobre **soportes antivibratorios**.
+- Evita colocarla **frente a ventanas de dormitorios** ajenos.
+- Muchos equipos tienen **modo nocturno silencioso** que limita el ruido por la noche.
+- Las ordenanzas municipales fijan límites de ruido en horario nocturno: un instalador serio lo tendrá en cuenta.
+
+## Checklist antes de pedir presupuesto
+
+1. ¿Dónde irá la unidad exterior? (terraza, patio, cubierta, fachada)
+2. ¿Qué dicen los **estatutos** de la comunidad sobre la fachada?
+3. ¿Hay espacio para el **depósito** o una unidad con depósito integrado?
+4. ¿Qué **potencia eléctrica** tengo contratada?
+5. ¿Mi calefacción actual es **por agua** (radiadores) o **eléctrica**?
+6. ¿Cuánto gasto ahora al año en calefacción y agua caliente?
+
+Con estas respuestas, el instalador podrá darte un presupuesto ajustado y tú podrás compararlo con el [termo aerotérmico](/termo-aerotermico/) o con una instalación completa.
 
 ## Conclusión
 

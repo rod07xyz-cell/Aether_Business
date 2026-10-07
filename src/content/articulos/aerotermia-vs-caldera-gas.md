@@ -2,6 +2,7 @@
 title: "Aerotermia vs caldera de gas: comparativa de coste, consumo y confort"
 description: "Comparamos aerotermia y caldera de gas natural: precio de instalación, gasto anual, mantenimiento, vida útil, confort y cuál conviene en cada caso."
 category: consumo
+updatedDate: 2026-10-07
 pubDate: 2026-10-06
 faq:
   - q: "¿Qué es más barato, la aerotermia o el gas natural?"
@@ -61,6 +62,37 @@ La normativa europea va en una dirección clara: desde 2025 ya no se pueden subv
 ## ¿Y un sistema híbrido?
 
 Existe la opción de mantener la caldera de gas y añadir una bomba de calor que cubra la mayor parte del año, dejando la caldera para los días más fríos. Es más barato que una aerotermia completa (5.000‑9.000 €) y útil si tus radiadores necesitan agua muy caliente.
+
+## ¿Qué pasa si cambian los precios?
+
+Coste anual de producir **10.000 kWh de calor útil** según el precio de cada energía (sin términos fijos):
+
+| Precio del gas | Coste con caldera de gas |
+|---|---|
+| 0,06 €/kWh | ≈ 630 € |
+| 0,08 €/kWh | ≈ 840 € |
+| 0,10 €/kWh | ≈ 1.050 € |
+
+| Precio de la luz | Coste con aerotermia (SCOP 3,8) |
+|---|---|
+| 0,15 €/kWh | ≈ 395 € |
+| 0,19 €/kWh | ≈ 500 € |
+| 0,23 €/kWh | ≈ 605 € |
+
+Aunque la luz esté cara y el gas barato, la aerotermia sigue gastando menos en energía. Lo que cambia es **cuánto** ahorras, y por tanto cuánto tardas en amortizarla. Recuerda sumar al gas su **término fijo** (≈ 80‑120 € al año) y las revisiones.
+
+## Dos casos prácticos
+
+**Piso de 85 m² en Madrid con caldera de gas de 8 años.** Consume unos 7.000 kWh de gas al año (≈ 650 € con término fijo). Con aerotermia gastaría unos 310 € más 120 € de mantenimiento. Ahorro ≈ 200 € al año frente a una inversión de 9.000 €: **no compensa cambiar todavía**. Mejor esperar al final de la vida de la caldera.
+
+**Casa de 140 m² en Valladolid con caldera de gas de 18 años que falla.** Consume 16.000 kWh de gas (≈ 1.350 € con término fijo y revisiones). Con aerotermia (SCOP 3,3 por el clima): ≈ 4.400 kWh → ≈ 790 € más mantenimiento ≈ 920 €. Ahorro ≈ 430 € al año. Como la caldera hay que cambiarla igualmente (≈ 3.000 €), la diferencia a amortizar es de unos 9.000 € → **unos 21 años sin ayudas** y **unos 14 con una deducción del 40 %**. Si además se instalan placas solares, el plazo baja a **10‑12 años**.
+
+## Mitos frecuentes
+
+- **«La aerotermia no calienta igual que el gas».** Calienta igual si está bien dimensionada; lo que cambia es que el calor es más suave y continuo.
+- **«Con la aerotermia la factura de la luz se dispara».** Sube la luz, pero desaparece el gas; el total suele ser menor.
+- **«El gas siempre será más barato».** Su precio es volátil y depende de mercados internacionales; además, pagas término fijo aunque no consumas.
+- **«La aerotermia no sirve con radiadores».** Muchas veces sí sirve. Ver [aerotermia con radiadores antiguos](/aerotermia-radiadores-antiguos/).
 
 ## Conclusión: cuál elegir
 

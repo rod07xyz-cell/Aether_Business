@@ -2,6 +2,7 @@
 title: "Aerotermia para una casa de 100 m²: precio, potencia y consumo"
 description: "Cuánto cuesta poner aerotermia en una casa de 100 m², qué potencia necesita, cuánto consume al año y cuánto se ahorra frente a gas o gasoil."
 category: precios
+updatedDate: 2026-10-07
 pubDate: 2026-10-06
 faq:
   - q: "¿Qué potencia de aerotermia necesita una casa de 100 m²?"
@@ -76,6 +77,38 @@ Un equipo de 6‑8 kW térmicos consume en punta unos **2‑3 kW eléctricos** (
 2. **Comprueba tus radiadores**: si con agua a 45‑50 °C calientan bien la casa, puedes mantenerlos. Lo explicamos en [aerotermia con radiadores antiguos](/aerotermia-radiadores-antiguos/).
 3. **Depósito de ACS de 150‑200 litros** suele bastar para 3‑4 personas.
 4. Pide **tres presupuestos** con marca, modelo, potencia y SCOP indicados.
+
+## Ejemplo de presupuesto desglosado
+
+Casa de 100 m² en clima templado, aislamiento medio, radiadores existentes y caldera de gas que se retira:
+
+| Partida | Importe orientativo |
+|---|---|
+| Bomba de calor aire‑agua de 7 kW (monobloc) | 4.200 – 5.500 € |
+| Módulo hidráulico y control | 700 – 1.200 € |
+| Depósito de ACS de 150‑200 L | 800 – 1.400 € |
+| Material hidráulico, filtro magnético y limpieza del circuito | 400 – 800 € |
+| Instalación eléctrica y protecciones | 300 – 600 € |
+| Mano de obra y retirada de la caldera | 1.200 – 1.800 € |
+| Legalización y puesta en marcha | 200 – 500 € |
+| **Total aproximado (IVA incluido)** | **≈ 8.000 – 12.000 €** |
+
+Si tu presupuesto se sale mucho de estos rangos, pide que te expliquen qué partida es distinta y por qué.
+
+## Tres casas de 100 m², tres resultados
+
+**Casa en la costa mediterránea, bien aislada, con suelo radiante.** Un equipo de 5 kW es suficiente. Inversión ≈ 8.000 € (solo cambio de generador). Consumo ≈ 1.700 kWh/año (≈ 310 €). Si sustituye una caldera de gasoil, el ahorro ronda los 500‑600 € al año.
+
+**Casa en el interior (Madrid, Toledo), aislamiento medio, radiadores.** Equipo de 7 kW y cambio de dos radiadores. Inversión ≈ 10.500 €. Consumo ≈ 3.000 kWh/año (≈ 540 €). Frente a gas natural ahorra unos 350 € al año; frente a propano, unos 900 €.
+
+**Casa de pueblo en la meseta norte, poco aislada.** Necesita 9‑10 kW y conviene aislar la cubierta antes. Inversión ≈ 12.000 € más el aislamiento. Consumo ≈ 5.000 kWh/año (≈ 900 €). Frente al gasoil, el ahorro ronda los 800‑1.000 € al año.
+
+## Errores frecuentes al presupuestar
+
+1. **Comparar presupuestos con distinta potencia o sin depósito de ACS**: no son comparables.
+2. **Olvidar la potencia eléctrica**: si hay que subirla, el término de potencia de la factura también sube.
+3. **No incluir la limpieza del circuito** al reutilizar radiadores antiguos: los lodos pueden dañar la bomba y el intercambiador.
+4. **Elegir solo por precio**: un instalador sin experiencia en aerotermia puede dejar un equipo caro funcionando mal.
 
 ## Conclusión
 

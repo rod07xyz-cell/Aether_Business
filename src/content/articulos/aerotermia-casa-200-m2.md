@@ -2,6 +2,7 @@
 title: "Aerotermia para una casa de 200 m²: precio y equipo recomendado"
 description: "Precio de la aerotermia para una casa de 200 m², potencia recomendada, uno o dos equipos, consumo anual, zonificación y consejos para viviendas grandes."
 category: precios
+updatedDate: 2026-10-07
 pubDate: 2026-10-07
 faq:
   - q: "¿Cuánto cuesta la aerotermia para una casa de 200 m²?"
@@ -62,6 +63,39 @@ Frente a una caldera de gasoil o propano en una casa de este tamaño, el ahorro 
 3. **Potencia eléctrica**: es probable que necesites **8‑10 kW** contratados o suministro trifásico.
 4. **Aislamiento primero**: en casas grandes, aislar cubierta y cambiar ventanas tiene un efecto enorme en la potencia necesaria.
 5. **Placas solares**: una vivienda de 200 m² suele tener tejado de sobra para una instalación de 5‑8 kWp. Ver [aerotermia y placas solares](/aerotermia-placas-solares/).
+
+## Ejemplo de presupuesto desglosado
+
+Casa de 200 m² en clima templado, aislamiento medio, equipo de 14 kW trifásico y radiadores existentes. Este ejemplo se sitúa en la **parte alta** del rango por la potencia, la inercia y la zonificación:
+
+| Partida | Importe orientativo |
+|---|---|
+| Bomba de calor aire‑agua de 14 kW (trifásica) | 6.500 – 9.000 € |
+| Módulo hidráulico, control y zonificación (2‑3 zonas) | 1.200 – 2.200 € |
+| Depósito de ACS de 300 L | 1.200 – 1.900 € |
+| Depósito de inercia | 400 – 800 € |
+| Material hidráulico, colectores y filtro magnético | 700 – 1.300 € |
+| Instalación eléctrica trifásica y protecciones | 400 – 900 € |
+| Mano de obra y retirada del sistema antiguo | 1.500 – 2.500 € |
+| Legalización y puesta en marcha | 300 – 600 € |
+| **Total aproximado (IVA incluido)** | **≈ 12.000 – 19.000 €** |
+
+## Caso práctico: casa de 200 m² con gasoil
+
+- Consumo actual: **2.200 litros de gasoil al año** (≈ 2.300 € con mantenimiento).
+- Calor útil: ≈ 19.000 kWh al año.
+- Con aerotermia (SCOP 3,5): ≈ 5.400 kWh eléctricos → **≈ 970 €** + 150 € de mantenimiento.
+- **Ahorro: ≈ 1.180 € al año.**
+- Inversión de 15.000 € → amortización en **≈ 12‑13 años** sin ayudas, y en torno a **10 años** con una deducción del IRPF del 40 % si está vigente.
+- Con una instalación solar de 6 kWp, el ahorro conjunto puede superar los **1.700 € al año**. Ver [aerotermia y placas solares](/aerotermia-placas-solares/).
+
+## Errores típicos en casas grandes
+
+1. **Un solo termostato para toda la casa**: unas estancias pasan calor y otras frío.
+2. **Depósito de ACS pequeño** para muchos baños: entra la resistencia eléctrica y se dispara el consumo.
+3. **No revisar la acometida eléctrica**: un equipo trifásico necesita suministro trifásico.
+4. **Calentar zonas que no se usan**: cuartos de invitados o plantas cerradas deben tener su propia zona.
+5. **Sobredimensionar «porque la casa es grande»**: la potencia la marca la demanda, no los metros.
 
 ## Conclusión
 

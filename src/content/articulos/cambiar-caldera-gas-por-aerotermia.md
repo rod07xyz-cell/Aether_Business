@@ -2,6 +2,7 @@
 title: "Cambiar caldera de gas por aerotermia: precio, pasos y si compensa"
 description: "Cuánto cuesta sustituir una caldera de gas por aerotermia, qué obras hacen falta, si sirven tus radiadores y en cuántos años se recupera la inversión."
 category: precios
+updatedDate: 2026-10-07
 pubDate: 2026-10-06
 faq:
   - q: "¿Cuánto cuesta cambiar una caldera de gas por aerotermia?"
@@ -84,6 +85,48 @@ El ahorro ronda los **300‑450 € al año**. Con una inversión de 11.000 €,
 3. Pide **tres presupuestos** con cálculo de cargas y modelo concreto.
 4. Comprueba **ayudas y deducciones** antes de firmar (algunas exigen certificado energético previo).
 5. Planifica la obra fuera de temporada de calefacción.
+
+## ¿Y la cocina de gas?
+
+Si la cocina también funciona con gas, tienes dos opciones:
+
+- **Mantenerla**: seguirás pagando el término fijo y el alquiler del contador, y las revisiones periódicas de la instalación de gas. Esto reduce mucho el ahorro.
+- **Pasarte a inducción**: una placa de inducción cuesta entre **400 y 1.200 €** instalada. Así puedes **dar de baja el gas** y ahorrarte unos **150‑250 € al año** en términos fijos y revisiones.
+
+Para que las cuentas salgan, lo habitual es hacer las dos cosas a la vez.
+
+## Cómo es la obra, día a día
+
+| Día | Trabajos habituales |
+|---|---|
+| 1 | Retirada de la caldera, vaciado y limpieza del circuito, preparación de soportes o bancada |
+| 2 | Colocación de la unidad exterior, unidad interior y depósito de ACS; conexiones hidráulicas |
+| 3 | Línea eléctrica, llenado y purga del circuito, puesta en marcha y ajuste de la curva |
+| 4 (si hace falta) | Sustitución de radiadores, remates y explicación del funcionamiento |
+
+Durante la obra te quedarás **sin calefacción ni agua caliente 1‑3 días**. Por eso conviene hacerla entre **abril y octubre**.
+
+## Trámites después del cambio
+
+1. **Legalización** de la nueva instalación térmica (la tramita el instalador).
+2. **Anulación de la salida de humos** de la caldera antigua.
+3. **Baja del suministro de gas** con tu comercializadora, si ya no lo usas. La distribuidora puede retirar el contador.
+4. **Revisión de la potencia eléctrica** contratada.
+5. Si vas a pedir la **deducción del IRPF**, el **certificado energético final**. Ver [deducción en el IRPF por aerotermia](/deduccion-irpf-aerotermia/).
+
+## Cuánto cambia la factura total
+
+Ejemplo de vivienda que pasa de **gas para calefacción, agua caliente y cocina** a **aerotermia + inducción**:
+
+| Concepto anual | Antes (gas) | Después (aerotermia + inducción) |
+|---|---|---|
+| Gas (energía + término fijo + contador) | ≈ 950 – 1.150 € | 0 € |
+| Revisiones de gas | ≈ 70 – 120 € | 0 € |
+| Electricidad adicional (aerotermia + cocina) | — | ≈ 520 – 640 € |
+| Mantenimiento aerotermia | — | ≈ 100 – 150 € |
+| **Total** | **≈ 1.020 – 1.270 €** | **≈ 620 – 790 €** |
+
+Ahorro total aproximado: **400‑480 € al año**, algo más que cambiando solo la calefacción.
 
 ## Conclusión
 

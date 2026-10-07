@@ -2,6 +2,7 @@
 title: "Amortización de la aerotermia: en cuántos años se recupera la inversión"
 description: "Cómo calcular en cuántos años se amortiza la aerotermia frente a gasoil, propano, gas natural o electricidad, con ejemplos y el efecto de ayudas y placas solares."
 category: precios
+updatedDate: 2026-10-07
 pubDate: 2026-10-07
 faq:
   - q: "¿En cuántos años se amortiza la aerotermia?"
@@ -77,6 +78,43 @@ Frente a gas natural con 450 € de ahorro anual, son unos **18 años**; con la 
 - Equipo sobredimensionado o mal configurado.
 - Radiadores que obligan a trabajar a alta temperatura.
 - Subidas del precio de la electricidad sin subida equivalente del combustible.
+
+## Ejemplo completo con tus propios números
+
+Así quedaría el cálculo para una familia que gasta **1.400 litros de gasoil al año** y recibe un presupuesto de **11.500 €**:
+
+| Paso | Cálculo | Resultado |
+|---|---|---|
+| 1. Gasto actual | 1.400 L × 1,05 €/L + 120 € de mantenimiento | ≈ 1.590 € |
+| 2. Calor útil | 1.400 L × 10 kWh × 0,85 | ≈ 11.900 kWh |
+| 3. Electricidad con aerotermia | 11.900 ÷ 3,8 (SCOP) | ≈ 3.130 kWh |
+| 4. Gasto con aerotermia | 3.130 × 0,18 €/kWh + 130 € de mantenimiento | ≈ 690 € |
+| 5. Ahorro anual | 1.590 − 690 | ≈ 900 € |
+| 6. Amortización | 11.500 ÷ 900 | ≈ 12,8 años |
+| 7. Con deducción del 40 % (3.000 €) | 8.500 ÷ 900 | ≈ 9,4 años |
+
+Sustituye las cifras por las tuyas y obtendrás una estimación bastante fiable.
+
+## ¿Y si sube o baja la luz?
+
+El resultado depende mucho del precio de la electricidad. Mismo ejemplo de la tabla inicial (12.000 kWh útiles, sustituyendo gasoil a 1,05 €/L, inversión de 11.000 €):
+
+| Precio medio de la luz | Gasto con aerotermia | Ahorro anual | Amortización sin ayudas |
+|---|---|---|---|
+| 0,15 €/kWh | ≈ 600 € | ≈ 950 € | ≈ 11,6 años |
+| 0,19 €/kWh | ≈ 730 € | ≈ 820 € | ≈ 13,4 años |
+| 0,23 €/kWh | ≈ 860 € | ≈ 690 € | ≈ 16 años |
+
+Y lo mismo ocurre con el combustible que sustituyes: si el gasoil sube, la amortización se acorta. Por eso conviene hacer el cálculo con **precios medios de varios años**, no con los de un mes concreto.
+
+## Lo que no aparece en la fórmula
+
+- **Revalorización de la vivienda**: una mejor calificación energética se valora al vender o alquilar.
+- **Refrigeración incluida**: si ibas a instalar aire acondicionado, te ahorras ese gasto (1.500‑4.000 €).
+- **Comodidad**: sin pedidos de combustible, sin depósito, sin humos.
+- **Riesgo regulatorio**: las calderas fósiles tienen cada vez menos apoyo normativo.
+
+Ninguno de estos factores es fácil de cuantificar, pero todos juegan a favor de la aerotermia.
 
 ## Conclusión
 

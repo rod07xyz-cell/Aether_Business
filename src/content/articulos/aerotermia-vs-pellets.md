@@ -2,6 +2,7 @@
 title: "Aerotermia vs caldera de pellets: ¿cuál sale más barata?"
 description: "Comparamos aerotermia y caldera de pellets (biomasa): inversión, coste anual, comodidad, espacio, mantenimiento y en qué casos conviene cada sistema."
 category: consumo
+updatedDate: 2026-10-07
 pubDate: 2026-10-07
 faq:
   - q: "¿Qué es más barato, la aerotermia o los pellets?"
@@ -73,6 +74,42 @@ Las inversiones son comparables. Consulta el desglose de la aerotermia en la gu�
 ## ¿Y combinar ambas?
 
 En casas grandes de zonas frías, algunas instalaciones usan **aerotermia como sistema principal** y una **estufa de pellets** de apoyo para los días más fríos. Es una opción interesante si ya tienes la estufa.
+
+## El precio y la calidad del pellet
+
+El pellet no es todo igual. Para calderas domésticas conviene usar pellet con certificación **ENplus A1** (o equivalente), que garantiza poca ceniza, humedad baja y un poder calorífico estable (≈ 4,6‑5 kWh/kg).
+
+| Formato | Precio orientativo | Comentario |
+|---|---|---|
+| Sacos de 15 kg | 0,30 – 0,45 €/kg | Más caro y hay que cargar a mano |
+| Palé completo (≈ 65‑70 sacos) | 0,28 – 0,38 €/kg | Más barato; necesita almacén |
+| A granel (camión cisterna a silo) | 0,26 – 0,34 €/kg | El más barato; requiere silo |
+
+El precio varía con la temporada: suele ser más barato comprar en **primavera y verano**. Un pellet de mala calidad produce más ceniza, más mantenimiento y menos rendimiento.
+
+## Caso práctico: zona fría, casa de 160 m²
+
+Casa en zona de montaña con una demanda de **15.000 kWh de calor útil al año** y radiadores que necesitan agua a 50‑55 °C:
+
+| Concepto | Pellets (0,32 €/kg) | Aerotermia (SCOP 2,7) |
+|---|---|---|
+| Energía consumida | ≈ 3.550 kg de pellet | ≈ 5.550 kWh eléctricos |
+| Coste de energía | ≈ 1.140 € | ≈ 1.000 € |
+| Mantenimiento | ≈ 200 € | ≈ 130 € |
+| **Total anual** | **≈ 1.340 €** | **≈ 1.130 €** |
+
+Incluso en clima frío y con radiadores, los costes están **muy igualados**. Si el pellet se compra a granel barato o la luz sube, los pellets pueden salir ligeramente más baratos; si la casa tiene suelo radiante o placas solares, la aerotermia gana con claridad.
+
+## Preguntas para decidir
+
+1. ¿Tengo **espacio seco** para almacenar 2‑4 toneladas de pellet al año?
+2. ¿Estoy dispuesto a **vaciar cenizas** y vigilar la caldera?
+3. ¿Quiero **refrigeración** en verano?
+4. ¿Tengo o voy a poner **placas solares**?
+5. ¿Hay **salida de humos** o tendré que hacer una nueva?
+6. ¿Mi municipio tiene restricciones por **calidad del aire**?
+
+Si respondes «sí» a las preguntas 3 y 4, la aerotermia es casi siempre la mejor elección. Si tienes mucho espacio, vives en una zona muy fría y no quieres refrigeración, los pellets son una alternativa muy razonable.
 
 ## Conclusión
 

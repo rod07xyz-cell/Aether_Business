@@ -2,6 +2,7 @@
 title: "Aerotermia para una casa de 150 m²: presupuesto real desglosado"
 description: "Presupuesto desglosado de aerotermia para una casa de 150 m²: potencia necesaria, partidas, consumo anual, ahorro frente a gasoil o gas y amortización."
 category: precios
+updatedDate: 2026-10-07
 pubDate: 2026-10-07
 faq:
   - q: "¿Cuánto cuesta la aerotermia para una casa de 150 m²?"
@@ -79,6 +80,34 @@ Añadir **placas solares** acorta estos plazos: lo vemos en [aerotermia y placas
 3. **Revisa la potencia contratada**: con 150 m² suele hacer falta **6,9‑8 kW** si hay otros consumos importantes.
 4. **Aprovecha la obra** para retirar el depósito de gasoil y ganar espacio.
 5. Si la casa es antigua, valora **aislar la cubierta** antes: puede reducir 2‑3 kW la potencia necesaria.
+
+## Tres escenarios para una casa de 150 m²
+
+| Escenario | Qué incluye | Inversión orientativa | Cuándo elegirlo |
+|---|---|---|---|
+| A. Cambio de generador | Aerotermia + ACS, aprovechando radiadores o suelo radiante | 9.500 – 14.000 € | Emisores en buen estado y casa razonablemente aislada |
+| B. Reforma completa | Aerotermia + suelo radiante nuevo en toda la casa | 17.000 – 25.000 € | Reforma integral en la que se levanta el suelo |
+| C. Sistema híbrido | Bomba de calor + caldera existente de apoyo | 6.000 – 10.000 € | Radiadores que necesitan agua muy caliente y caldera de gas reciente |
+
+En el escenario **B**, el sobrecoste del suelo radiante se compensa con un consumo un 15‑25 % menor y más confort. En el **C**, la bomba de calor cubre la mayor parte del año y la caldera solo entra en los días más fríos.
+
+## Planta baja y planta alta
+
+En casas de dos plantas, el calor tiende a subir: la planta alta suele necesitar menos aporte. Una buena instalación:
+
+- Divide el circuito en **dos zonas** con su propio termostato.
+- **Equilibra** los caudales para que la planta baja reciba lo que necesita.
+- Si hay suelo radiante solo en una planta y radiadores en la otra, usa una **válvula mezcladora** o un equipo con **dos temperaturas de impulsión**.
+
+## Qué preguntar al instalador en una casa de este tamaño
+
+1. ¿Cómo va a **zonificar** la instalación?
+2. ¿Hace falta **depósito de inercia**?
+3. ¿Qué **potencia eléctrica** necesitaré con la resistencia de apoyo?
+4. ¿Qué radiadores concretos **habría que cambiar** y por qué?
+5. ¿Dónde irá la unidad exterior para que no moleste en las habitaciones?
+
+Más preguntas en la guía de [cómo elegir instalador de aerotermia](/como-elegir-instalador-aerotermia/).
 
 ## Conclusión
 
