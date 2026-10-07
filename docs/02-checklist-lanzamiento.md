@@ -20,7 +20,7 @@ Basado en el plan `01-plan-nicho-aerotermia.md`. Marca cada paso al completarlo.
 
 ## C. Contenido
 
-- [ ] Publicar los 30 artículos iniciales (orden en sección 4 del plan).
+- [x] Publicar los 30 artículos iniciales (orden en sección 4 del plan).
 - [ ] Cada artículo: 1 keyword principal, 800‑2.000 palabras, H2/H3, FAQ, 3+ enlaces internos, imagen destacada, meta descripción.
 - [ ] Revisión humana de cifras (precios, ayudas, deducciones) antes de publicar.
 
