@@ -4,11 +4,6 @@
    Los campos vacíos ('') ocultan el botón correspondiente.
 ═══════════════════════════════════════════ */
 window.AETHER_CONFIG = {
-  // ID de Formspree: crea un formulario gratis en https://formspree.io
-  // y copia lo que va después de /f/ (ej. 'xyzabcde').
-  // Si está vacío, el formulario abre el email del visitante como alternativa.
-  formspreeId: '',
-
   // WhatsApp en formato internacional, sin + ni espacios (ej. '34612345678').
   whatsapp: '',
 

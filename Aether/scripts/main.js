@@ -694,13 +694,7 @@
       return !firstBad;
     }
 
-    function mailtoFallback(data) {
-      var body = 'Nombre: ' + data.nombre + '\nNegocio: ' + data.negocio + '\nSector: ' + data.sector +
-        '\nContacto: ' + data.contacto + '\n\n' + (data.mensaje || '');
-      location.href = 'mailto:' + (CONFIG.email || '') + '?subject=' +
-        encodeURIComponent('Consulta web — ' + data.negocio) + '&body=' + encodeURIComponent(body);
-    }
-
+    // Los leads van al flujo «Captación de leads web» de n8n (solo acepta peticiones desde aetherlabsai.tech)
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       status.textContent = '';
@@ -708,26 +702,21 @@
       if (!validate()) return;
       var data = {};
       new FormData(form).forEach(function (v, k) { data[k] = v; });
-      if (data._gotcha) return;
-
-      if (!CONFIG.formspreeId) {
-        mailtoFallback(data);
-        status.textContent = 'Se ha abierto tu email con el mensaje preparado. Si no se abre, escríbenos a ' + CONFIG.email + '.';
-        status.classList.add('is-ok');
-        return;
-      }
 
       btn.disabled = true;
       btn.textContent = 'Enviando…';
-      fetch('https://formspree.io/f/' + CONFIG.formspreeId, {
+      fetch('https://n8n.aetherlabsai.tech/webhook/lead-web', {
         method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       }).then(function (res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
-        form.reset();
-        status.textContent = '¡Recibido! Te respondemos en menos de 24 horas.';
-        status.classList.add('is-ok');
+        return res.json();
+      }).then(function (json) {
+        if (!json || !json.ok) throw new Error('Respuesta no válida');
+        var done = el('p', 'form-status is-ok', json.mensaje || 'Gracias, te contactaremos en menos de 24 horas.');
+        done.setAttribute('role', 'status');
+        form.replaceWith(done);
       }).catch(function () {
         status.innerHTML = '';
         status.appendChild(document.createTextNode('No se pudo enviar. Escríbenos a '));
@@ -735,7 +724,6 @@
         a.href = 'mailto:' + CONFIG.email;
         status.appendChild(a);
         status.classList.add('is-error');
-      }).then(function () {
         btn.disabled = false;
         btn.textContent = 'Enviar';
       });

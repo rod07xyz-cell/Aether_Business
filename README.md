@@ -20,7 +20,7 @@ Hay dos archivos con datos privados que están en `.gitignore`. Se crean a parti
 
 | Archivo | Plantilla | Qué lleva |
 |---|---|---|
-| `Aether/scripts/config.js` | `config.example.js` | ID de Formspree, WhatsApp, teléfono, email, enlace de Cal.eu |
+| `Aether/scripts/config.js` | `config.example.js` | WhatsApp, teléfono, email, enlace de Cal.eu |
 | `Aether/api/config.php` | `config.example.php` | Clave de API de Groq, modelo y límite de mensajes por hora del asistente |
 
 Si `config.js` no existe, la web funciona igual: se ocultan WhatsApp y teléfono, y el formulario abre el email del visitante.
